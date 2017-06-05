@@ -176,8 +176,8 @@
         CGFloat height = imageSize.height / imageSize.width * width;
         _paintingImageView = [[HandPaintingImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
         _paintingImageView.image = image;
-        [self.paintingImageView hp_initWidthInMM:2.5];
-        [self.paintingImageView hp_chooseWithColor:[UIColor blueColor] abstractScale:self.backGroundScrollerView.zoomScale];
+        [_paintingImageView hp_initWidthInMM:2.5];
+        [_paintingImageView hp_chooseWithColor:[UIColor blueColor] abstractScale:self.backGroundScrollerView.zoomScale];
     }
     return _paintingImageView;
 }

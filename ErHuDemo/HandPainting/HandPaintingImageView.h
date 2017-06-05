@@ -22,7 +22,7 @@
  绘图时选中某种颜色
 
  @param color color
- @param abstractScale 当前缩放倍数
+ @param abstractScale 当前缩放倍数，默认1.0
  */
 - (void)hp_chooseWithColor:(UIColor *)color abstractScale:(CGFloat)abstractScale;
 
@@ -34,7 +34,7 @@
 - (void)hp_setAbsoluteScale:(CGFloat)scale;
 
 /**
- 离开绘图页面时取消选中某种颜色
+ 离开绘图页面时取消选中颜色
  */
 - (void)hp_unchoose;
 
