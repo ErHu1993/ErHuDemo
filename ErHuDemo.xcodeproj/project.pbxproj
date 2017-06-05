@@ -16,7 +16,6 @@
 		D86A4B021EE00F5A00B7BF22 /* ErHuDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4B011EE00F5A00B7BF22 /* ErHuDemoTests.m */; };
 		D86A4B0D1EE00F5A00B7BF22 /* ErHuDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4B0C1EE00F5A00B7BF22 /* ErHuDemoUITests.m */; };
 		D86EA1541EE161C800635EA9 /* HandPaintingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D86EA14F1EE161C800635EA9 /* HandPaintingImageView.m */; };
-		D86EA1551EE161C800635EA9 /* HandPaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D86EA1511EE161C800635EA9 /* HandPaintViewController.m */; };
 		D86EA1561EE161C800635EA9 /* Stroke.m in Sources */ = {isa = PBXBuildFile; fileRef = D86EA1531EE161C800635EA9 /* Stroke.m */; };
 		D86EA1591EE161D100635EA9 /* WechatIMG.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D86EA1581EE161D100635EA9 /* WechatIMG.jpeg */; };
 /* End PBXBuildFile section */
@@ -57,8 +56,6 @@
 		D86A4B0E1EE00F5A00B7BF22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D86EA14E1EE161C800635EA9 /* HandPaintingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandPaintingImageView.h; sourceTree = "<group>"; };
 		D86EA14F1EE161C800635EA9 /* HandPaintingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPaintingImageView.m; sourceTree = "<group>"; };
-		D86EA1501EE161C800635EA9 /* HandPaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandPaintViewController.h; sourceTree = "<group>"; };
-		D86EA1511EE161C800635EA9 /* HandPaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPaintViewController.m; sourceTree = "<group>"; };
 		D86EA1521EE161C800635EA9 /* Stroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stroke.h; sourceTree = "<group>"; };
 		D86EA1531EE161C800635EA9 /* Stroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stroke.m; sourceTree = "<group>"; };
 		D86EA1581EE161D100635EA9 /* WechatIMG.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG.jpeg; sourceTree = "<group>"; };
@@ -156,8 +153,6 @@
 		D86EA14D1EE161C800635EA9 /* HandPainting */ = {
 			isa = PBXGroup;
 			children = (
-				D86EA1501EE161C800635EA9 /* HandPaintViewController.h */,
-				D86EA1511EE161C800635EA9 /* HandPaintViewController.m */,
 				D86EA14E1EE161C800635EA9 /* HandPaintingImageView.h */,
 				D86EA14F1EE161C800635EA9 /* HandPaintingImageView.m */,
 				D86EA1521EE161C800635EA9 /* Stroke.h */,
@@ -310,7 +305,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86A4AEF1EE00F5A00B7BF22 /* ViewController.m in Sources */,
-				D86EA1551EE161C800635EA9 /* HandPaintViewController.m in Sources */,
 				D86EA1541EE161C800635EA9 /* HandPaintingImageView.m in Sources */,
 				D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */,
 				D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */,
