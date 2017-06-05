@@ -44,7 +44,7 @@
     [revokeBtn addTarget:self action:@selector(revoke) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:revokeBtn];
     
-    UIButton *saveBtn = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 80 -  20, 20, 80, 80)];
+    UIButton *saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 80 -  20, 20, 80, 80)];
     [saveBtn setTitle:@"save" forState:UIControlStateNormal];
     [saveBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [saveBtn addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
@@ -172,7 +172,7 @@
     if (!_paintingImageView) {
         UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"WechatIMG" ofType:@"jpeg"]];
         CGSize imageSize = image.size;
-        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        CGFloat width = ScreenWidth;
         CGFloat height = imageSize.height / imageSize.width * width;
         _paintingImageView = [[HandPaintingImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
         _paintingImageView.image = image;

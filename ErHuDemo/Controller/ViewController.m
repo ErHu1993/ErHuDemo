@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "HandPaintViewController.h"
+#import "VideoRecordingViewController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -30,7 +31,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = self.dataArray[indexPath.row];
     return cell;
 }
@@ -39,8 +39,34 @@
     if ([self.dataArray[indexPath.row] isEqualToString:@"手绘"]) {
         HandPaintViewController *handPainting = [[HandPaintViewController alloc] init];
         [self presentViewController:handPainting animated:YES completion:nil];
-    }else{
-        
+    }else if ([self.dataArray[indexPath.row] isEqualToString:@"视频录制"]){
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if (granted) {
+                if ([[AVAudioSession sharedInstance] respondsToSelector:@selector(requestRecordPermission:)]) {
+                    [[AVAudioSession sharedInstance] performSelector:@selector(requestRecordPermission:) withObject:^(BOOL granted) {
+                        if (granted) {
+                            
+                            NSError *AVAudioSessionCategoryError;
+                            
+                            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&AVAudioSessionCategoryError];
+                            
+                            NSError *AVAudioSessionActiveError;
+                            
+                            [[AVAudioSession sharedInstance] setActive:true error:&AVAudioSessionActiveError];
+                            
+                            [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
+                            
+                            if (!AVAudioSessionCategoryError && !AVAudioSessionActiveError) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    VideoRecordingViewController *recordVC = [[VideoRecordingViewController alloc] init];
+                                    [self presentViewController:recordVC animated:YES completion:nil];
+                                });
+                            }
+                        }
+                    }];
+                }
+            }
+        }];
     }
 }
 
@@ -59,7 +85,7 @@
 
 - (NSArray *)dataArray{
     if (!_dataArray) {
-        _dataArray = @[@"手绘",@"视频录制"];
+        _dataArray = @[@"手绘",@"视频录制",@"音频录制"];
     }
     return _dataArray;
 }

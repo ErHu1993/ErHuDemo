@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		D83F94C31EE4EDEE00EB9ACB /* HandPaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C01EE4EDEE00EB9ACB /* HandPaintViewController.m */; };
 		D83F94C41EE4EDEE00EB9ACB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C21EE4EDEE00EB9ACB /* ViewController.m */; };
+		D83F94CA1EE4F49900EB9ACB /* VideoRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C91EE4F49900EB9ACB /* VideoRecordingViewController.m */; };
+		D83F94CE1EE4F53100EB9ACB /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94CD1EE4F53100EB9ACB /* CircleProgressView.m */; };
+		D83F94D11EE4F56D00EB9ACB /* VideoRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94D01EE4F56D00EB9ACB /* VideoRecordManager.m */; };
+		D83F94D41EE4F5BA00EB9ACB /* VideoFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94D31EE4F5BA00EB9ACB /* VideoFileManager.m */; };
+		D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94EC1EE4FDB200EB9ACB /* ShortVideoRecorder.m */; };
+		D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94EE1EE4FDB200EB9ACB /* ShortVideoSession.m */; };
+		D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */; };
 		D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4AE81EE00F5A00B7BF22 /* main.m */; };
 		D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4AEB1EE00F5A00B7BF22 /* AppDelegate.m */; };
 		D86A4AF21EE00F5A00B7BF22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86A4AF01EE00F5A00B7BF22 /* Main.storyboard */; };
@@ -43,6 +50,22 @@
 		D83F94C01EE4EDEE00EB9ACB /* HandPaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPaintViewController.m; sourceTree = "<group>"; };
 		D83F94C11EE4EDEE00EB9ACB /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D83F94C21EE4EDEE00EB9ACB /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D83F94C81EE4F49900EB9ACB /* VideoRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRecordingViewController.h; sourceTree = "<group>"; };
+		D83F94C91EE4F49900EB9ACB /* VideoRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRecordingViewController.m; sourceTree = "<group>"; };
+		D83F94CC1EE4F53100EB9ACB /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
+		D83F94CD1EE4F53100EB9ACB /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
+		D83F94CF1EE4F56D00EB9ACB /* VideoRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRecordManager.h; sourceTree = "<group>"; };
+		D83F94D01EE4F56D00EB9ACB /* VideoRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRecordManager.m; sourceTree = "<group>"; };
+		D83F94D21EE4F5BA00EB9ACB /* VideoFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoFileManager.h; sourceTree = "<group>"; };
+		D83F94D31EE4F5BA00EB9ACB /* VideoFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoFileManager.m; sourceTree = "<group>"; };
+		D83F94DC1EE4F8A600EB9ACB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		D83F94DE1EE4F8DF00EB9ACB /* ErHuDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErHuDemo.h; sourceTree = "<group>"; };
+		D83F94EB1EE4FDB200EB9ACB /* ShortVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortVideoRecorder.h; sourceTree = "<group>"; };
+		D83F94EC1EE4FDB200EB9ACB /* ShortVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortVideoRecorder.m; sourceTree = "<group>"; };
+		D83F94ED1EE4FDB200EB9ACB /* ShortVideoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortVideoSession.h; sourceTree = "<group>"; };
+		D83F94EE1EE4FDB200EB9ACB /* ShortVideoSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortVideoSession.m; sourceTree = "<group>"; };
+		D83F94F91EE5070800EB9ACB /* UIView+EHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EHCategory.h"; sourceTree = "<group>"; };
+		D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EHCategory.m"; sourceTree = "<group>"; };
 		D86A4AE41EE00F5A00B7BF22 /* ErHuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ErHuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86A4AE81EE00F5A00B7BF22 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D86A4AEA1EE00F5A00B7BF22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -96,8 +119,43 @@
 				D83F94C21EE4EDEE00EB9ACB /* ViewController.m */,
 				D83F94BF1EE4EDEE00EB9ACB /* HandPaintViewController.h */,
 				D83F94C01EE4EDEE00EB9ACB /* HandPaintViewController.m */,
+				D83F94C81EE4F49900EB9ACB /* VideoRecordingViewController.h */,
+				D83F94C91EE4F49900EB9ACB /* VideoRecordingViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D83F94CB1EE4F51200EB9ACB /* VideoRecord */ = {
+			isa = PBXGroup;
+			children = (
+				D83F94CC1EE4F53100EB9ACB /* CircleProgressView.h */,
+				D83F94CD1EE4F53100EB9ACB /* CircleProgressView.m */,
+				D83F94CF1EE4F56D00EB9ACB /* VideoRecordManager.h */,
+				D83F94D01EE4F56D00EB9ACB /* VideoRecordManager.m */,
+				D83F94EB1EE4FDB200EB9ACB /* ShortVideoRecorder.h */,
+				D83F94EC1EE4FDB200EB9ACB /* ShortVideoRecorder.m */,
+				D83F94ED1EE4FDB200EB9ACB /* ShortVideoSession.h */,
+				D83F94EE1EE4FDB200EB9ACB /* ShortVideoSession.m */,
+				D83F94D21EE4F5BA00EB9ACB /* VideoFileManager.h */,
+				D83F94D31EE4F5BA00EB9ACB /* VideoFileManager.m */,
+			);
+			path = VideoRecord;
+			sourceTree = "<group>";
+		};
+		D83F94F11EE4FE9B00EB9ACB /* ThirdPart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdPart;
+			sourceTree = "<group>";
+		};
+		D83F94F21EE4FE9B00EB9ACB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D83F94F91EE5070800EB9ACB /* UIView+EHCategory.h */,
+				D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D86A4ADB1EE00F5900B7BF22 = {
@@ -127,8 +185,13 @@
 				D86A4AEB1EE00F5A00B7BF22 /* AppDelegate.m */,
 				D83F94BE1EE4EDEE00EB9ACB /* Controller */,
 				D86EA14D1EE161C800635EA9 /* HandPainting */,
+				D83F94CB1EE4F51200EB9ACB /* VideoRecord */,
+				D83F94F11EE4FE9B00EB9ACB /* ThirdPart */,
+				D83F94F21EE4FE9B00EB9ACB /* Utils */,
 				D86EA1571EE161D100635EA9 /* Images */,
 				D86A4AF31EE00F5A00B7BF22 /* Assets.xcassets */,
+				D83F94DE1EE4F8DF00EB9ACB /* ErHuDemo.h */,
+				D83F94DC1EE4F8A600EB9ACB /* PrefixHeader.pch */,
 				D86A4AF01EE00F5A00B7BF22 /* Main.storyboard */,
 				D86A4AF51EE00F5A00B7BF22 /* LaunchScreen.storyboard */,
 				D86A4AF81EE00F5A00B7BF22 /* Info.plist */,
@@ -318,11 +381,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D83F94C41EE4EDEE00EB9ACB /* ViewController.m in Sources */,
+				D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */,
+				D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */,
+				D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */,
+				D83F94D41EE4F5BA00EB9ACB /* VideoFileManager.m in Sources */,
+				D83F94CE1EE4F53100EB9ACB /* CircleProgressView.m in Sources */,
 				D86EA1541EE161C800635EA9 /* HandPaintingImageView.m in Sources */,
+				D83F94D11EE4F56D00EB9ACB /* VideoRecordManager.m in Sources */,
 				D83F94C31EE4EDEE00EB9ACB /* HandPaintViewController.m in Sources */,
 				D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */,
 				D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */,
 				D86EA1561EE161C800635EA9 /* Stroke.m in Sources */,
+				D83F94CA1EE4F49900EB9ACB /* VideoRecordingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +544,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7AWX2MRU3G;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ErHuDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = ErHuDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erhu.ErHuDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -486,7 +558,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7AWX2MRU3G;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ErHuDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = ErHuDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erhu.ErHuDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

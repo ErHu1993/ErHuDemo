@@ -26,7 +26,7 @@
         
         _points = [NSMutableArray array];
         
-        DD = 3.0 / [UIScreen mainScreen].scale;
+        DD = 3.0 / ScreenScale;
         
         self.color = color;
         self.width = width;
