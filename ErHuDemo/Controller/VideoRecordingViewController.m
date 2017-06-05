@@ -61,6 +61,7 @@
     [self.view addSubview:self.backView];
     
      self.manager = [[VideoRecordManager alloc] initWithSuperView:self.backView];
+    
      self.manager.delegate = self;
     
      self.inputButton = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - 60)/2, ScreenHeight - 60 - 30, 60, 60)];

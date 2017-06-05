@@ -128,8 +128,6 @@
 		D83F94CB1EE4F51200EB9ACB /* VideoRecord */ = {
 			isa = PBXGroup;
 			children = (
-				D83F94CC1EE4F53100EB9ACB /* CircleProgressView.h */,
-				D83F94CD1EE4F53100EB9ACB /* CircleProgressView.m */,
 				D83F94CF1EE4F56D00EB9ACB /* VideoRecordManager.h */,
 				D83F94D01EE4F56D00EB9ACB /* VideoRecordManager.m */,
 				D83F94EB1EE4FDB200EB9ACB /* ShortVideoRecorder.h */,
@@ -138,6 +136,8 @@
 				D83F94EE1EE4FDB200EB9ACB /* ShortVideoSession.m */,
 				D83F94D21EE4F5BA00EB9ACB /* VideoFileManager.h */,
 				D83F94D31EE4F5BA00EB9ACB /* VideoFileManager.m */,
+				D83F94CC1EE4F53100EB9ACB /* CircleProgressView.h */,
+				D83F94CD1EE4F53100EB9ACB /* CircleProgressView.m */,
 			);
 			path = VideoRecord;
 			sourceTree = "<group>";
@@ -550,6 +550,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erhu.ErHuDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -564,6 +565,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erhu.ErHuDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
