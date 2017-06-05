@@ -19,6 +19,10 @@
 
 @implementation HandPaintViewController
 
+- (void)dealloc{
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSubViews];
@@ -54,6 +58,7 @@
 }
 
 - (void)back{
+    [self.paintingImageView hp_unchoose];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
