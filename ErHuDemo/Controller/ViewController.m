@@ -85,7 +85,7 @@
 
 - (NSArray *)dataArray{
     if (!_dataArray) {
-        _dataArray = @[@"手绘",@"视频录制",@"音频录制"];
+        _dataArray = @[@"手绘",@"视频录制"];
     }
     return _dataArray;
 }

@@ -97,6 +97,7 @@ __strong nob_defer_block_t nob_macro_concat(__nob_stack_defer_block_, __LINE__) 
         self.pan.maximumNumberOfTouches = 1;
         
         self.tap = [[TapWithStartGestureRecognizer alloc] initWithTarget:self action:@selector(tapping:)];
+        
         [self.tap requireGestureRecognizerToFail:self.pan];
         
         self.pan.cancelsTouchesInView = false;//重要
