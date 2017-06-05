@@ -61,10 +61,30 @@
                                     VideoRecordingViewController *recordVC = [[VideoRecordingViewController alloc] init];
                                     [self presentViewController:recordVC animated:YES completion:nil];
                                 });
+                            }else{
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"错误~" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                    [alertView show];
+                                });
                             }
+                        }else{
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没权限~" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                                [alertView show];
+                            });
                         }
                     }];
+                }else{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没权限~" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                        [alertView show];
+                    });
                 }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没权限~" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    [alertView show];
+                });
             }
         }];
     }

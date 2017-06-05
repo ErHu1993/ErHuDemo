@@ -7,9 +7,15 @@
 //
 
 #import "VideoRecordManager.h"
+#import <AVFoundation/AVFoundation.h>
 #import "VideoFileManager.h"
 #import "ShortVideoRecorder.h"
 #import "ShortVideoSession.h"
+
+static CGFloat VideoRecordMaxTime = 15; //视频最大时长 (单位/秒)
+static CGFloat VideoRecordMinTime = 3;  //最短视频时长 (单位/秒)
+static CGFloat TimeInterval = 0.05;  //定时器请求间隔
+
 @interface VideoRecordManager ()<ShortVideoRecorderDelegate>
 /** 父视图 */
 @property (nonatomic, strong) UIView *superView;
@@ -19,8 +25,12 @@
 @property (nonatomic, strong) AVPlayerLayer *videoPlayerLayer;
 /** 文件管理类 */
 @property (nonatomic, strong) VideoFileManager *videoFileManager;
-
+/** 主要录制工具 */
 @property (nonatomic, strong) ShortVideoRecorder *recorder;
+/** 记录录制时间定时器 */
+@property (nonatomic, strong) NSTimer* timer;
+/** 记录录制时间 */
+@property (nonatomic, assign) CGFloat recordingTime;
 
 @end
 
@@ -28,8 +38,8 @@
 
 - (void)dealloc{
     NSLog(@"VideoRecordManager dealloc ");
-     self.videoPlayer = nil;
-     self.videoPlayerLayer = nil;
+    self.videoPlayer = nil;
+    self.videoPlayerLayer = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 
@@ -83,6 +93,7 @@
  */
 - (void)startVideoRecord{
     //禁止自动锁屏
+    [self startTimer];
     [UIApplication sharedApplication].idleTimerDisabled = true;
     [self.recorder startRecording];
 }
@@ -90,11 +101,12 @@
 /**
  停止录像
  */
-- (void)stopVideoRecordWithSecond:(CGFloat)second{
+- (void)stopVideoRecord{
+    [self timerStop];
     //解除禁止自动锁屏
     [UIApplication sharedApplication].idleTimerDisabled = false;
     [self.recorder stopRecording];
-    if (second < VideoRecordMinTime) {
+    if (self.recordingTime < VideoRecordMinTime) {
         if ([self.delegate respondsToSelector:@selector(recordTimerTooShort:)]) {
             [self.delegate recordTimerTooShort:self];
         }
@@ -110,8 +122,8 @@
 - (void)deleteVideoRecord{
     [self.videoPlayer pause];
     [self.videoPlayerLayer removeFromSuperlayer];
-     self.videoPlayer = nil;
-     self.videoPlayerLayer = nil;
+    self.videoPlayer = nil;
+    self.videoPlayerLayer = nil;
     [self openVideo];
     [self.videoFileManager deleteVideoFile];
     [self.videoFileManager createNewVideoPath];
@@ -138,9 +150,9 @@
  */
 - (void)playVideoWithPath:(NSURL *)url{
     AVPlayerItem *item = [AVPlayerItem playerItemWithURL:url];
-     self.videoPlayer = [AVPlayer playerWithPlayerItem:item];
-     self.videoPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.videoPlayer];
-     self.videoPlayerLayer.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    self.videoPlayer = [AVPlayer playerWithPlayerItem:item];
+    self.videoPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.videoPlayer];
+    self.videoPlayerLayer.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
     [self.videoPlayerLayer setVideoGravity:AVLayerVideoGravityResizeAspect];
     [self.superView.layer insertSublayer:self.videoPlayerLayer above:[self.recorder previewLayer]];
     [[self.recorder previewLayer] removeFromSuperlayer];
@@ -163,21 +175,28 @@
 }
 
 /**
+ 获取视频时长
+ 
+ @return 时长
+ */
+- (CGFloat)getRecordTime{
+    return self.recordingTime;
+}
+
+/**
  切换摄像头
  */
 - (void)exchangeCamera{
-     [self.recorder swapFrontAndBackCameras];
+    [self.recorder swapFrontAndBackCameras];
 }
 
 ///录制开始回调
 - (void)recorderDidBeginRecording:(ShortVideoRecorder *)recorder {
-    //录制长度限制到时间停止
     NSLog(@"%s",__func__);
 }
 
 //录制结束回调
 - (void)recorderDidEndRecording:(ShortVideoRecorder *)recorder {
-    //停止进度条
     NSLog(@"%s",__func__);
 }
 
@@ -187,5 +206,42 @@
     [self.videoFileManager saveVideoThumbnailToPhotoLibraryWithOrientation:[recorder getRecordingOrientation]];
 }
 
+#pragma mark - 定时器相关
+
+/**
+ 开启监听计时器
+ */
+- (void)startTimer{
+    self.recordingTime = 0;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:TimeInterval target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
+}
+
+/**
+ 停止监听计时器
+ */
+- (void)timerStop{
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+/**
+ 录制进度条监听
+ */
+- (void)progressChange{
+    
+    self.recordingTime += TimeInterval;
+    
+    if (self.recordingTime >= VideoRecordMaxTime) {
+        if ([self.delegate respondsToSelector:@selector(recordTimerEnd:)]) {
+            [self.delegate recordTimerEnd:self];
+        }
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(recordProgressChange:)]) {
+        [self.delegate recordProgressChange:self.recordingTime / VideoRecordMaxTime];
+    }
+}
 
 @end

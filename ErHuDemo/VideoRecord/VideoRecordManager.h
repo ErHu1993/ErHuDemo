@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-static CGFloat VideoRecordMaxTime = 15; //视频最大时长 (单位/秒)
-static CGFloat VideoRecordMinTime = 3;  //最短视频时长 (单位/秒)
-static CGFloat TimeInterval = 0.05;  //定时器请求间隔
-
 @protocol VideoRecordManagerDelegate;
 
 @interface VideoRecordManager : NSObject
@@ -27,14 +23,14 @@ static CGFloat TimeInterval = 0.05;  //定时器请求间隔
  录像管理类代理
  */
 @property (nonatomic, weak) id<VideoRecordManagerDelegate>delegate;
-    
+
 /**
- 开启摄像
+ 开启摄像头
  */
 - (void)openVideo;
 
 /**
- 关闭摄
+ 关闭摄像头
  */
 - (void)closeVideo;
 
@@ -44,16 +40,14 @@ static CGFloat TimeInterval = 0.05;  //定时器请求间隔
 - (void)exchangeCamera;
 
 /**
- 停止录像
-
- @param second 当前定时器记录的时间
- */
-- (void)stopVideoRecordWithSecond:(CGFloat)second;
-
-/**
  开始录像
  */
 - (void)startVideoRecord;
+
+/**
+ 停止录像
+ */
+- (void)stopVideoRecord;
 
 /**
  删除录像
@@ -67,6 +61,14 @@ static CGFloat TimeInterval = 0.05;  //定时器请求间隔
  */
 - (void)getVideoAndThumbnailPathWithBlock:(void (^)(NSString *videoPath , NSString *thumbnailPath))callback;
 
+
+/**
+ 获取视频时长
+ 
+ @return 时长
+ */
+- (CGFloat)getRecordTime;
+
 @end
 
 @protocol VideoRecordManagerDelegate <NSObject>
@@ -75,15 +77,24 @@ static CGFloat TimeInterval = 0.05;  //定时器请求间隔
 
 /**
  视频录制过短代理
-
+ 
  @param manager self
  */
 - (void)recordTimerTooShort:(VideoRecordManager *)manager;
 
+/**
+ 录制视频时间结束
+ 
+ @param manager self
+ */
+- (void)recordTimerEnd:(VideoRecordManager *)manager;
+
 
 /**
- 视频录制启动失败回调
+ 录制进度改变
+ 
+ @param progress progress(0 ~ 1)
  */
-- (void)systemVideoEquipmentNotReady;
+- (void)recordProgressChange:(CGFloat)progress;
 
 @end

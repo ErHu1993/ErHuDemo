@@ -7,7 +7,6 @@
 //
 
 #import "VideoRecordingViewController.h"
-#import <AVFoundation/AVFoundation.h>
 #import "CircleProgressView.h"
 #import "VideoRecordManager.h"
 @interface VideoRecordingViewController ()<VideoRecordManagerDelegate>
@@ -23,10 +22,6 @@
 @property (nonatomic, strong) VideoRecordManager *manager;
 /** 录视频进度条 */
 @property (nonatomic, strong) CircleProgressView *recordProgressView;
-/** 记录录制时间定时器 */
-@property (nonatomic, strong) NSTimer* timer;
-/** 记录录制时间 */
-@property (nonatomic, assign) CGFloat recordingTime;
 
 @end
 
@@ -40,14 +35,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    
+    //打开相机
     [self.manager openVideo];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
-    
+    //关闭相机
     [self.manager closeVideo];
 }
 
@@ -61,7 +56,6 @@
     [self.view addSubview:self.backView];
     
      self.manager = [[VideoRecordManager alloc] initWithSuperView:self.backView];
-    
      self.manager.delegate = self;
     
      self.inputButton = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - 60)/2, ScreenHeight - 60 - 30, 60, 60)];
@@ -90,40 +84,6 @@
     [self.backView addSubview:self.rightButton];
 }
 
-
-/**
- 录制进度条监听
- */
-- (void)progressChange{
-    
-    self.recordingTime += TimeInterval;
-    
-    if (self.recordingTime >= VideoRecordMaxTime) {
-        self.inputButton.selected = !self.inputButton.selected;
-        [self stopVideoRecord];
-    }
-    self.recordProgressView.progress = self.recordingTime / VideoRecordMaxTime;
-}
-
-
-/**
- 开启监听计时器
- */
-- (void)startTimer{
-    self.recordingTime = 0;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:TimeInterval target:self selector:@selector(progressChange) userInfo:nil repeats:YES];
-}
-
-
-/**
- 停止监听计时器
- */
-- (void)timerStop{
-    if ([self.timer isValid]) {
-        [self.timer invalidate];
-        self.timer = nil;
-    }
-}
 
 #pragma mark 按钮点击 Action
 
@@ -170,7 +130,7 @@
     }else{
         //确定按钮  视频或者图片获取失败路径为nil
         [self.manager getVideoAndThumbnailPathWithBlock:^(NSString *videoPath, NSString *thumbnailPath) {
-            NSLog(@"视频路径: %@ \n 截图路径:%@",videoPath,thumbnailPath);
+            NSLog(@"视频路径: %@ \n 截图路径:%@  视频时长:%f",videoPath,thumbnailPath,[self.manager getRecordTime]);
         }];
     }
 }
@@ -195,7 +155,6 @@
  开始录音
  */
 - (void)startVideoRecord{
-    [self startTimer];
      self.leftButton.hidden = true;
      self.rightButton.hidden = true;
     [self.manager startVideoRecord];
@@ -206,7 +165,6 @@
  停止录音
  */
 - (void)stopVideoRecord{
-    [self timerStop];
      self.inputButton.hidden = true;
      self.recordProgressView.hidden = true;
      self.leftButton.hidden = false;
@@ -214,26 +172,25 @@
      self.leftButton.selected = true;
      self.rightButton.selected = true;
      self.recordProgressView.progress = 0;
-     [self.manager stopVideoRecordWithSecond:self.recordingTime];
+    [self.manager stopVideoRecord];
 }
 
 #pragma mark - VideoRecordManagerDelegate
+
+- (void)recordTimerEnd:(VideoRecordManager *)manager{
+    self.inputButton.selected = !self.inputButton.selected;
+    [self stopVideoRecord];
+}
+
+- (void)recordProgressChange:(CGFloat)progress{
+    self.recordProgressView.progress = progress;
+}
+
 - (void)recordTimerTooShort:(VideoRecordManager *)manager{
     dispatch_async(dispatch_get_main_queue(), ^{
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"时间不能低于3秒哦~" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alertView show];
         [self deleteVideoRecord];
-    });
-}
-
-- (void)systemVideoEquipmentNotReady{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self dismissViewControllerAnimated:YES completion:nil];
-         self.recordingTime = 4; //取消提示时间低于3秒
-        [self stopVideoRecord];
-        [self deleteVideoRecord];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设备启动失败~" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alertView show];
     });
 }
 
