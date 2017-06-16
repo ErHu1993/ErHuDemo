@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		872C4472F764ACCA16999165 /* Pods_ErHuDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF7A5FC80432B6A23798F0B /* Pods_ErHuDemo.framework */; };
+		D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */; };
+		D830C5C11EF25A3300C87E8A /* InputBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */; };
+		D830C5C81EF264EE00C87E8A /* InputMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */; };
 		D83F94C31EE4EDEE00EB9ACB /* HandPaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C01EE4EDEE00EB9ACB /* HandPaintViewController.m */; };
 		D83F94C41EE4EDEE00EB9ACB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C21EE4EDEE00EB9ACB /* ViewController.m */; };
 		D83F94CA1EE4F49900EB9ACB /* VideoRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C91EE4F49900EB9ACB /* VideoRecordingViewController.m */; };
@@ -46,6 +50,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4FF7A5FC80432B6A23798F0B /* Pods_ErHuDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ErHuDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		552EDBF47EDD260649CE423C /* Pods-ErHuDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ErHuDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ErHuDemo/Pods-ErHuDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		BC90A404FBE9B538B2EEF989 /* Pods-ErHuDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ErHuDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ErHuDemo/Pods-ErHuDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D830C5BD1EF25A3300C87E8A /* InputBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBarViewController.h; sourceTree = "<group>"; };
+		D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputBarViewController.m; sourceTree = "<group>"; };
+		D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputBarViewController.xib; sourceTree = "<group>"; };
+		D830C5C21EF2647200C87E8A /* InputMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMenuViewController.h; sourceTree = "<group>"; };
+		D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputMenuViewController.m; sourceTree = "<group>"; };
 		D83F94BF1EE4EDEE00EB9ACB /* HandPaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandPaintViewController.h; sourceTree = "<group>"; };
 		D83F94C01EE4EDEE00EB9ACB /* HandPaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPaintViewController.m; sourceTree = "<group>"; };
 		D83F94C11EE4EDEE00EB9ACB /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -92,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				872C4472F764ACCA16999165 /* Pods_ErHuDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +125,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00FFA6BEB781305C7FD020B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FF7A5FC80432B6A23798F0B /* Pods_ErHuDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5B2337C35E1FCA709A6AA60 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				552EDBF47EDD260649CE423C /* Pods-ErHuDemo.debug.xcconfig */,
+				BC90A404FBE9B538B2EEF989 /* Pods-ErHuDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D830C5BC1EF2599F00C87E8A /* InputBar */ = {
+			isa = PBXGroup;
+			children = (
+				D830C5BD1EF25A3300C87E8A /* InputBarViewController.h */,
+				D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */,
+				D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */,
+			);
+			path = InputBar;
+			sourceTree = "<group>";
+		};
 		D83F94BE1EE4EDEE00EB9ACB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +161,8 @@
 				D83F94C01EE4EDEE00EB9ACB /* HandPaintViewController.m */,
 				D83F94C81EE4F49900EB9ACB /* VideoRecordingViewController.h */,
 				D83F94C91EE4F49900EB9ACB /* VideoRecordingViewController.m */,
+				D830C5C21EF2647200C87E8A /* InputMenuViewController.h */,
+				D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +207,8 @@
 				D86A4B001EE00F5A00B7BF22 /* ErHuDemoTests */,
 				D86A4B0B1EE00F5A00B7BF22 /* ErHuDemoUITests */,
 				D86A4AE51EE00F5A00B7BF22 /* Products */,
+				A5B2337C35E1FCA709A6AA60 /* Pods */,
+				00FFA6BEB781305C7FD020B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,6 +230,7 @@
 				D83F94BE1EE4EDEE00EB9ACB /* Controller */,
 				D86EA14D1EE161C800635EA9 /* HandPainting */,
 				D83F94CB1EE4F51200EB9ACB /* VideoRecord */,
+				D830C5BC1EF2599F00C87E8A /* InputBar */,
 				D83F94F11EE4FE9B00EB9ACB /* ThirdPart */,
 				D83F94F21EE4FE9B00EB9ACB /* Utils */,
 				D86EA1571EE161D100635EA9 /* Images */,
@@ -252,9 +297,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D86A4B111EE00F5A00B7BF22 /* Build configuration list for PBXNativeTarget "ErHuDemo" */;
 			buildPhases = (
+				834ACB4DF304DD3E9A4764EF /* [CP] Check Pods Manifest.lock */,
 				D86A4AE01EE00F5A00B7BF22 /* Sources */,
 				D86A4AE11EE00F5A00B7BF22 /* Frameworks */,
 				D86A4AE21EE00F5A00B7BF22 /* Resources */,
+				2ED07F26F7E0179E86347BE7 /* [CP] Embed Pods Frameworks */,
+				A3534ED06E437ECAE46E008D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -353,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86A4AF71EE00F5A00B7BF22 /* LaunchScreen.storyboard in Resources */,
+				D830C5C11EF25A3300C87E8A /* InputBarViewController.xib in Resources */,
 				D86A4AF41EE00F5A00B7BF22 /* Assets.xcassets in Resources */,
 				D86A4AF21EE00F5A00B7BF22 /* Main.storyboard in Resources */,
 				D86EA1591EE161D100635EA9 /* WechatIMG.jpeg in Resources */,
@@ -375,6 +424,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2ED07F26F7E0179E86347BE7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ErHuDemo/Pods-ErHuDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		834ACB4DF304DD3E9A4764EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A3534ED06E437ECAE46E008D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ErHuDemo/Pods-ErHuDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D86A4AE01EE00F5A00B7BF22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -383,6 +480,7 @@
 				D83F94C41EE4EDEE00EB9ACB /* ViewController.m in Sources */,
 				D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */,
 				D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */,
+				D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */,
 				D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */,
 				D83F94D41EE4F5BA00EB9ACB /* VideoFileManager.m in Sources */,
 				D83F94CE1EE4F53100EB9ACB /* CircleProgressView.m in Sources */,
@@ -392,6 +490,7 @@
 				D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */,
 				D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */,
 				D86EA1561EE161C800635EA9 /* Stroke.m in Sources */,
+				D830C5C81EF264EE00C87E8A /* InputMenuViewController.m in Sources */,
 				D83F94CA1EE4F49900EB9ACB /* VideoRecordingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,6 +640,7 @@
 		};
 		D86A4B121EE00F5A00B7BF22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 552EDBF47EDD260649CE423C /* Pods-ErHuDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7AWX2MRU3G;
@@ -556,6 +656,7 @@
 		};
 		D86A4B131EE00F5A00B7BF22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC90A404FBE9B538B2EEF989 /* Pods-ErHuDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7AWX2MRU3G;

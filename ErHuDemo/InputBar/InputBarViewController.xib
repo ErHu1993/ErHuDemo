@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputBarViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkT-Fd-nGQ" userLabel="media">
+                    <rect key="frame" x="15" y="10" width="30" height="35"/>
+                    <color key="backgroundColor" red="0.98352533580000001" green="0.84659212829999997" blue="0.84112328290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="+">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3n-LC-8ub" userLabel="send">
+                    <rect key="frame" x="330" y="10" width="30" height="35"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="发送"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69y-jT-uMZ">
+                    <rect key="frame" x="55" y="10" width="265" height="35"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OoS-4v-rOC">
+                            <rect key="frame" x="10" y="10" width="245" height="15"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="OoS-4v-rOC" secondAttribute="trailing" constant="10" id="F8A-Xe-AMy"/>
+                        <constraint firstAttribute="bottom" secondItem="OoS-4v-rOC" secondAttribute="bottom" constant="10" id="LAb-cr-DRN"/>
+                        <constraint firstItem="OoS-4v-rOC" firstAttribute="leading" secondItem="69y-jT-uMZ" secondAttribute="leading" constant="10" id="Rr0-PF-0ML"/>
+                        <constraint firstItem="OoS-4v-rOC" firstAttribute="top" secondItem="69y-jT-uMZ" secondAttribute="top" constant="10" id="l1k-K6-dWr"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="p3n-LC-8ub" secondAttribute="bottom" constant="10" id="5im-4s-ESc"/>
+                <constraint firstItem="hkT-Fd-nGQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="IuK-yS-hpN"/>
+                <constraint firstItem="69y-jT-uMZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="NKw-EH-FjQ"/>
+                <constraint firstAttribute="bottom" secondItem="hkT-Fd-nGQ" secondAttribute="bottom" constant="10" id="NOq-MH-baa"/>
+                <constraint firstAttribute="bottom" secondItem="69y-jT-uMZ" secondAttribute="bottom" constant="10" id="QFz-nD-iST"/>
+                <constraint firstAttribute="trailing" secondItem="p3n-LC-8ub" secondAttribute="trailing" constant="15" id="W76-Sr-G71"/>
+                <constraint firstItem="p3n-LC-8ub" firstAttribute="leading" secondItem="69y-jT-uMZ" secondAttribute="trailing" constant="10" id="ZQU-9S-NsB"/>
+                <constraint firstItem="p3n-LC-8ub" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="ZYe-nN-Gc2"/>
+                <constraint firstItem="p3n-LC-8ub" firstAttribute="centerY" secondItem="hkT-Fd-nGQ" secondAttribute="centerY" id="lLt-4A-Kba"/>
+                <constraint firstItem="69y-jT-uMZ" firstAttribute="leading" secondItem="hkT-Fd-nGQ" secondAttribute="trailing" constant="10" id="rWj-0d-Kuh"/>
+                <constraint firstItem="hkT-Fd-nGQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="sVc-pl-mDi"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-258.5" y="168.5"/>
+        </view>
+    </objects>
+</document>

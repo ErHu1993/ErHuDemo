@@ -12,6 +12,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import <Masonry/Masonry.h>
+#import "SDAutoLayout.h"
 #import "UIView+EHCategory.h"
 #import "ErHuDemo.h"
 

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HandPaintViewController.h"
 #import "VideoRecordingViewController.h"
+#import "InputMenuViewController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -22,7 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.tableView];
+    [self addConstraints];
+}
+
+- (void)addConstraints{
+    self.tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -87,11 +92,13 @@
                 });
             }
         }];
+    }else if ([self.dataArray[indexPath.row] isEqualToString:@"菜单选项"]){
+        InputMenuViewController *inputVC = [[InputMenuViewController alloc] init];
+        [self presentViewController:inputVC animated:YES completion:nil];
     }
 }
 
 - (UITableView *)tableView{
-    
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
@@ -99,13 +106,14 @@
         _tableView.dataSource = self;
         _tableView.rowHeight = 40;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+        [self.view addSubview:_tableView];
     }
     return _tableView;
 }
 
 - (NSArray *)dataArray{
     if (!_dataArray) {
-        _dataArray = @[@"手绘",@"视频录制"];
+        _dataArray = @[@"手绘",@"视频录制",@"菜单选项"];
     }
     return _dataArray;
 }

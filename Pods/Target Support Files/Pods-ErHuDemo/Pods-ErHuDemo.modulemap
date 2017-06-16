@@ -1,0 +1,6 @@
+framework module Pods_ErHuDemo {
+  umbrella header "Pods-ErHuDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
