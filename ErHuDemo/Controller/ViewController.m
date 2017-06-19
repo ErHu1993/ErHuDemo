@@ -94,7 +94,8 @@
         }];
     }else if ([self.dataArray[indexPath.row] isEqualToString:@"菜单选项"]){
         InputMenuViewController *inputVC = [[InputMenuViewController alloc] init];
-        [self presentViewController:inputVC animated:YES completion:nil];
+        UINavigationController *inputNav = [[UINavigationController alloc] initWithRootViewController:inputVC];
+        [self presentViewController:inputNav animated:YES completion:nil];
     }
 }
 

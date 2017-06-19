@@ -10,4 +10,6 @@
 
 @interface InputBarViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *controlView;
+
 @end

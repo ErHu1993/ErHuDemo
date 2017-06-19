@@ -11,6 +11,8 @@
 		D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */; };
 		D830C5C11EF25A3300C87E8A /* InputBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */; };
 		D830C5C81EF264EE00C87E8A /* InputMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */; };
+		D83239A31EF3679F000A61E4 /* mediaSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83239A11EF3679F000A61E4 /* mediaSelectViewController.m */; };
+		D83239A41EF3679F000A61E4 /* mediaSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D83239A21EF3679F000A61E4 /* mediaSelectViewController.xib */; };
 		D83F94C31EE4EDEE00EB9ACB /* HandPaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C01EE4EDEE00EB9ACB /* HandPaintViewController.m */; };
 		D83F94C41EE4EDEE00EB9ACB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C21EE4EDEE00EB9ACB /* ViewController.m */; };
 		D83F94CA1EE4F49900EB9ACB /* VideoRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94C91EE4F49900EB9ACB /* VideoRecordingViewController.m */; };
@@ -58,6 +60,9 @@
 		D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputBarViewController.xib; sourceTree = "<group>"; };
 		D830C5C21EF2647200C87E8A /* InputMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMenuViewController.h; sourceTree = "<group>"; };
 		D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputMenuViewController.m; sourceTree = "<group>"; };
+		D83239A01EF3679F000A61E4 /* mediaSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mediaSelectViewController.h; sourceTree = "<group>"; };
+		D83239A11EF3679F000A61E4 /* mediaSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mediaSelectViewController.m; sourceTree = "<group>"; };
+		D83239A21EF3679F000A61E4 /* mediaSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mediaSelectViewController.xib; sourceTree = "<group>"; };
 		D83F94BF1EE4EDEE00EB9ACB /* HandPaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandPaintViewController.h; sourceTree = "<group>"; };
 		D83F94C01EE4EDEE00EB9ACB /* HandPaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPaintViewController.m; sourceTree = "<group>"; };
 		D83F94C11EE4EDEE00EB9ACB /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -148,6 +153,9 @@
 				D830C5BD1EF25A3300C87E8A /* InputBarViewController.h */,
 				D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */,
 				D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */,
+				D83239A01EF3679F000A61E4 /* mediaSelectViewController.h */,
+				D83239A11EF3679F000A61E4 /* mediaSelectViewController.m */,
+				D83239A21EF3679F000A61E4 /* mediaSelectViewController.xib */,
 			);
 			path = InputBar;
 			sourceTree = "<group>";
@@ -401,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86A4AF71EE00F5A00B7BF22 /* LaunchScreen.storyboard in Resources */,
+				D83239A41EF3679F000A61E4 /* mediaSelectViewController.xib in Resources */,
 				D830C5C11EF25A3300C87E8A /* InputBarViewController.xib in Resources */,
 				D86A4AF41EE00F5A00B7BF22 /* Assets.xcassets in Resources */,
 				D86A4AF21EE00F5A00B7BF22 /* Main.storyboard in Resources */,
@@ -482,6 +491,7 @@
 				D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */,
 				D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */,
 				D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */,
+				D83239A31EF3679F000A61E4 /* mediaSelectViewController.m in Sources */,
 				D83F94D41EE4F5BA00EB9ACB /* VideoFileManager.m in Sources */,
 				D83F94CE1EE4F53100EB9ACB /* CircleProgressView.m in Sources */,
 				D86EA1541EE161C800635EA9 /* HandPaintingImageView.m in Sources */,

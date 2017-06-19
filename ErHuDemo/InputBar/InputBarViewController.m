@@ -7,8 +7,14 @@
 //
 
 #import "InputBarViewController.h"
-
+#import "mediaSelectViewController.h"
 @interface InputBarViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (weak, nonatomic) IBOutlet UIButton *mediaButton;
+
+@property (nonatomic, strong) mediaSelectViewController *mediaSelectVC;
 
 @end
 
@@ -27,16 +33,37 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
+#pragma mark - 更多媒体点击
+
+- (IBAction)mediaButtonClick:(UIButton *)sender {
+    [self.mediaSelectVC show];
+}
+
+- (mediaSelectViewController *)mediaSelectVC{
+    if (!_mediaSelectVC) {
+        _mediaSelectVC = [[mediaSelectViewController alloc] initWithNibName:@"mediaSelectViewController" bundle:[NSBundle mainBundle]];
+        _mediaSelectVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    }
+    return _mediaSelectVC;
+}
+
+#pragma mark - UIKeyboardWillChangeFrameNotification
+
 - (void)keyboardFrameWillChange:(NSNotification *)notification{
     if (self.view.superview) {
+        
+        [self.view.superview bringSubviewToFront:self.view];
+        
         NSDictionary *userInfo = notification.userInfo;
         CGRect endFrame   = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
         CGRect beginFrame = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
         NSTimeInterval duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
         CGFloat changeHeight = endFrame.origin.y - beginFrame.origin.y;
-        changeHeight = changeHeight < 0 ?  -changeHeight : 0;
+        changeHeight = changeHeight < 0 ?  changeHeight : 0;
         
-        self.view.sd_resetLayout.leftSpaceToView(self.view.superview, 0).rightSpaceToView(self.view.superview, 0).bottomSpaceToView(self.view.superview, changeHeight).heightIs(80);
+        [self.view mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.view.superview).offset(changeHeight);
+        }];
         
         [UIView animateWithDuration:duration animations:^{
             [self.view.superview layoutIfNeeded];
