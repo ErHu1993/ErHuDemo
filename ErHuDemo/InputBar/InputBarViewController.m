@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) mediaSelectViewController *mediaSelectVC;
 
+@property (nonatomic, assign) BOOL showMediaSelects;
+
 @end
 
 @implementation InputBarViewController
@@ -36,7 +38,12 @@
 #pragma mark - 更多媒体点击
 
 - (IBAction)mediaButtonClick:(UIButton *)sender {
-    [self.mediaSelectVC show];
+    if (self.view.top != ScreenHeight - self.view.height) {
+        self.showMediaSelects = true;
+        [self.view endEditing:YES];
+    }else{
+        [self.mediaSelectVC show];
+    }
 }
 
 - (mediaSelectViewController *)mediaSelectVC{
@@ -68,7 +75,10 @@
         [UIView animateWithDuration:duration animations:^{
             [self.view.superview layoutIfNeeded];
         } completion:^(BOOL finished) {
-            
+            if (self.showMediaSelects) {
+                self.showMediaSelects = false;
+                [self.mediaSelectVC show];
+            }
         }];
     }
 }

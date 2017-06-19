@@ -118,9 +118,8 @@
                         <constraint firstAttribute="trailing" secondItem="wdb-CX-0ET" secondAttribute="trailing" id="xLO-Wf-V7v"/>
                     </constraints>
                 </view>
-                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz9-dq-3lW" userLabel="maskGrayView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz9-dq-3lW" userLabel="maskGrayView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="666"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <constraints>
@@ -132,7 +131,10 @@
                 <constraint firstAttribute="trailing" secondItem="pz9-dq-3lW" secondAttribute="trailing" id="UNy-66-xc1"/>
                 <constraint firstAttribute="bottom" secondItem="3bI-9I-qct" secondAttribute="bottom" id="WJP-Aa-c93"/>
             </constraints>
-            <point key="canvasLocation" x="-1236" y="-252"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="-3137" y="-416"/>
         </view>
     </objects>
 </document>

@@ -27,15 +27,24 @@
 
 @implementation mediaSelectViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSubViews];
 }
 
 - (void)setupSubViews{
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
-    [self.maskGrayView addGestureRecognizer:tap];
+    __weak typeof(self)weakSelf = self;
+    [self.maskGrayView addTapGestureBlock:^{
+        [weakSelf dismiss];
+    }];
+
+    [self.contentView addTapGestureBlock:^{
+        [weakSelf dismiss];
+    }];
+    
+    [self.buttonsView addTapGestureBlock:^{
+        [weakSelf dismiss];
+    }];
 }
 
 - (void)show{
@@ -43,6 +52,7 @@
     [[[UIApplication sharedApplication] keyWindow] addSubview:self.view];
     
     [UIView animateWithDuration:0.25 animations:^{
+        self.view.alpha = 1;
         self.maskGrayView.alpha = 0.2;
         self.buttonsViewHeight.constant = 80;
         self.topChooseHeight.constant = 100;
@@ -53,6 +63,7 @@
 
 - (void)dismiss{
     [UIView animateWithDuration:0.25 animations:^{
+        self.view.alpha = 0;
         self.maskGrayView.alpha = 0;
         self.buttonsViewHeight.constant = 0;
         self.topChooseHeight.constant = 0;
@@ -62,7 +73,6 @@
         [self.view removeFromSuperview];
     }];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
