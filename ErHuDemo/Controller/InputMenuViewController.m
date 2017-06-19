@@ -45,7 +45,7 @@
         make.left.equalTo(self.view).offset(0);
         make.right.equalTo(self.view).offset(0);
         make.bottom.equalTo(self.view).offset(0);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(self.inputBar.ControlViewHeight.constant + self.inputBar.ContainerViewHeight.constant);
     }];
 }
 
@@ -76,7 +76,7 @@
 - (InputBarViewController *)inputBar{
     if (!_inputBar) {
         _inputBar = [[InputBarViewController alloc] initWithNibName:@"InputBarViewController" bundle:[NSBundle mainBundle]];
-        [self addChildViewController:self.inputBar];
+        [self addChildViewController:_inputBar];
         [self.view addSubview:_inputBar.view];
     }
     return _inputBar;
@@ -95,9 +95,7 @@
 }
 
 - (void)viewDidLayoutSubviews{
-//    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.inputBar.view).offset(0);
-//    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

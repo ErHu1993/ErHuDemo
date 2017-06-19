@@ -14,6 +14,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *mediaButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
 @property (nonatomic, strong) mediaSelectViewController *mediaSelectVC;
 
 @property (nonatomic, assign) BOOL showMediaSelects;
@@ -44,6 +48,10 @@
     }else{
         [self.mediaSelectVC show];
     }
+}
+
+- (IBAction)sendButtonClick:(id)sender {
+    
 }
 
 - (mediaSelectViewController *)mediaSelectVC{
