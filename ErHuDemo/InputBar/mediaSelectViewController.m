@@ -9,23 +9,24 @@
 #import "mediaSelectViewController.h"
 
 @interface mediaSelectViewController ()
-@property (weak, nonatomic) IBOutlet UIView *bottomChooseView;
-
-@property (weak, nonatomic) IBOutlet UIView *maskGrayView;
-
-@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *photosCollectionView;
 
-@property (weak, nonatomic) IBOutlet UIView *buttonsView;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topChooseHeight;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonsViewHeight;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomChooseViewHeigh;
+
+@property (nonatomic, strong) UIView *backGroundBlurView;
 
 @end
 
 @implementation mediaSelectViewController
+
+- (void)dealloc{
+    NSLog(@"%@",NSStringFromClass([self class]));
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,27 +34,45 @@
 }
 
 - (void)setupSubViews{
+    
     __weak typeof(self)weakSelf = self;
     [self.maskGrayView addTapGestureBlock:^{
-        [weakSelf dismiss];
+        [weakSelf dismissWithAnimations:^{
+            weakSelf.backGroundBlurView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [weakSelf.backGroundBlurView removeFromSuperview];
+        }];
     }];
 
     [self.contentView addTapGestureBlock:^{
-        [weakSelf dismiss];
+        [weakSelf dismissWithAnimations:^{
+            weakSelf.backGroundBlurView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [weakSelf.backGroundBlurView removeFromSuperview];
+        }];
     }];
     
     [self.buttonsView addTapGestureBlock:^{
-        [weakSelf dismiss];
+        [weakSelf dismissWithAnimations:^{
+            weakSelf.backGroundBlurView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [weakSelf.backGroundBlurView removeFromSuperview];
+        }];
     }];
 }
 
-- (void)show{
+- (void)show:(UIView *)backGroundBlurView{
+    
+    self.backGroundBlurView = backGroundBlurView;
+    
+    if (!self.backGroundBlurView.superview) {
+        [[[UIApplication sharedApplication] keyWindow] addSubview:self.backGroundBlurView];
+    }
     
     [[[UIApplication sharedApplication] keyWindow] addSubview:self.view];
     
     [UIView animateWithDuration:0.25 animations:^{
-        self.view.alpha = 1;
-        self.maskGrayView.alpha = 0.2;
+        self.backGroundBlurView.alpha = 0.2;
         self.buttonsViewHeight.constant = 80;
         self.topChooseHeight.constant = 100;
         self.bottomChooseViewHeigh.constant = 40;
@@ -61,15 +80,19 @@
     }];
 }
 
-- (void)dismiss{
+- (void)dismissWithAnimations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion{
     [UIView animateWithDuration:0.25 animations:^{
-        self.view.alpha = 0;
-        self.maskGrayView.alpha = 0;
+        if (animations) {
+            animations();
+        }
         self.buttonsViewHeight.constant = 0;
         self.topChooseHeight.constant = 0;
         self.bottomChooseViewHeigh.constant = 0;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
+        if (completion) {
+            completion(finished);
+        }
         [self.view removeFromSuperview];
     }];
 }

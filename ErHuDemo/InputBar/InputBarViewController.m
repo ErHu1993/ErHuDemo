@@ -18,6 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
+@property (nonatomic, strong) UIVisualEffectView *blurBgView;
+
 @property (nonatomic, strong) mediaSelectViewController *mediaSelectVC;
 
 @property (nonatomic, assign) BOOL showMediaSelects;
@@ -27,6 +29,7 @@
 @implementation InputBarViewController
 
 - (void)dealloc{
+    NSLog(@"=== %@ dealloced! ===", NSStringFromClass([self class]));
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
@@ -41,25 +44,17 @@
 
 #pragma mark - 更多媒体点击
 
-- (IBAction)mediaButtonClick:(UIButton *)sender {
+- (IBAction)mediaButtonClick:(UIButton *)sender {    
     if (self.view.top != ScreenHeight - self.view.height) {
         self.showMediaSelects = true;
         [self.view endEditing:YES];
     }else{
-        [self.mediaSelectVC show];
+        [self.mediaSelectVC show:self.blurBgView];
     }
 }
 
 - (IBAction)sendButtonClick:(id)sender {
     
-}
-
-- (mediaSelectViewController *)mediaSelectVC{
-    if (!_mediaSelectVC) {
-        _mediaSelectVC = [[mediaSelectViewController alloc] initWithNibName:@"mediaSelectViewController" bundle:[NSBundle mainBundle]];
-        _mediaSelectVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
-    }
-    return _mediaSelectVC;
 }
 
 #pragma mark - UIKeyboardWillChangeFrameNotification
@@ -85,10 +80,30 @@
         } completion:^(BOOL finished) {
             if (self.showMediaSelects) {
                 self.showMediaSelects = false;
-                [self.mediaSelectVC show];
+                [self.mediaSelectVC show:self.blurBgView];
             }
         }];
     }
+}
+
+#pragma mark - getter/setter
+
+- (mediaSelectViewController *)mediaSelectVC{
+    if (!_mediaSelectVC) {
+        _mediaSelectVC = [[mediaSelectViewController alloc] initWithNibName:@"mediaSelectViewController" bundle:[NSBundle mainBundle]];
+        _mediaSelectVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    }
+    return _mediaSelectVC;
+}
+
+- (UIVisualEffectView *)blurBgView {
+    if (!_blurBgView) {
+        UIBlurEffect *blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        _blurBgView = [[UIVisualEffectView alloc]initWithEffect:blurEffrct];
+        _blurBgView.alpha = 0;
+        _blurBgView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    }
+    return _blurBgView;
 }
 
 - (void)didReceiveMemoryWarning {

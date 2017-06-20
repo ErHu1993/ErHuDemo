@@ -10,8 +10,14 @@
 
 @interface mediaSelectViewController : UIViewController
 
-- (void)show;
+@property (weak, nonatomic) IBOutlet UIView *bottomChooseView;
 
-- (void)dismiss;
+@property (weak, nonatomic) IBOutlet UIView *maskGrayView;
+
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
+@property (weak, nonatomic) IBOutlet UIView *buttonsView;
+
+- (void)show:(UIView *)backGroundBlurView;
 
 @end
