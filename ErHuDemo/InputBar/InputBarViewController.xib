@@ -23,18 +23,18 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="329" height="82"/>
+            <rect key="frame" x="0.0" y="0.0" width="329" height="98"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqK-1N-cNX" userLabel="ContainerView">
-                    <rect key="frame" x="0.0" y="32" width="329" height="0.0"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="48" width="329" height="0.0"/>
+                    <color key="backgroundColor" red="0.98352533580000001" green="0.84659212829999997" blue="0.84112328290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" id="VPi-CZ-LiA"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF2-Jn-hcQ" userLabel="ControlView">
-                    <rect key="frame" x="0.0" y="32" width="329" height="50"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JF2-Jn-hcQ" userLabel="ControlView">
+                    <rect key="frame" x="0.0" y="48" width="329" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3n-LC-8ub" userLabel="send">
                             <rect key="frame" x="284" y="7.5" width="35" height="35"/>
@@ -116,7 +116,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-2617.5" y="-174"/>
+            <point key="canvasLocation" x="-2617.5" y="-182"/>
         </view>
     </objects>
 </document>
