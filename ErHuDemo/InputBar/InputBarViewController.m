@@ -72,10 +72,8 @@
         
         NSDictionary *userInfo = notification.userInfo;
         CGRect endFrame   = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-        CGRect beginFrame = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
         NSTimeInterval duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        CGFloat changeHeight = endFrame.origin.y - beginFrame.origin.y;
-        changeHeight = changeHeight < 0 ?  changeHeight : 0;
+        CGFloat changeHeight =  endFrame.origin.y == ScreenHeight ? 0 : - endFrame.size.height;
         
         [self.view mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.view.superview).offset(changeHeight);
