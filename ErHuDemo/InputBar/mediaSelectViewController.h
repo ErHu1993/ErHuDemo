@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "InputBarViewController.h"
 @interface mediaSelectViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *bottomChooseView;
@@ -18,6 +18,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *buttonsView;
 
-- (void)show:(UIView *)backGroundBlurView;
+- (void)show;
 
+- (void)dismissWithAnimations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion;
+
+- (void)showWithInputBar:(InputBarViewController *)inputBar;
 @end

@@ -12,8 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *controlView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ContainerViewHeight;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ControlViewHeight;
 
 @end

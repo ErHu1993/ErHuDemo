@@ -8,7 +8,7 @@
 
 #import "InputMenuViewController.h"
 #import "InputBarViewController.h"
-#import "SDAutoLayout.h"
+#import "PhotoLibraryService.h"
 @interface InputMenuViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) InputBarViewController *inputBar;
@@ -25,6 +25,11 @@
 }
 
 - (void)setupSubViews{
+    
+    //先预加载一下相册
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [PhotoLibraryService.defaultService updatePool];
+    });
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -45,7 +50,7 @@
         make.left.equalTo(self.view).offset(0);
         make.right.equalTo(self.view).offset(0);
         make.bottom.equalTo(self.view).offset(0);
-        make.height.mas_equalTo(self.inputBar.ControlViewHeight.constant + self.inputBar.ContainerViewHeight.constant);
+        make.height.mas_equalTo(self.inputBar.ControlViewHeight.constant);
     }];
 }
 
