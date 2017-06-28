@@ -103,7 +103,6 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
-        _tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
         _tableView.dataSource = self;
         _tableView.rowHeight = 40;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
