@@ -9,8 +9,6 @@
 #import "ERSegmentController.h"
 #import "ERSegmentCollectionViewCell.h"
 
-static NSInteger underLineViewHeight = 2;
-
 static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 
 @interface ERSegmentController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
@@ -19,14 +17,15 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 @property (nonatomic, strong) UICollectionView *segCollectionView;
 /** 底部红线 */
 @property (nonatomic, strong) UIView *underLineView;
-/** 编辑按钮 */
-@property (nonatomic, strong) UIButton *editMenuButton;
+/** 记录点击时间,用于判断双击事件 */
+@property (nonatomic, strong) NSDate *lastTime;
 /** 开始滚动时坐标 */
 @property (nonatomic, assign) CGFloat beginOffsetX;
 /** 选中状态下字体放大倍数 */
 @property (nonatomic, assign) CGFloat selectFontScale;
 /** 是否是点击item触发的滚动 */
 @property (nonatomic, assign) BOOL isTapItemToScroll;
+
 
 @end
 
@@ -40,7 +39,9 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 #pragma mark - 初始化属性配置
 - (void)configirePropertys{
     
-    self.progressWidth = 30;
+    self.progressWidth = 20;
+    self.progressHeight = 2;
+    
     self.normalTextFont = [UIFont systemFontOfSize:15];
     self.selectedTextFont = [UIFont systemFontOfSize:18];
     
@@ -87,11 +88,22 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSDate *nowTime = [NSDate date];
     if (self.currentIndex != indexPath.item) {
         self.isTapItemToScroll = true;
         [self movePageControllerToIndex:indexPath.item];
         [self changeSegmentImmediately];
+        if ([self.delegate respondsToSelector:@selector(segmentController:didSelectItemAtIndexPath:)]) {
+            [self.delegate segmentController:self didSelectItemAtIndexPath:indexPath];
+        }
+    }else{
+        if ([nowTime timeIntervalSinceDate:self.lastTime] < 0.3) {
+            if ([self.delegate respondsToSelector:@selector(segmentController:itemDoubleClickAtIndexPath:)]) {
+                [self.delegate segmentController:self itemDoubleClickAtIndexPath:indexPath];
+            }
+        }
     }
+    self.lastTime = nowTime;
 }
 
 - (ERSegmentCollectionViewCell *)cellForIndex:(NSInteger)index
@@ -175,11 +187,11 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     CGRect toCellFrame = [self cellFrameWithIndex:self.currentIndex];
     CGFloat progressEdging = (toCellFrame.size.width - self.progressWidth) / 2;
     CGFloat progressX = toCellFrame.origin.x + progressEdging;
-    CGFloat progressY = (toCellFrame.size.height - underLineViewHeight);
+    CGFloat progressY = (toCellFrame.size.height - self.progressHeight);
     CGFloat width = toCellFrame.size.width - 2 * progressEdging;
     
     [UIView animateWithDuration:0.25 animations:^{
-        self.underLineView.frame = CGRectMake(progressX, progressY, width, underLineViewHeight);
+        self.underLineView.frame = CGRectMake(progressX, progressY, width, self.progressHeight);
     } completion:^(BOOL finished) {
         self.isTapItemToScroll = false;
     }];
@@ -215,6 +227,10 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
         }
         if (self.isTapItemToScroll) {
             [self transitionFromIndex:fromIndex toIndex:self.currentIndex progress:1 isTapToScroller:self.isTapItemToScroll];
+        }
+
+        if ([self.delegate respondsToSelector:@selector(pageControllerDidScroll:fromIndex:toIndex:)]) {
+            [self.delegate pageControllerDidScroll:self fromIndex:fromIndex toIndex:self.currentIndex];
         }
     }
 }
@@ -303,7 +319,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     CGFloat progressFromEdging = ABS((fromCellFrame.size.width - self.progressWidth)) / 2;
     CGFloat progressToEdging = ABS((toCellFrame.size.width - self.progressWidth)) / 2;
     
-    CGFloat progressY = (toCellFrame.size.height - underLineViewHeight);
+    CGFloat progressY = (toCellFrame.size.height - self.progressHeight);
     
     CGFloat progressX, width;
     
@@ -325,7 +341,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
         }
     }
     
-    self.underLineView.frame = CGRectMake(progressX,progressY, width, underLineViewHeight);
+    self.underLineView.frame = CGRectMake(progressX,progressY, width, self.progressHeight);
 }
 
 #pragma mark - Tool 支持工具
@@ -383,11 +399,6 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
         _selectedTextFont = selectedTextFont;
         self.selectFontScale = self.normalTextFont.pointSize / _selectedTextFont.pointSize;
     }
-}
-
-- (void)setProgressWidth:(CGFloat)progressWidth
-{
-    _progressWidth = progressWidth;
 }
 
 - (UIButton *)editMenuButton{

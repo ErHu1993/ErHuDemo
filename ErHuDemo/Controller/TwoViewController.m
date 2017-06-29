@@ -11,7 +11,7 @@
 #import "ERSegmentController.h"
 #import "ERSegmentCollectionViewCell.h"
 
-@interface TwoViewController ()<ERPageViewControllerDataSource,ERPageViewControllerDelegte>
+@interface TwoViewController ()<ERPageViewControllerDataSource,ERSegmentControllerDelegte>
 
 @property (nonatomic, strong) NSMutableArray <UIViewController *>*childVCArray;
 
@@ -36,7 +36,8 @@
 
     ERSegmentController *pageVC = [[ERSegmentController alloc] init];
     pageVC.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
-    pageVC.progressWidth = 30;
+    pageVC.progressWidth = 20;
+    pageVC.progressHeight = 1;
     pageVC.normalTextFont = [UIFont systemFontOfSize:12];
     pageVC.selectedTextFont = [UIFont systemFontOfSize:15];
     pageVC.normalTextColor = [UIColor blueColor];

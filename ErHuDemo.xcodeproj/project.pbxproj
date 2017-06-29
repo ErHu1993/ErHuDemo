@@ -89,7 +89,6 @@
 		D8060D761F0244FE0011BA25 /* ERSegmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentCollectionViewCell.h; sourceTree = "<group>"; };
 		D8060D771F0244FE0011BA25 /* ERSegmentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSegmentCollectionViewCell.m; sourceTree = "<group>"; };
 		D8060D781F0244FE0011BA25 /* ERSegmentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ERSegmentCollectionViewCell.xib; sourceTree = "<group>"; };
-		D8060D7B1F024DD30011BA25 /* ERPageViewControllerDelegte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERPageViewControllerDelegte.h; sourceTree = "<group>"; };
 		D8079C701EFB697200683B3E /* MultimediaPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultimediaPanelViewController.h; sourceTree = "<group>"; };
 		D8079C711EFB697200683B3E /* MultimediaPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultimediaPanelViewController.m; sourceTree = "<group>"; };
 		D830C5BD1EF25A3300C87E8A /* InputBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBarViewController.h; sourceTree = "<group>"; };
@@ -194,7 +193,6 @@
 		D8060D5B1F0207C90011BA25 /* ERPageController */ = {
 			isa = PBXGroup;
 			children = (
-				D8060D7B1F024DD30011BA25 /* ERPageViewControllerDelegte.h */,
 				D8060D5F1F0208240011BA25 /* ERPageViewController.h */,
 				D8060D601F0208240011BA25 /* ERPageViewController.m */,
 				D8060D701F023FC80011BA25 /* ERSegmentController.h */,
