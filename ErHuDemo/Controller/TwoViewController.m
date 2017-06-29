@@ -36,33 +36,15 @@
 
     ERSegmentController *pageVC = [[ERSegmentController alloc] init];
     pageVC.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
+    pageVC.progressWidth = 30;
+    pageVC.normalTextFont = [UIFont systemFontOfSize:12];
+    pageVC.selectedTextFont = [UIFont systemFontOfSize:15];
+    pageVC.normalTextColor = [UIColor blueColor];
+    pageVC.selectedTextColor = [UIColor orangeColor];
     pageVC.dataSource = self;
     pageVC.delegate = self;
     [self.view addSubview:pageVC.view];
     [self addChildViewController:pageVC];
-    
-    
-//    [btn addTapGestureBlock:^{
-//        switch (random() % 5) {
-//            case 1:
-//            {
-//                [self.childVCArray addObject:[[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",@"Three"]) alloc] init]];
-//            }
-//                break;
-//                
-//            case 3:
-//            {
-//                [self.childVCArray removeObjectAtIndex:0];
-//            }
-//                break;
-//            default:
-//            {
-//                [self.childVCArray exchangeObjectAtIndex:self.childVCArray.count - 1 withObjectAtIndex:0];
-//            }
-//                break;
-//        }
-//        [pageVC reloadData];
-//    }];
 }
 
 - (NSMutableArray <UIViewController *>*)childVCArray{
@@ -81,7 +63,7 @@
 }
 
 - (NSString *)pageViewController:(ERPageViewController *)pageViewController titleForChildControllerAtIndex:(NSInteger)index{
-    return [NSString stringWithFormat:@"%@", self.titleArray[index]];
+    return [NSString stringWithFormat:@"%@  d", self.titleArray[index]];
 }
 
 - (void)didReceiveMemoryWarning {

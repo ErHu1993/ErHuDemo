@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ERPageViewControllerDelegte.h"
 
-static NSInteger SegmentViewHeight = 36;
+static NSInteger SegmentViewHeight = 30;
 
 @class ERPageViewController;
 

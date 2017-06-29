@@ -12,15 +12,15 @@
 
 @property (nonatomic, weak) id<ERPageViewControllerDelegte>delegate;
 
-@property (nonatomic, assign) CGFloat itemMinimumSpacing; // cell space
+/** 底部横线宽度 */
 @property (nonatomic, assign) CGFloat progressWidth;
-
-// text font
+/** 未选中状态下的字号 */
 @property (nonatomic, strong) UIFont *normalTextFont;
+/** 选中状态下的字号 */
 @property (nonatomic, strong) UIFont *selectedTextFont;
-
-// text color
+/** 未选中状态下的字体颜色 */
 @property (nonatomic, strong) UIColor *normalTextColor;
+/** 选中状态下的字体颜色 */
 @property (nonatomic, strong) UIColor *selectedTextColor;
 
 @end

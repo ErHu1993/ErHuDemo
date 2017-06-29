@@ -15,17 +15,17 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 
 @interface ERSegmentController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
-
+/** "导航"条 */
 @property (nonatomic, strong) UICollectionView *segCollectionView;
-
+/** 底部红线 */
 @property (nonatomic, strong) UIView *underLineView;
-
+/** 编辑按钮 */
 @property (nonatomic, strong) UIButton *editMenuButton;
-
+/** 开始滚动时坐标 */
 @property (nonatomic, assign) CGFloat beginOffsetX;
-
+/** 选中状态下字体放大倍数 */
 @property (nonatomic, assign) CGFloat selectFontScale;
-
+/** 是否是点击item触发的滚动 */
 @property (nonatomic, assign) BOOL isTapItemToScroll;
 
 @end
@@ -37,20 +37,23 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     [self configirePropertys];
 }
 
-- (void)configirePropertys
-{
+#pragma mark - 初始化属性配置
+- (void)configirePropertys{
+    
+    self.progressWidth = 30;
     self.normalTextFont = [UIFont systemFontOfSize:15];
     self.selectedTextFont = [UIFont systemFontOfSize:18];
     
-    self.selectFontScale = self.normalTextFont.pointSize/self.selectedTextFont.pointSize;
-    
     self.contentScrollerView.delegate = self;
-    
-    self.itemMinimumSpacing = 8;
-    self.progressWidth = 30;
     
     self.normalTextColor = [UIColor blackColor];
     self.selectedTextColor = [UIColor redColor];
+}
+
+#pragma mark - 编辑菜单点击事件
+
+- (void)editMenuButtonClick:(UIButton *)btn{
+    
 }
 
 #pragma mark - UICollectionView 相关
@@ -67,6 +70,8 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     
     cell.titleLabel.text = title;
     
+    cell.titleLabel.font = self.normalTextFont;
+    
     [self changeCellTextColorImmediatelyFromCell:(indexPath.item == self.currentIndex ? nil : cell) toCell:(indexPath.item == self.currentIndex ? cell : nil)];
     
     return cell;
@@ -75,7 +80,9 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSString *title = [self.dataSource pageViewController:self titleForChildControllerAtIndex:indexPath.item];
+    
     CGFloat width = [self boundingSizeWithString:title font:self.selectedTextFont constrainedToSize:CGSizeMake(MAXFLOAT, SegmentViewHeight)].width;
+    
     return CGSizeMake(width, SegmentViewHeight);
 }
 
@@ -104,13 +111,6 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     return cellAttrs.frame;
 }
 
-
-#pragma mark - 编辑菜单点击事件
-
-- (void)editMenuButtonClick:(UIButton *)btn{
-    
-}
-
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -128,6 +128,11 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     }
 }
 
+#pragma mark - Item 渐变滚动动画
+
+/**
+ 带渐变效果的改变
+ */
 - (void)shangeSegmentProgress{
     
     CGFloat offsetX = self.contentScrollerView.contentOffset.x;
@@ -161,6 +166,28 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     [self transitionFromIndex:fromIndex toIndex:toIndex progress:progress isTapToScroller:self.isTapItemToScroll];
 }
 
+
+/**
+ 无渐变效果的改变
+ */
+- (void)changeSegmentImmediately{
+
+    CGRect toCellFrame = [self cellFrameWithIndex:self.currentIndex];
+    CGFloat progressEdging = (toCellFrame.size.width - self.progressWidth) / 2;
+    CGFloat progressX = toCellFrame.origin.x + progressEdging;
+    CGFloat progressY = (toCellFrame.size.height - underLineViewHeight);
+    CGFloat width = toCellFrame.size.width - 2 * progressEdging;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.underLineView.frame = CGRectMake(progressX, progressY, width, underLineViewHeight);
+    } completion:^(BOOL finished) {
+        self.isTapItemToScroll = false;
+    }];
+}
+
+/**
+ 判断当前页面的index
+ */
 - (void)changeCurrentPageIndex{
     
     CGFloat offsetX = self.contentScrollerView.contentOffset.x;
@@ -190,37 +217,17 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
             [self transitionFromIndex:fromIndex toIndex:self.currentIndex progress:1 isTapToScroller:self.isTapItemToScroll];
         }
     }
-
 }
 
-- (void)changeSegmentImmediately{
 
-    CGRect toCellFrame = [self cellFrameWithIndex:self.currentIndex];
-    CGFloat progressEdging = (toCellFrame.size.width - self.progressWidth) / 2;
-    CGFloat progressX = toCellFrame.origin.x + progressEdging;
-    CGFloat progressY = (toCellFrame.size.height - underLineViewHeight);
-    CGFloat width = toCellFrame.size.width - 2 * progressEdging;
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        self.underLineView.frame = CGRectMake(progressX, progressY, width, underLineViewHeight);
-    } completion:^(BOOL finished) {
-        self.isTapItemToScroll = false;
-    }];
-}
+/**
+ 逐渐改变cell选中和未选中的状态
 
-- (void)changeCellTextColorImmediatelyFromCell:(ERSegmentCollectionViewCell *)fromCell toCell:(ERSegmentCollectionViewCell *)toCell{
-    
-    if (fromCell) {
-        fromCell.titleLabel.textColor = self.normalTextColor;
-        fromCell.transform = CGAffineTransformMakeScale(self.selectFontScale, self.selectFontScale);
-    }
-    
-    if (toCell) {
-        toCell.titleLabel.textColor = self.selectedTextColor;
-        toCell.transform = CGAffineTransformIdentity;
-    }
-}
-
+ @param fromIndex fromIndex
+ @param toIndex toIndex
+ @param progress progress
+ @param isTapToScroller 是否是点击item触发的
+ */
 - (void)transitionFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress isTapToScroller:(BOOL)isTapToScroller{
     
     ERSegmentCollectionViewCell *fromCell = [self cellForIndex:fromIndex];
@@ -231,6 +238,25 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     }else{
         [self transitionCellTextColorFromCell:fromCell toCell:toCell progress:progress];
         [self transitionUnderLineFrameWithfromIndex:fromIndex toIndex:toIndex progress:progress];
+    }
+}
+
+/**
+ 立即改变cell选中和未选中的状态,无渐变效果
+ 
+ @param fromCell fromCell
+ @param toCell toCell
+ */
+- (void)changeCellTextColorImmediatelyFromCell:(ERSegmentCollectionViewCell *)fromCell toCell:(ERSegmentCollectionViewCell *)toCell{
+    
+    if (fromCell) {
+        fromCell.titleLabel.textColor = self.normalTextColor;
+        fromCell.transform = CGAffineTransformMakeScale(self.selectFontScale, self.selectFontScale);
+    }
+    
+    if (toCell) {
+        toCell.titleLabel.textColor = self.selectedTextColor;
+        toCell.transform = CGAffineTransformIdentity;
     }
 }
 
@@ -284,18 +310,18 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     if (fromCellFrame.origin.x < toCellFrame.origin.x) {
         if (progress <= 0.5) {
             progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width - 2 * progressFromEdging) * progress;
-            width = (toCellFrame.size.width - progressToEdging + progressFromEdging + self.itemMinimumSpacing) * 2 * progress - (toCellFrame.size.width - 2 *progressToEdging) * progress + fromCellFrame.size.width - 2 * progressFromEdging - (fromCellFrame.size.width - 2 * progressFromEdging) *progress;
+            width = (toCellFrame.size.width - progressToEdging + progressFromEdging) * 2 * progress - (toCellFrame.size.width - 2 *progressToEdging) * progress + fromCellFrame.size.width - 2 * progressFromEdging - (fromCellFrame.size.width - 2 * progressFromEdging) *progress;
         }else {
-            progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width - 2 * progressFromEdging) * 0.5 + (fromCellFrame.size.width- progressFromEdging - (fromCellFrame.size.width - 2 * progressFromEdging) * 0.5 + progressToEdging + self.itemMinimumSpacing) * (progress - 0.5) * 2;
+            progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width - 2 * progressFromEdging) * 0.5 + (fromCellFrame.size.width- progressFromEdging - (fromCellFrame.size.width - 2 * progressFromEdging) * 0.5 + progressToEdging) * (progress - 0.5) * 2;
             width = CGRectGetMaxX(toCellFrame) - progressToEdging - progressX - (toCellFrame.size.width - 2 * progressToEdging) * ( 1 - progress);
         }
     }else {
         if (progress <= 0.5) {
-            progressX = fromCellFrame.origin.x + progressFromEdging - (toCellFrame.size.width - (toCellFrame.size.width - 2 * progressToEdging) / 2 - progressToEdging + progressFromEdging + self.itemMinimumSpacing) * 2 * progress;
+            progressX = fromCellFrame.origin.x + progressFromEdging - (toCellFrame.size.width - (toCellFrame.size.width - 2 * progressToEdging) / 2 - progressToEdging + progressFromEdging) * 2 * progress;
             width = CGRectGetMaxX(fromCellFrame) - (fromCellFrame.size.width - 2 * progressFromEdging) * progress - progressFromEdging - progressX;
         }else {
             progressX = toCellFrame.origin.x + progressToEdging+(toCellFrame.size.width - 2 * progressToEdging) * (1 - progress);
-            width = (fromCellFrame.size.width - progressFromEdging + progressToEdging - (fromCellFrame.size.width - 2 * progressFromEdging) / 2 + self.itemMinimumSpacing) * (1 - progress) * 2 + toCellFrame.size.width - 2 * progressToEdging - (toCellFrame.size.width - 2 * progressToEdging) * (1 - progress);
+            width = (fromCellFrame.size.width - progressFromEdging + progressToEdging - (fromCellFrame.size.width - 2 * progressFromEdging) / 2 ) * (1 - progress) * 2 + toCellFrame.size.width - 2 * progressToEdging - (toCellFrame.size.width - 2 * progressToEdging) * (1 - progress);
         }
     }
     
@@ -345,6 +371,20 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 
 #pragma mark - getter/setter
 
+- (void)setNormalTextFont:(UIFont *)normalTextFont{
+    if (_normalTextFont.pointSize != normalTextFont.pointSize) {
+        _normalTextFont = normalTextFont;
+        self.selectFontScale = _normalTextFont.pointSize / self.selectedTextFont.pointSize;
+    }
+}
+
+- (void)setSelectedTextFont:(UIFont *)selectedTextFont{
+    if (_selectedTextFont.pointSize != selectedTextFont.pointSize) {
+        _selectedTextFont = selectedTextFont;
+        self.selectFontScale = self.normalTextFont.pointSize / _selectedTextFont.pointSize;
+    }
+}
+
 - (void)setProgressWidth:(CGFloat)progressWidth
 {
     _progressWidth = progressWidth;
@@ -388,7 +428,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
+
 }
 
 @end

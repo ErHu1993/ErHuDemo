@@ -16,6 +16,6 @@
 
 //- (void)segmentController:(ERSegmentController *)segmentController displayCell:(ERSegmentCollectionViewCell *)displayCell title:(NSString *)title indexPath:(NSIndexPath *)indexPath;
 
-- (void)pageControllerScrolling:(ERPageViewController *)pageController FromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
+//- (void)pageControllerScrolling:(ERPageViewController *)pageController FromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex progress:(CGFloat)progress;
 
 @end
