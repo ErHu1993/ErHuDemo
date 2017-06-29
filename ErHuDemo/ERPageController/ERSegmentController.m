@@ -365,8 +365,8 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     if (!CGRectEqualToRect(self.segCollectionView.bounds, self.view.bounds)) {
         self.segCollectionView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - SegmentViewHeight, SegmentViewHeight);
         self.editMenuButton.frame = CGRectMake(CGRectGetMaxX(self.segCollectionView.frame), 0, SegmentViewHeight, SegmentViewHeight);
+        [self scrollViewDidScroll:self.contentScrollerView];
     }
-    [self scrollViewDidScroll:self.contentScrollerView];
 }
 
 #pragma mark - getter/setter
@@ -408,6 +408,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     if (!_segCollectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5);
         _segCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _segCollectionView.showsHorizontalScrollIndicator = NO;
         _segCollectionView.showsVerticalScrollIndicator = NO;

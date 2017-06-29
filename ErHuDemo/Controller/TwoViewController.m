@@ -27,7 +27,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = false;
     
-    self.titleArray = @[@"One",@"Two",@"Four",@"Three",@"One",@"One",@"Two",@"Four",@"Three",@"One"];
+    self.titleArray = @[@"One",@"Two",@"Four",@"Three",@"One",@"One",@"Two",@"Four",@"Three",@"One",@"Three"];
     
     for (NSString *className in self.titleArray) {
         UIViewController *vc = [[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",className]) alloc] init];
@@ -63,7 +63,7 @@
 }
 
 - (NSString *)pageViewController:(ERPageViewController *)pageViewController titleForChildControllerAtIndex:(NSInteger)index{
-    return [NSString stringWithFormat:@"%@  d", self.titleArray[index]];
+    return [NSString stringWithFormat:@"%@", self.titleArray[index]];
 }
 
 - (void)didReceiveMemoryWarning {
