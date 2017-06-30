@@ -8,6 +8,7 @@
 
 #import "ERSegmentController.h"
 #import "ERSegmentCollectionViewCell.h"
+#import "ERSegmentMenuController.h"
 
 static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 
@@ -25,8 +26,8 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 @property (nonatomic, assign) CGFloat selectFontScale;
 /** 是否是点击item触发的滚动 */
 @property (nonatomic, assign) BOOL isTapItemToScroll;
-
-
+/** 菜单控制器 */
+@property (nonatomic, strong) ERSegmentMenuController *menuController;
 @end
 
 @implementation ERSegmentController
@@ -49,12 +50,19 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     
     self.normalTextColor = [UIColor blackColor];
     self.selectedTextColor = [UIColor redColor];
+    
+    self.segCollectionView.backgroundColor = [UIColor orangeColor];
+    
 }
 
 #pragma mark - 编辑菜单点击事件
 
 - (void)editMenuButtonClick:(UIButton *)btn{
-    
+    btn.selected = !btn.selected;
+    CGFloat angle = btn.selected ? M_PI * 0.25 : - M_PI * 0.25;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.editMenuButton.transform = CGAffineTransformRotate(self.editMenuButton.transform, angle);
+    }];
 }
 
 #pragma mark - UICollectionView 相关
@@ -82,9 +90,9 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     
     NSString *title = [self.dataSource pageViewController:self titleForChildControllerAtIndex:indexPath.item];
     
-    CGFloat width = [self boundingSizeWithString:title font:self.selectedTextFont constrainedToSize:CGSizeMake(MAXFLOAT, SegmentViewHeight)].width;
+    CGFloat width = [self boundingSizeWithString:title font:self.selectedTextFont constrainedToSize:CGSizeMake(MAXFLOAT, self.segmentHeight)].width;
     
-    return CGSizeMake(width, SegmentViewHeight);
+    return CGSizeMake(width, self.segmentHeight);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -378,14 +386,22 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     
     [super viewWillLayoutSubviews];
     
-    if (!CGRectEqualToRect(self.segCollectionView.bounds, self.view.bounds)) {
-        self.segCollectionView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - SegmentViewHeight, SegmentViewHeight);
-        self.editMenuButton.frame = CGRectMake(CGRectGetMaxX(self.segCollectionView.frame), 0, SegmentViewHeight, SegmentViewHeight);
+    if (CGRectEqualToRect(self.segCollectionView.frame, CGRectZero)) {
+        self.segCollectionView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - self.segmentHeight, self.segmentHeight);
+        self.editMenuButton.frame = CGRectMake(CGRectGetMaxX(self.segCollectionView.frame), 0, self.segmentHeight, self.segmentHeight);
         [self scrollViewDidScroll:self.contentScrollerView];
     }
 }
 
 #pragma mark - getter/setter
+
+- (ERSegmentMenuController *)menuController{
+    if (!_menuController) {
+        _menuController = [[ERSegmentMenuController alloc] init];
+        _menuController.view.frame = CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMinY(self.view.frame), CGRectGetWidth(self.view.frame), [UIScreen mainScreen].bounds.size.height - CGRectGetMinY(self.view.frame));
+    }
+    return _menuController;
+}
 
 - (void)setNormalTextFont:(UIFont *)normalTextFont{
     if (_normalTextFont.pointSize != normalTextFont.pointSize) {
@@ -403,13 +419,18 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 
 - (UIButton *)editMenuButton{
     if (!_editMenuButton) {
-        _editMenuButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        _editMenuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_editMenuButton setImage:[UIImage imageNamed:@"editButtonImage"] forState:UIControlStateNormal];
+        [_editMenuButton setAdjustsImageWhenHighlighted:false];
         [_editMenuButton addTarget:self action:@selector(editMenuButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         _editMenuButton.backgroundColor = [UIColor whiteColor];
-        _editMenuButton.layer.shadowColor = [UIColor whiteColor].CGColor;
-        _editMenuButton.layer.shadowRadius = 4;
-        _editMenuButton.layer.shadowOffset = CGSizeMake(- 8, -5);
-        _editMenuButton.layer.shadowOpacity = 1 ;
+        _editMenuButton.layer.masksToBounds = YES;
+        _editMenuButton.backgroundColor = [UIColor redColor];
+        _editMenuButton.layer.cornerRadius = self.segmentHeight / 2;
+        _editMenuButton.layer.shadowColor = [UIColor blackColor].CGColor;
+        _editMenuButton.layer.shadowRadius = self.segmentHeight / 2;
+        _editMenuButton.layer.shadowOffset = CGSizeMake(- self.segmentHeight / 2, - self.segmentHeight / 2);
+        _editMenuButton.layer.shadowOpacity = 1;
         [self.view addSubview:_editMenuButton];
     }
     return _editMenuButton;

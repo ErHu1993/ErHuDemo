@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-static NSInteger SegmentViewHeight = 30;
-
 @class ERPageViewController;
 
 @protocol ERPageViewControllerDataSource <NSObject>
@@ -49,6 +47,9 @@ static NSInteger SegmentViewHeight = 30;
 
 
 @interface ERPageViewController : UIViewController
+
+/** 导航选择器高度 */
+@property (nonatomic, assign) NSInteger segmentHeight;
 
 @property (nonatomic, assign) NSInteger countOfControllers;
 

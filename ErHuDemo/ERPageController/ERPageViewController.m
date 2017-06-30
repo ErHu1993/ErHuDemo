@@ -22,6 +22,8 @@
 
     self.automaticallyAdjustsScrollViewInsets = false;
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.segmentHeight = 30;
 }
 
 /**
@@ -83,7 +85,7 @@
 
 - (void)viewWillLayoutSubviews{
     if (!CGRectEqualToRect(self.contentScrollerView.bounds, self.view.bounds)) {
-        self.contentScrollerView.frame = CGRectMake(0, SegmentViewHeight, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - SegmentViewHeight);
+        self.contentScrollerView.frame = CGRectMake(0, self.segmentHeight, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - self.segmentHeight);
         [self initializeSubViews];
     }
 }

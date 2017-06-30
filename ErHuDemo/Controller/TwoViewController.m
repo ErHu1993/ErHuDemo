@@ -36,6 +36,7 @@
 
     ERSegmentController *pageVC = [[ERSegmentController alloc] init];
     pageVC.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
+    pageVC.segmentHeight = 30;
     pageVC.progressWidth = 20;
     pageVC.progressHeight = 1;
     pageVC.normalTextFont = [UIFont systemFontOfSize:12];
@@ -48,12 +49,7 @@
     [self addChildViewController:pageVC];
 }
 
-- (NSMutableArray <UIViewController *>*)childVCArray{
-    if (!_childVCArray) {
-        _childVCArray = [[NSMutableArray alloc] init];
-    }
-    return _childVCArray;
-}
+#pragma mark - ERPageViewControllerDataSource
 
 - (NSInteger)numberOfControllersInPageViewController:(ERPageViewController *)pageViewController{
     return self.childVCArray.count;
@@ -66,6 +62,33 @@
 - (NSString *)pageViewController:(ERPageViewController *)pageViewController titleForChildControllerAtIndex:(NSInteger)index{
     return [NSString stringWithFormat:@"%@", self.titleArray[index]];
 }
+
+#pragma mark - ERSegmentControllerDelegte
+
+- (void)segmentController:(ERSegmentController *)segmentController didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    UIViewController *currentVC = self.childVCArray[indexPath.item];
+    NSLog(@"currentVC: %@ , index : %ld",currentVC,indexPath.item);
+}
+
+- (void)segmentController:(ERSegmentController *)segmentController itemDoubleClickAtIndexPath:(NSIndexPath *)indexPath{
+    UIViewController *currentVC = self.childVCArray[indexPath.item];
+    NSLog(@"双击了,可刷新 currentVC: %@ , index : %ld",currentVC,indexPath.item);
+}
+
+- (void)pageControllerDidScroll:(ERPageViewController *)pageController fromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex{
+    UIViewController *currentVC = self.childVCArray[toIndex];
+    NSLog(@"滚动切换 完成 currentVC: %@ , fromIndex : %ld  toindex : %ld",currentVC,fromIndex,toIndex);
+}
+
+#pragma mark - getter/setter
+
+- (NSMutableArray <UIViewController *>*)childVCArray{
+    if (!_childVCArray) {
+        _childVCArray = [[NSMutableArray alloc] init];
+    }
+    return _childVCArray;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

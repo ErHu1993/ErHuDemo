@@ -18,17 +18,17 @@
  导航按钮点击事件回调
 
  @param segmentController self
- @param index index
+ @param indexPath indexPath
  */
-- (void)segmentController:(ERSegmentController *)segmentController didSelectItemAtIndexPath:(NSIndexPath *)index;
+- (void)segmentController:(ERSegmentController *)segmentController didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  导航按钮双击事件回调
  
  @param segmentController self
- @param index index
+ @param indexPath indexPath
  */
-- (void)segmentController:(ERSegmentController *)segmentController itemDoubleClickAtIndexPath:(NSIndexPath *)index;
+- (void)segmentController:(ERSegmentController *)segmentController itemDoubleClickAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  页面切换滚动完成回调

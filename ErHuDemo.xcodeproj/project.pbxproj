@@ -47,6 +47,7 @@
 		D886C5601F00AF4E00548C01 /* PhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C55E1F00AF4E00548C01 /* PhotoPickerCell.m */; };
 		D886C5611F00AF4E00548C01 /* PhotoPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D886C55F1F00AF4E00548C01 /* PhotoPickerCell.xib */; };
 		D886C5641F00E40300548C01 /* PHAsset+EHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */; };
+		D8C165CE1F04FF080003ECF9 /* ERSegmentMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C165CD1F04FF080003ECF9 /* ERSegmentMenuController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,8 @@
 		D886C55F1F00AF4E00548C01 /* PhotoPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoPickerCell.xib; sourceTree = "<group>"; };
 		D886C5621F00E40300548C01 /* PHAsset+EHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+EHCategory.h"; sourceTree = "<group>"; };
 		D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+EHCategory.m"; sourceTree = "<group>"; };
+		D8C165CC1F04FF080003ECF9 /* ERSegmentMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentMenuController.h; sourceTree = "<group>"; };
+		D8C165CD1F04FF080003ECF9 /* ERSegmentMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSegmentMenuController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,8 @@
 				D8060D601F0208240011BA25 /* ERPageViewController.m */,
 				D8060D701F023FC80011BA25 /* ERSegmentController.h */,
 				D8060D711F023FC80011BA25 /* ERSegmentController.m */,
+				D8C165CC1F04FF080003ECF9 /* ERSegmentMenuController.h */,
+				D8C165CD1F04FF080003ECF9 /* ERSegmentMenuController.m */,
 				D8060D761F0244FE0011BA25 /* ERSegmentCollectionViewCell.h */,
 				D8060D771F0244FE0011BA25 /* ERSegmentCollectionViewCell.m */,
 				D8060D781F0244FE0011BA25 /* ERSegmentCollectionViewCell.xib */,
@@ -610,6 +615,7 @@
 				D8060D6C1F0229470011BA25 /* PageThreeViewController.m in Sources */,
 				D886C5641F00E40300548C01 /* PHAsset+EHCategory.m in Sources */,
 				D830C5C81EF264EE00C87E8A /* InputMenuViewController.m in Sources */,
+				D8C165CE1F04FF080003ECF9 /* ERSegmentMenuController.m in Sources */,
 				D8060D721F023FC80011BA25 /* ERSegmentController.m in Sources */,
 				D83F94CA1EE4F49900EB9ACB /* VideoRecordingViewController.m in Sources */,
 			);
