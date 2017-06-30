@@ -41,8 +41,8 @@
     pageVC.progressHeight = 1;
     pageVC.normalTextFont = [UIFont systemFontOfSize:12];
     pageVC.selectedTextFont = [UIFont systemFontOfSize:15];
-    pageVC.normalTextColor = [UIColor blueColor];
-    pageVC.selectedTextColor = [UIColor orangeColor];
+    pageVC.normalTextColor = [UIColor blackColor];
+    pageVC.selectedTextColor = [UIColor redColor];
     pageVC.dataSource = self;
     pageVC.delegate = self;
     [self.view addSubview:pageVC.view];

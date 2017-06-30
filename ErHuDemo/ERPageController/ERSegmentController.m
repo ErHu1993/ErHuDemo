@@ -50,9 +50,6 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     
     self.normalTextColor = [UIColor blackColor];
     self.selectedTextColor = [UIColor redColor];
-    
-    self.segCollectionView.backgroundColor = [UIColor orangeColor];
-    
 }
 
 #pragma mark - 编辑菜单点击事件
@@ -428,7 +425,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
         _editMenuButton.backgroundColor = [UIColor redColor];
         _editMenuButton.layer.cornerRadius = self.segmentHeight / 2;
         _editMenuButton.layer.shadowColor = [UIColor blackColor].CGColor;
-        _editMenuButton.layer.shadowRadius = self.segmentHeight / 2;
+        _editMenuButton.layer.shadowRadius = 10;
         _editMenuButton.layer.shadowOffset = CGSizeMake(- self.segmentHeight / 2, - self.segmentHeight / 2);
         _editMenuButton.layer.shadowOpacity = 1;
         [self.view addSubview:_editMenuButton];
