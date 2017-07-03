@@ -9,6 +9,7 @@
 #import "MainTabBarController.h"
 #import "ViewController.h"
 #import "TwoViewController.h"
+#import <ERModuleDemo/CTMediator+GetServiceViewController.h>
 
 static NSString *rotationAnimationKey = @"TabBarButtonTransformRotationAnimationKey";
 
@@ -42,6 +43,8 @@ static NSString *rotationAnimationKey = @"TabBarButtonTransformRotationAnimation
     [self setupController:[[ViewController alloc]init] image:@"me_normal" selectedImage:@"me_selected" title:@"List"];
     
     [self setupController:[[TwoViewController alloc]init] image:@"me_normal" selectedImage:@"me_selected" title:@"双击我"];
+    
+    [self setupController:[[CTMediator sharedInstance] GetServiceViewController_TabBarViewController] image:@"me_normal" selectedImage:@"me_selected" title:@"双击我"];
 }
 
 //设置控制器

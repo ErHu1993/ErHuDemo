@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'B268E05484D18CE2B7A62F283278190D'
+               BlueprintIdentifier = '568FA44D92BE038A475F305D55DFAC9D'
                BlueprintName = 'ERModuleDemo'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ERModuleDemo.framework'>
