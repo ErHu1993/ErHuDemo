@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '21013ED9BDBEFA13BB62F8CBBFC798DB'
-               BlueprintName = 'SDAutoLayout'
+               BlueprintIdentifier = 'B268E05484D18CE2B7A62F283278190D'
+               BlueprintName = 'ERModuleDemo'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDAutoLayout.framework'>
+               BuildableName = 'ERModuleDemo.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
