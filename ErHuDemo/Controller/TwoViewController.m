@@ -66,6 +66,17 @@
 
 #pragma mark - ERSegmentControllerDelegte
 
+- (void)segmentController:(ERSegmentController *)segmentController didSelectEditMenuButton:(UIButton *)editMenuButton{
+    
+    editMenuButton.selected = !editMenuButton.selected;
+    
+    CGFloat angle = editMenuButton.selected ? M_PI * 0.25 : - M_PI * 0.25;
+    //旋转动画
+    [UIView animateWithDuration:0.25 animations:^{
+        segmentController.editMenuIconIgV.transform = CGAffineTransformRotate(segmentController.editMenuIconIgV.transform, angle);
+    }];
+}
+
 - (void)segmentController:(ERSegmentController *)segmentController didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     UIViewController *currentVC = self.childVCArray[indexPath.item];
     NSLog(@"currentVC: %@ , index : %ld",currentVC,indexPath.item);

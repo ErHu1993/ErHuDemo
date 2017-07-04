@@ -22,6 +22,14 @@
  */
 - (void)segmentController:(ERSegmentController *)segmentController didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
+
+/**
+ 导航菜单编辑按钮点击回调
+
+ @param segmentController self
+ @param editMenuButton editMenuButton
+ */
+- (void)segmentController:(ERSegmentController *)segmentController didSelectEditMenuButton:(UIButton *)editMenuButton;
 /**
  导航按钮双击事件回调
  
@@ -47,6 +55,8 @@
 
 /** 编辑按钮 */
 @property (nonatomic, strong) UIButton *editMenuButton;
+/** 编辑菜单图片(这里在editMenuButton上又覆盖一层imageView是为了让阴影和旋转分开,用不同的视图表示) */
+@property (nonatomic, strong) UIImageView *editMenuIconIgV;
 /** 底部横线高度 */
 @property (nonatomic, assign) CGFloat progressHeight;
 /** 底部横线宽度 */

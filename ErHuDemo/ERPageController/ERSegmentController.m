@@ -28,8 +28,6 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 @property (nonatomic, assign) BOOL isTapItemToScroll;
 /** 菜单控制器 */
 @property (nonatomic, strong) ERSegmentMenuController *menuController;
-/** 编辑菜单图片(这里在editMenuButton上又覆盖一层imageView是为了让阴影和旋转分开,用不同的视图表示) */
-@property (nonatomic, strong) UIImageView *editMenuIconIgV;
 @end
 
 @implementation ERSegmentController
@@ -58,11 +56,10 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 #pragma mark - 编辑菜单点击事件
 
 - (void)editMenuButtonClick:(UIButton *)btn{
-    btn.selected = !btn.selected;
-    CGFloat angle = btn.selected ? M_PI * 0.25 : - M_PI * 0.25;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.editMenuIconIgV.transform = CGAffineTransformRotate(self.editMenuIconIgV.transform, angle);
-    }];
+    if ([self.delegate respondsToSelector:@selector(segmentController:didSelectEditMenuButton:)]) {
+        [self.delegate segmentController:self didSelectEditMenuButton:btn];
+    }
+    
 }
 
 #pragma mark - UICollectionView 相关
