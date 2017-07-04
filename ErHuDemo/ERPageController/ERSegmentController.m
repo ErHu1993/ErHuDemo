@@ -28,6 +28,8 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 @property (nonatomic, assign) BOOL isTapItemToScroll;
 /** 菜单控制器 */
 @property (nonatomic, strong) ERSegmentMenuController *menuController;
+/** 编辑菜单图片(这里在editMenuButton上又覆盖一层imageView是为了让阴影和旋转分开,用不同的视图表示) */
+@property (nonatomic, strong) UIImageView *editMenuIconIgV;
 @end
 
 @implementation ERSegmentController
@@ -42,6 +44,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     
     self.progressWidth = 20;
     self.progressHeight = 2;
+    self.itemMinimumSpace = 5;
     
     self.normalTextFont = [UIFont systemFontOfSize:15];
     self.selectedTextFont = [UIFont systemFontOfSize:18];
@@ -58,7 +61,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     btn.selected = !btn.selected;
     CGFloat angle = btn.selected ? M_PI * 0.25 : - M_PI * 0.25;
     [UIView animateWithDuration:0.25 animations:^{
-        self.editMenuButton.transform = CGAffineTransformRotate(self.editMenuButton.transform, angle);
+        self.editMenuIconIgV.transform = CGAffineTransformRotate(self.editMenuIconIgV.transform, angle);
     }];
 }
 
@@ -331,9 +334,9 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     if (fromCellFrame.origin.x < toCellFrame.origin.x) {
         if (progress <= 0.5) {
             progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width - 2 * progressFromEdging) * progress;
-            width = (toCellFrame.size.width - progressToEdging + progressFromEdging) * 2 * progress - (toCellFrame.size.width - 2 *progressToEdging) * progress + fromCellFrame.size.width - 2 * progressFromEdging - (fromCellFrame.size.width - 2 * progressFromEdging) *progress;
+            width = (toCellFrame.size.width - progressToEdging + progressFromEdging) * 2 * progress - (toCellFrame.size.width - 2 *progressToEdging) * progress + fromCellFrame.size.width - 2 * progressFromEdging - (fromCellFrame.size.width - 2 * progressFromEdging) * progress;
         }else {
-            progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width - 2 * progressFromEdging) * 0.5 + (fromCellFrame.size.width- progressFromEdging - (fromCellFrame.size.width - 2 * progressFromEdging) * 0.5 + progressToEdging) * (progress - 0.5) * 2;
+            progressX = fromCellFrame.origin.x + progressFromEdging + (fromCellFrame.size.width - 2 * progressFromEdging) * 0.5 + (fromCellFrame.size.width - progressFromEdging - (fromCellFrame.size.width - 2 * progressFromEdging) * 0.5 + progressToEdging + self.itemMinimumSpace)*(progress - 0.5) *    2;
             width = CGRectGetMaxX(toCellFrame) - progressToEdging - progressX - (toCellFrame.size.width - 2 * progressToEdging) * ( 1 - progress);
         }
     }else {
@@ -386,6 +389,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     if (CGRectEqualToRect(self.segCollectionView.frame, CGRectZero)) {
         self.segCollectionView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - self.segmentHeight, self.segmentHeight);
         self.editMenuButton.frame = CGRectMake(CGRectGetMaxX(self.segCollectionView.frame), 0, self.segmentHeight, self.segmentHeight);
+        self.editMenuIconIgV.frame = CGRectMake(self.segmentHeight / 4, self.segmentHeight / 4, self.segmentHeight / 2, self.segmentHeight/ 2);
         [self scrollViewDidScroll:self.contentScrollerView];
     }
 }
@@ -417,27 +421,32 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 - (UIButton *)editMenuButton{
     if (!_editMenuButton) {
         _editMenuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_editMenuButton setImage:[UIImage imageNamed:@"editButtonImage"] forState:UIControlStateNormal];
-        [_editMenuButton setAdjustsImageWhenHighlighted:false];
         [_editMenuButton addTarget:self action:@selector(editMenuButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         _editMenuButton.backgroundColor = [UIColor whiteColor];
-        _editMenuButton.layer.masksToBounds = YES;
-        _editMenuButton.backgroundColor = [UIColor redColor];
-        _editMenuButton.layer.cornerRadius = self.segmentHeight / 2;
-        _editMenuButton.layer.shadowColor = [UIColor blackColor].CGColor;
-        _editMenuButton.layer.shadowRadius = 10;
-        _editMenuButton.layer.shadowOffset = CGSizeMake(- self.segmentHeight / 2, - self.segmentHeight / 2);
+        _editMenuButton.layer.shadowColor = [UIColor whiteColor].CGColor;
+        _editMenuButton.layer.shadowRadius = self.segmentHeight / 10;
+        _editMenuButton.layer.shadowOffset = CGSizeMake(- self.segmentHeight / 5, - 2);
         _editMenuButton.layer.shadowOpacity = 1;
+        [_editMenuButton addSubview:self.editMenuIconIgV];
         [self.view addSubview:_editMenuButton];
     }
     return _editMenuButton;
+}
+
+- (UIImageView *)editMenuIconIgV{
+    if (!_editMenuIconIgV) {
+        _editMenuIconIgV = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _editMenuIconIgV.image = [UIImage imageNamed:@"editButtonImage"];
+    }
+    return _editMenuIconIgV;
 }
 
 - (UICollectionView *)segCollectionView{
     if (!_segCollectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        layout.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5);
+        layout.sectionInset = UIEdgeInsetsMake(0, 5, 0, self.segmentHeight / 5);
+        layout.minimumInteritemSpacing = self.itemMinimumSpace;
         _segCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _segCollectionView.showsHorizontalScrollIndicator = NO;
         _segCollectionView.showsVerticalScrollIndicator = NO;

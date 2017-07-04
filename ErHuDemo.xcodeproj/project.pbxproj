@@ -209,7 +209,7 @@
 			path = ERPageController;
 			sourceTree = "<group>";
 		};
-		D8060D621F0228FB0011BA25 /* TwoViewControllers */ = {
+		D8060D621F0228FB0011BA25 /* TabBarViewControllers[1] */ = {
 			isa = PBXGroup;
 			children = (
 				D8060D581F02042A0011BA25 /* TwoViewController.h */,
@@ -223,10 +223,10 @@
 				D8060D6D1F0229550011BA25 /* PageFourViewController.h */,
 				D8060D6E1F0229550011BA25 /* PageFourViewController.m */,
 			);
-			name = TwoViewControllers;
+			name = "TabBarViewControllers[1]";
 			sourceTree = "<group>";
 		};
-		D8060D631F0229090011BA25 /* ViewControllers */ = {
+		D8060D631F0229090011BA25 /* TabBarViewControllers[0] */ = {
 			isa = PBXGroup;
 			children = (
 				D83F94C11EE4EDEE00EB9ACB /* ViewController.h */,
@@ -238,7 +238,7 @@
 				D830C5C21EF2647200C87E8A /* InputMenuViewController.h */,
 				D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */,
 			);
-			name = ViewControllers;
+			name = "TabBarViewControllers[0]";
 			sourceTree = "<group>";
 		};
 		D830C5BC1EF2599F00C87E8A /* InputBar */ = {
@@ -262,8 +262,8 @@
 		D83F94BE1EE4EDEE00EB9ACB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8060D631F0229090011BA25 /* ViewControllers */,
-				D8060D621F0228FB0011BA25 /* TwoViewControllers */,
+				D8060D631F0229090011BA25 /* TabBarViewControllers[0] */,
+				D8060D621F0228FB0011BA25 /* TabBarViewControllers[1] */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

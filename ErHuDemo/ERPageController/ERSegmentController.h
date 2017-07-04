@@ -59,5 +59,6 @@
 @property (nonatomic, strong) UIColor *normalTextColor;
 /** 选中状态下的字体颜色 */
 @property (nonatomic, strong) UIColor *selectedTextColor;
-
+/** item直接的行间距 */
+@property (nonatomic, assign) NSInteger itemMinimumSpace;
 @end

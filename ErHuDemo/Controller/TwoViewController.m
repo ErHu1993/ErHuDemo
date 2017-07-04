@@ -36,11 +36,12 @@
 
     ERSegmentController *pageVC = [[ERSegmentController alloc] init];
     pageVC.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
-    pageVC.segmentHeight = 30;
-    pageVC.progressWidth = 20;
+    pageVC.segmentHeight = 25;
+    pageVC.progressWidth = 15;
     pageVC.progressHeight = 1;
+    pageVC.itemMinimumSpace = 10;
     pageVC.normalTextFont = [UIFont systemFontOfSize:12];
-    pageVC.selectedTextFont = [UIFont systemFontOfSize:15];
+    pageVC.selectedTextFont = [UIFont systemFontOfSize:16];
     pageVC.normalTextColor = [UIColor blackColor];
     pageVC.selectedTextColor = [UIColor redColor];
     pageVC.dataSource = self;
