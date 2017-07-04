@@ -44,7 +44,7 @@ static NSString *rotationAnimationKey = @"TabBarButtonTransformRotationAnimation
     
     [self setupController:[[TwoViewController alloc]init] image:@"me_normal" selectedImage:@"me_selected" title:@"双击我"];
     
-    [self setupController:[[CTMediator sharedInstance] GetServiceViewController_TabBarViewController] image:@"me_normal" selectedImage:@"me_selected" title:@"双击我"];
+    [self setupController:[[CTMediator sharedInstance] GetServiceViewController_TabBarViewController] image:@"me_normal" selectedImage:@"me_selected" title:@"第三方组件"];
 }
 
 //设置控制器
