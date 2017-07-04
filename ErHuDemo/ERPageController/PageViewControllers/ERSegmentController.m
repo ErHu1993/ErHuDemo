@@ -56,10 +56,42 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 #pragma mark - 编辑菜单点击事件
 
 - (void)editMenuButtonClick:(UIButton *)btn{
+    
+    btn.selected = !btn.selected;
+    
     if ([self.delegate respondsToSelector:@selector(segmentController:didSelectEditMenuButton:)]) {
         [self.delegate segmentController:self didSelectEditMenuButton:btn];
     }
     
+    if (btn.selected) {
+        [self showMenuViewController];
+    }else{
+        [self hideMenuViewController];
+    }
+}
+
+- (void)showMenuViewController{
+    
+    self.segCollectionView.userInteractionEnabled = false;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.menuController.view.frame = CGRectMake(0, self.view.frame.origin.y + self.segmentHeight, self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - self.view.frame.origin.y - self.segmentHeight);
+        [self.menuController.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self.tabBarController.tabBar.hidden = YES;
+    }];
+}
+
+- (void)hideMenuViewController{
+    
+    self.segCollectionView.userInteractionEnabled = true;;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.menuController.view.frame = CGRectMake(0, self.view.frame.origin.y + self.segmentHeight, self.view.frame.size.width, 0);
+        [self.menuController.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self.tabBarController.tabBar.hidden = false;
+    }];
 }
 
 #pragma mark - UICollectionView 相关
@@ -388,6 +420,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
         self.editMenuButton.frame = CGRectMake(CGRectGetMaxX(self.segCollectionView.frame), 0, self.segmentHeight, self.segmentHeight);
         self.editMenuIconIgV.frame = CGRectMake(self.segmentHeight / 4, self.segmentHeight / 4, self.segmentHeight / 2, self.segmentHeight/ 2);
         [self scrollViewDidScroll:self.contentScrollerView];
+        [self menuController];
     }
 }
 
@@ -396,7 +429,9 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 - (ERSegmentMenuController *)menuController{
     if (!_menuController) {
         _menuController = [[ERSegmentMenuController alloc] init];
-        _menuController.view.frame = CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMinY(self.view.frame), CGRectGetWidth(self.view.frame), [UIScreen mainScreen].bounds.size.height - CGRectGetMinY(self.view.frame));
+        _menuController.view.frame = CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMinY(self.view.frame) + self.segmentHeight, CGRectGetWidth(self.view.frame), 0);
+        [_menuController.view layoutIfNeeded];
+        [self.view.superview addSubview:_menuController.view];
     }
     return _menuController;
 }

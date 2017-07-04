@@ -10,14 +10,10 @@
 		872C4472F764ACCA16999165 /* Pods_ErHuDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF7A5FC80432B6A23798F0B /* Pods_ErHuDemo.framework */; };
 		D8060D571F02028B0011BA25 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D561F02028B0011BA25 /* MainTabBarController.m */; };
 		D8060D5A1F02042A0011BA25 /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D591F02042A0011BA25 /* TwoViewController.m */; };
-		D8060D611F0208240011BA25 /* ERPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D601F0208240011BA25 /* ERPageViewController.m */; };
 		D8060D661F0229300011BA25 /* PageOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D651F0229300011BA25 /* PageOneViewController.m */; };
 		D8060D691F02293A0011BA25 /* PageTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D681F02293A0011BA25 /* PageTwoViewController.m */; };
 		D8060D6C1F0229470011BA25 /* PageThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D6B1F0229470011BA25 /* PageThreeViewController.m */; };
 		D8060D6F1F0229550011BA25 /* PageFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D6E1F0229550011BA25 /* PageFourViewController.m */; };
-		D8060D721F023FC80011BA25 /* ERSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D711F023FC80011BA25 /* ERSegmentController.m */; };
-		D8060D791F0244FE0011BA25 /* ERSegmentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D771F0244FE0011BA25 /* ERSegmentCollectionViewCell.m */; };
-		D8060D7A1F0244FE0011BA25 /* ERSegmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8060D781F0244FE0011BA25 /* ERSegmentCollectionViewCell.xib */; };
 		D8079C721EFB697200683B3E /* MultimediaPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8079C711EFB697200683B3E /* MultimediaPanelViewController.m */; };
 		D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */; };
 		D830C5C11EF25A3300C87E8A /* InputBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */; };
@@ -47,7 +43,14 @@
 		D886C5601F00AF4E00548C01 /* PhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C55E1F00AF4E00548C01 /* PhotoPickerCell.m */; };
 		D886C5611F00AF4E00548C01 /* PhotoPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D886C55F1F00AF4E00548C01 /* PhotoPickerCell.xib */; };
 		D886C5641F00E40300548C01 /* PHAsset+EHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */; };
-		D8C165CE1F04FF080003ECF9 /* ERSegmentMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C165CD1F04FF080003ECF9 /* ERSegmentMenuController.m */; };
+		D8F755021F0B700C008459D1 /* ERPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FA1F0B700C008459D1 /* ERPageViewController.m */; };
+		D8F755031F0B700C008459D1 /* ERSegmentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FC1F0B700C008459D1 /* ERSegmentCollectionViewCell.m */; };
+		D8F755041F0B700C008459D1 /* ERSegmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F754FD1F0B700C008459D1 /* ERSegmentCollectionViewCell.xib */; };
+		D8F755051F0B700C008459D1 /* ERSegmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FF1F0B700C008459D1 /* ERSegmentController.m */; };
+		D8F7550C1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F7550B1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.m */; };
+		D8F755101F0B76C8008459D1 /* EditMenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F7550E1F0B76C8008459D1 /* EditMenuCollectionViewCell.m */; };
+		D8F755111F0B76C8008459D1 /* EditMenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F7550F1F0B76C8008459D1 /* EditMenuCollectionViewCell.xib */; };
+		D8F755141F0B7A46008459D1 /* ERSegmentMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F755131F0B7A46008459D1 /* ERSegmentMenuController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +78,6 @@
 		D8060D561F02028B0011BA25 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		D8060D581F02042A0011BA25 /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
 		D8060D591F02042A0011BA25 /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
-		D8060D5F1F0208240011BA25 /* ERPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERPageViewController.h; sourceTree = "<group>"; };
-		D8060D601F0208240011BA25 /* ERPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERPageViewController.m; sourceTree = "<group>"; };
 		D8060D641F0229300011BA25 /* PageOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageOneViewController.h; sourceTree = "<group>"; };
 		D8060D651F0229300011BA25 /* PageOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageOneViewController.m; sourceTree = "<group>"; };
 		D8060D671F02293A0011BA25 /* PageTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTwoViewController.h; sourceTree = "<group>"; };
@@ -85,11 +86,6 @@
 		D8060D6B1F0229470011BA25 /* PageThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageThreeViewController.m; sourceTree = "<group>"; };
 		D8060D6D1F0229550011BA25 /* PageFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFourViewController.h; sourceTree = "<group>"; };
 		D8060D6E1F0229550011BA25 /* PageFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageFourViewController.m; sourceTree = "<group>"; };
-		D8060D701F023FC80011BA25 /* ERSegmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentController.h; sourceTree = "<group>"; };
-		D8060D711F023FC80011BA25 /* ERSegmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSegmentController.m; sourceTree = "<group>"; };
-		D8060D761F0244FE0011BA25 /* ERSegmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentCollectionViewCell.h; sourceTree = "<group>"; };
-		D8060D771F0244FE0011BA25 /* ERSegmentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSegmentCollectionViewCell.m; sourceTree = "<group>"; };
-		D8060D781F0244FE0011BA25 /* ERSegmentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ERSegmentCollectionViewCell.xib; sourceTree = "<group>"; };
 		D8079C701EFB697200683B3E /* MultimediaPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultimediaPanelViewController.h; sourceTree = "<group>"; };
 		D8079C711EFB697200683B3E /* MultimediaPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultimediaPanelViewController.m; sourceTree = "<group>"; };
 		D830C5BD1EF25A3300C87E8A /* InputBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBarViewController.h; sourceTree = "<group>"; };
@@ -146,8 +142,20 @@
 		D886C55F1F00AF4E00548C01 /* PhotoPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoPickerCell.xib; sourceTree = "<group>"; };
 		D886C5621F00E40300548C01 /* PHAsset+EHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+EHCategory.h"; sourceTree = "<group>"; };
 		D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+EHCategory.m"; sourceTree = "<group>"; };
-		D8C165CC1F04FF080003ECF9 /* ERSegmentMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentMenuController.h; sourceTree = "<group>"; };
-		D8C165CD1F04FF080003ECF9 /* ERSegmentMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSegmentMenuController.m; sourceTree = "<group>"; };
+		D8F754F91F0B700C008459D1 /* ERPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERPageViewController.h; sourceTree = "<group>"; };
+		D8F754FA1F0B700C008459D1 /* ERPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERPageViewController.m; sourceTree = "<group>"; };
+		D8F754FB1F0B700C008459D1 /* ERSegmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentCollectionViewCell.h; sourceTree = "<group>"; };
+		D8F754FC1F0B700C008459D1 /* ERSegmentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSegmentCollectionViewCell.m; sourceTree = "<group>"; };
+		D8F754FD1F0B700C008459D1 /* ERSegmentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ERSegmentCollectionViewCell.xib; sourceTree = "<group>"; };
+		D8F754FE1F0B700C008459D1 /* ERSegmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentController.h; sourceTree = "<group>"; };
+		D8F754FF1F0B700C008459D1 /* ERSegmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSegmentController.m; sourceTree = "<group>"; };
+		D8F7550A1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		D8F7550B1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		D8F7550D1F0B76C8008459D1 /* EditMenuCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMenuCollectionViewCell.h; sourceTree = "<group>"; };
+		D8F7550E1F0B76C8008459D1 /* EditMenuCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMenuCollectionViewCell.m; sourceTree = "<group>"; };
+		D8F7550F1F0B76C8008459D1 /* EditMenuCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditMenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		D8F755121F0B7A46008459D1 /* ERSegmentMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentMenuController.h; sourceTree = "<group>"; };
+		D8F755131F0B7A46008459D1 /* ERSegmentMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERSegmentMenuController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,15 +204,8 @@
 		D8060D5B1F0207C90011BA25 /* ERPageController */ = {
 			isa = PBXGroup;
 			children = (
-				D8060D5F1F0208240011BA25 /* ERPageViewController.h */,
-				D8060D601F0208240011BA25 /* ERPageViewController.m */,
-				D8060D701F023FC80011BA25 /* ERSegmentController.h */,
-				D8060D711F023FC80011BA25 /* ERSegmentController.m */,
-				D8C165CC1F04FF080003ECF9 /* ERSegmentMenuController.h */,
-				D8C165CD1F04FF080003ECF9 /* ERSegmentMenuController.m */,
-				D8060D761F0244FE0011BA25 /* ERSegmentCollectionViewCell.h */,
-				D8060D771F0244FE0011BA25 /* ERSegmentCollectionViewCell.m */,
-				D8060D781F0244FE0011BA25 /* ERSegmentCollectionViewCell.xib */,
+				D8F754F81F0B700C008459D1 /* PageViewControllers */,
+				D8F754F71F0B700C008459D1 /* EditMenuControllers */,
 			);
 			path = ERPageController;
 			sourceTree = "<group>";
@@ -398,6 +399,34 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		D8F754F71F0B700C008459D1 /* EditMenuControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8F755121F0B7A46008459D1 /* ERSegmentMenuController.h */,
+				D8F755131F0B7A46008459D1 /* ERSegmentMenuController.m */,
+				D8F7550A1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.h */,
+				D8F7550B1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.m */,
+				D8F7550D1F0B76C8008459D1 /* EditMenuCollectionViewCell.h */,
+				D8F7550E1F0B76C8008459D1 /* EditMenuCollectionViewCell.m */,
+				D8F7550F1F0B76C8008459D1 /* EditMenuCollectionViewCell.xib */,
+			);
+			path = EditMenuControllers;
+			sourceTree = "<group>";
+		};
+		D8F754F81F0B700C008459D1 /* PageViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8F754F91F0B700C008459D1 /* ERPageViewController.h */,
+				D8F754FA1F0B700C008459D1 /* ERPageViewController.m */,
+				D8F754FE1F0B700C008459D1 /* ERSegmentController.h */,
+				D8F754FF1F0B700C008459D1 /* ERSegmentController.m */,
+				D8F754FB1F0B700C008459D1 /* ERSegmentCollectionViewCell.h */,
+				D8F754FC1F0B700C008459D1 /* ERSegmentCollectionViewCell.m */,
+				D8F754FD1F0B700C008459D1 /* ERSegmentCollectionViewCell.xib */,
+			);
+			path = PageViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -509,12 +538,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D86A4AF71EE00F5A00B7BF22 /* LaunchScreen.storyboard in Resources */,
-				D8060D7A1F0244FE0011BA25 /* ERSegmentCollectionViewCell.xib in Resources */,
+				D8F755041F0B700C008459D1 /* ERSegmentCollectionViewCell.xib in Resources */,
 				D886C5611F00AF4E00548C01 /* PhotoPickerCell.xib in Resources */,
 				D83239A41EF3679F000A61E4 /* mediaSelectViewController.xib in Resources */,
 				D830C5C11EF25A3300C87E8A /* InputBarViewController.xib in Resources */,
 				D86A4AF41EE00F5A00B7BF22 /* Assets.xcassets in Resources */,
 				D86A4AF21EE00F5A00B7BF22 /* Main.storyboard in Resources */,
+				D8F755111F0B76C8008459D1 /* EditMenuCollectionViewCell.xib in Resources */,
 				D86EA1591EE161D100635EA9 /* WechatIMG.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,26 +618,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F755051F0B700C008459D1 /* ERSegmentController.m in Sources */,
 				D83F94C41EE4EDEE00EB9ACB /* ViewController.m in Sources */,
 				D886C5601F00AF4E00548C01 /* PhotoPickerCell.m in Sources */,
 				D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */,
 				D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */,
 				D8079C721EFB697200683B3E /* MultimediaPanelViewController.m in Sources */,
-				D8060D611F0208240011BA25 /* ERPageViewController.m in Sources */,
+				D8F755031F0B700C008459D1 /* ERSegmentCollectionViewCell.m in Sources */,
+				D8F755101F0B76C8008459D1 /* EditMenuCollectionViewCell.m in Sources */,
 				D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */,
 				D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */,
 				D83239A31EF3679F000A61E4 /* mediaSelectViewController.m in Sources */,
+				D8F7550C1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				D8060D571F02028B0011BA25 /* MainTabBarController.m in Sources */,
 				D8060D6F1F0229550011BA25 /* PageFourViewController.m in Sources */,
 				D83F94D41EE4F5BA00EB9ACB /* VideoFileManager.m in Sources */,
 				D8060D691F02293A0011BA25 /* PageTwoViewController.m in Sources */,
-				D8060D791F0244FE0011BA25 /* ERSegmentCollectionViewCell.m in Sources */,
 				D886C5591F00A01C00548C01 /* PhotoLibraryService.m in Sources */,
 				D8060D5A1F02042A0011BA25 /* TwoViewController.m in Sources */,
 				D83F94CE1EE4F53100EB9ACB /* CircleProgressView.m in Sources */,
 				D86EA1541EE161C800635EA9 /* HandPaintingImageView.m in Sources */,
 				D83F94D11EE4F56D00EB9ACB /* VideoRecordManager.m in Sources */,
+				D8F755021F0B700C008459D1 /* ERPageViewController.m in Sources */,
 				D8060D661F0229300011BA25 /* PageOneViewController.m in Sources */,
+				D8F755141F0B7A46008459D1 /* ERSegmentMenuController.m in Sources */,
 				D83F94C31EE4EDEE00EB9ACB /* HandPaintViewController.m in Sources */,
 				D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */,
 				D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */,
@@ -615,8 +649,6 @@
 				D8060D6C1F0229470011BA25 /* PageThreeViewController.m in Sources */,
 				D886C5641F00E40300548C01 /* PHAsset+EHCategory.m in Sources */,
 				D830C5C81EF264EE00C87E8A /* InputMenuViewController.m in Sources */,
-				D8C165CE1F04FF080003ECF9 /* ERSegmentMenuController.m in Sources */,
-				D8060D721F023FC80011BA25 /* ERSegmentController.m in Sources */,
 				D83F94CA1EE4F49900EB9ACB /* VideoRecordingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

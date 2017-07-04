@@ -10,4 +10,6 @@
 
 @interface ERSegmentMenuController : UIViewController
 
+- (instancetype)initWithFrame:(CGRect)frame;
+
 @end

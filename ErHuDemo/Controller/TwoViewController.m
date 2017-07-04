@@ -67,9 +67,7 @@
 #pragma mark - ERSegmentControllerDelegte
 
 - (void)segmentController:(ERSegmentController *)segmentController didSelectEditMenuButton:(UIButton *)editMenuButton{
-    
-    editMenuButton.selected = !editMenuButton.selected;
-    
+        
     CGFloat angle = editMenuButton.selected ? M_PI * 0.25 : - M_PI * 0.25;
     //旋转动画
     [UIView animateWithDuration:0.25 animations:^{
