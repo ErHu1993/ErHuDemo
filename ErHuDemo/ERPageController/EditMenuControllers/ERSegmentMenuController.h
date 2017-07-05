@@ -21,6 +21,7 @@
  */
 - (NSMutableArray<NSDictionary *> *)selectedChannelLisInSegmentMenuController:(ERSegmentMenuController *)segmentMenuController;
 
+@optional;
 
 /**
  未选择的频道列表信息

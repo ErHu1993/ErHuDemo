@@ -40,16 +40,15 @@
         [self.displayArray addObject:dic];
     }
     
-    NSArray *undisplayTitlesArry  = @[];
-//  @[@"One",@"One",@"One",@"One"];
+    NSArray *undisplayTitlesArry  = @[@"One",@"One",@"One",@"One"];
     
     self.unDisplayArray = [NSMutableArray arrayWithCapacity:undisplayTitlesArry.count];
     
-    for (int i = (int)displayTitlesArry.count; i < (int)displayTitlesArry.count + undisplayTitlesArry.count; i++) {
+    for (int i = 0; i < undisplayTitlesArry.count; i++) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:undisplayTitlesArry[i] forKey:@"name"];
-        [dic setValue:@(i) forKey:@"tag"];
-        [dic setValue:[[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",displayTitlesArry[i]]) alloc] init] forKey:@"viewController"];
+        [dic setValue:@(i + displayTitlesArry.count + 1) forKey:@"tag"];
+        [dic setValue:[[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",undisplayTitlesArry[i]]) alloc] init] forKey:@"viewController"];
         [self.unDisplayArray addObject:dic];
     }
 
@@ -79,7 +78,7 @@
 }
 
 - (NSMutableArray <NSDictionary *> *)unSelectChannelListInSegmentMenuController:(ERSegmentMenuController *)segmentMenuController{
-    return nil;
+    return self.unDisplayArray;
 }
 
 #pragma mark - ERPageViewControllerDataSource

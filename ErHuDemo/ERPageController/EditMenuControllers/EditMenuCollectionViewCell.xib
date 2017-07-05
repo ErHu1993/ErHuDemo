@@ -21,6 +21,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWr-E6-IB1">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <color key="backgroundColor" red="0.98352533580000001" green="0.84659212829999997" blue="0.84112328290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="Button"/>
                     </button>
                 </subviews>

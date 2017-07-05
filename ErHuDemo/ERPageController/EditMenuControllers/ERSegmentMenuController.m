@@ -12,7 +12,11 @@
 
 static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewCell";
 
-@interface ERSegmentMenuController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface ERSegmentMenuController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+/** 选中标签组头 */
+@property (nonatomic, strong) UILabel *selectHeaderLabel;
+/** 未中标签组头 */
+@property (nonatomic, strong) UILabel *unselectHeaderLabel;
 /** 选中的标签列表 */
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *selectedChannelList;
 /** 未选中的标签列表 */
@@ -24,6 +28,7 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
 @end
 
 @implementation ERSegmentMenuController
+
 
 
 - (void)viewDidLoad {
@@ -68,10 +73,10 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
     
     if (indexPath.section == 0 ) {
         //选中的列表
-        [cell.channelButton setTitle:[self.selectedChannelList[indexPath.row] objectForKey:@"name"] forState:UIControlStateNormal];
+        [cell.channelButton setTitle:[NSString stringWithFormat:@"%@ %@",[self.selectedChannelList[indexPath.row] objectForKey:@"name"],[self.selectedChannelList[indexPath.row] objectForKey:@"tag"]] forState:UIControlStateNormal];
     }else{
         //未选中的列表
-        [cell.channelButton setTitle:[self.unSelectChannelList[indexPath.row] objectForKey:@"name"] forState:UIControlStateNormal];
+         [cell.channelButton setTitle:[NSString stringWithFormat:@"%@ %@",[self.unSelectChannelList[indexPath.row] objectForKey:@"name"],[self.unSelectChannelList[indexPath.row] objectForKey:@"tag"]] forState:UIControlStateNormal];
     }
     
     // 在每个cell下面生成一个虚线的框框
@@ -82,6 +87,29 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
     //        [collectionView insertSubview:placeholderBtn atIndex:0];
     return cell;
 }
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeader" forIndexPath:indexPath];
+    if (indexPath.section) {
+        self.unselectHeaderLabel.text = @"点击添加标签";
+        if (!self.unselectHeaderLabel.superview) [header addSubview:self.unselectHeaderLabel];
+    }else{
+        self.selectHeaderLabel.text = @"长按排序";
+        if (!self.selectHeaderLabel.superview) [header addSubview:self.selectHeaderLabel];
+    }
+    return header;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    if (section) {
+        //未选中组
+        return CGSizeMake(CGRectGetWidth(self.view.frame), 15);
+    }
+    //选中组
+    return CGSizeMake(CGRectGetWidth(self.view.frame), 15 + 20);
+}
+
 
 #pragma mark LXReorderableCollectionViewDataSource
 
@@ -121,10 +149,10 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
 - (UICollectionView *)collectionView{
     if (!_collectionView) {
         
-        LXReorderableCollectionViewFlowLayout *flowLayout = [LXReorderableCollectionViewFlowLayout new];
+        LXReorderableCollectionViewFlowLayout *flowLayout = [[LXReorderableCollectionViewFlowLayout alloc] init];
         // 设置cell的大小和细节,每排4个
         CGFloat margin = 20.0;
-        CGFloat width  = ([UIScreen mainScreen].bounds.size.width - margin * 5) / 4.f;
+        CGFloat width  = (CGRectGetWidth(self.view.frame) - margin * 5) / 4.f;
         CGFloat height = width * 3.f / 7.f;
         flowLayout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin);
         flowLayout.itemSize = CGSizeMake(width, height);
@@ -132,13 +160,34 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
         flowLayout.minimumLineSpacing = 20;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-        _collectionView.backgroundColor = [UIColor redColor];
+        _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         [_collectionView registerNib:[UINib nibWithNibName:@"EditMenuCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
+        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeader"];
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
+}
+
+#pragma mark - getter/setter
+
+- (UILabel *)selectHeaderLabel{
+    if (!_selectHeaderLabel) {
+        _selectHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, CGRectGetWidth(self.view.frame), 15)];
+        _selectHeaderLabel.font = [UIFont systemFontOfSize:12];
+        _selectHeaderLabel.textColor = [UIColor blackColor];
+    }
+    return _selectHeaderLabel;
+}
+
+- (UILabel *)unselectHeaderLabel{
+    if (!_unselectHeaderLabel) {
+        _unselectHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, CGRectGetWidth(self.view.frame), 15)];
+        _unselectHeaderLabel.font = [UIFont systemFontOfSize:12];
+        _unselectHeaderLabel.textColor = [UIColor blackColor];
+    }
+    return _unselectHeaderLabel;
 }
 
 - (void)didReceiveMemoryWarning {
