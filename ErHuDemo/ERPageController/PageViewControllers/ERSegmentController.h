@@ -7,6 +7,7 @@
 //
 
 #import "ERPageViewController.h"
+#import "ERSegmentMenuController.h"
 
 @class ERSegmentController;
 
@@ -21,7 +22,6 @@
  @param indexPath indexPath
  */
 - (void)segmentController:(ERSegmentController *)segmentController didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
-
 
 /**
  导航菜单编辑按钮点击回调
@@ -52,9 +52,8 @@
 @interface ERSegmentController : ERPageViewController
 
 @property (nonatomic, weak) id<ERSegmentControllerDelegte>delegate;
-
-/** 编辑按钮 */
-@property (nonatomic, strong) UIButton *editMenuButton;
+/** 是否展示编辑菜单按钮 */
+@property (nonatomic, weak) id<ERSegmentMenuControllerDataSource> menuDataSource;
 /** 编辑菜单图片(这里在editMenuButton上又覆盖一层imageView是为了让阴影和旋转分开,用不同的视图表示) */
 @property (nonatomic, strong) UIImageView *editMenuIconIgV;
 /** 底部横线高度 */
@@ -71,4 +70,5 @@
 @property (nonatomic, strong) UIColor *selectedTextColor;
 /** item直接的行间距 */
 @property (nonatomic, assign) NSInteger itemMinimumSpace;
+
 @end

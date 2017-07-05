@@ -8,11 +8,10 @@
 
 #import "ERSegmentController.h"
 #import "ERSegmentCollectionViewCell.h"
-#import "ERSegmentMenuController.h"
 
 static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 
-@interface ERSegmentController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+@interface ERSegmentController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,ERSegmentMenuControllerDelegate>
 
 /** "导航"条 */
 @property (nonatomic, strong) UICollectionView *segCollectionView;
@@ -26,8 +25,12 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 @property (nonatomic, assign) CGFloat selectFontScale;
 /** 是否是点击item触发的滚动 */
 @property (nonatomic, assign) BOOL isTapItemToScroll;
+/** 编辑按钮 */
+@property (nonatomic, strong) UIButton *editMenuButton;
 /** 菜单控制器 */
 @property (nonatomic, strong) ERSegmentMenuController *menuController;
+/** 是否展示编辑菜单按钮 */
+@property (nonatomic, assign) BOOL showEditMenuButton;
 @end
 
 @implementation ERSegmentController
@@ -40,6 +43,8 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
 #pragma mark - 初始化属性配置
 - (void)configirePropertys{
     
+    self.showEditMenuButton = false;
+    
     self.progressWidth = 20;
     self.progressHeight = 2;
     self.itemMinimumSpace = 5;
@@ -51,6 +56,11 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     
     self.normalTextColor = [UIColor blackColor];
     self.selectedTextColor = [UIColor redColor];
+}
+
+- (void)reloadData{
+    [self.segCollectionView reloadData];
+    [self reloadPageData];
 }
 
 #pragma mark - 编辑菜单点击事件
@@ -75,8 +85,9 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     self.segCollectionView.userInteractionEnabled = false;
     
     [UIView animateWithDuration:0.25 animations:^{
-        self.menuController.view.frame = CGRectMake(0, self.view.frame.origin.y + self.segmentHeight, self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - self.view.frame.origin.y - self.segmentHeight);
+        self.menuController.view.frame = CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMaxY(self.segCollectionView.frame), self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - CGRectGetMaxY(self.segCollectionView.frame));
         [self.menuController.view layoutIfNeeded];
+        
     } completion:^(BOOL finished) {
         self.tabBarController.tabBar.hidden = YES;
     }];
@@ -87,7 +98,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     self.segCollectionView.userInteractionEnabled = true;;
     
     [UIView animateWithDuration:0.25 animations:^{
-        self.menuController.view.frame = CGRectMake(0, self.view.frame.origin.y + self.segmentHeight, self.view.frame.size.width, 0);
+        self.menuController.view.frame = CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMaxY(self.segCollectionView.frame), self.view.frame.size.width, 0);
         [self.menuController.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         self.tabBarController.tabBar.hidden = false;
@@ -175,6 +186,12 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     if (scrollView == self.contentScrollerView) {
         self.beginOffsetX = scrollView.contentOffset.x;
     }
+}
+
+#pragma mark - ERSegmentMenuControllerDelegate
+
+- (void)displayChannelListDidChange{
+    [self reloadData];
 }
 
 #pragma mark - Item 渐变滚动动画
@@ -416,22 +433,39 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     [super viewWillLayoutSubviews];
     
     if (CGRectEqualToRect(self.segCollectionView.frame, CGRectZero)) {
-        self.segCollectionView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - self.segmentHeight, self.segmentHeight);
-        self.editMenuButton.frame = CGRectMake(CGRectGetMaxX(self.segCollectionView.frame), 0, self.segmentHeight, self.segmentHeight);
-        self.editMenuIconIgV.frame = CGRectMake(self.segmentHeight / 4, self.segmentHeight / 4, self.segmentHeight / 2, self.segmentHeight/ 2);
+        
+        self.editMenuButton.frame = CGRectMake(self.showEditMenuButton ? CGRectGetMaxX(self.view.frame) - self.segmentHeight : CGRectGetMaxX(self.view.frame), 0, self.showEditMenuButton ? self.segmentHeight : 0, self.segmentHeight);
+        
+        self.segCollectionView.frame = CGRectMake(0, 0,CGRectGetMinX(self.editMenuButton.frame), self.segmentHeight);
+        
         [self scrollViewDidScroll:self.contentScrollerView];
-        [self menuController];
+        
+        if (self.showEditMenuButton) {
+            self.editMenuIconIgV.frame = CGRectMake(self.segmentHeight / 4, self.segmentHeight / 4, self.segmentHeight / 2, self.segmentHeight/ 2);
+        }
     }
 }
 
 #pragma mark - getter/setter
 
+- (void)setMenuDataSource:(id<ERSegmentMenuControllerDataSource>)menuDataSource{
+    if (self.menuController.dataSource != menuDataSource) {
+        self.menuController.dataSource = menuDataSource;
+        if (self.menuController.dataSource) {
+            self.showEditMenuButton = true;
+        }
+    }
+}
+
 - (ERSegmentMenuController *)menuController{
     if (!_menuController) {
         _menuController = [[ERSegmentMenuController alloc] init];
-        _menuController.view.frame = CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMinY(self.view.frame) + self.segmentHeight, CGRectGetWidth(self.view.frame), 0);
+        _menuController.view.frame = CGRectMake(CGRectGetMinX(self.view.frame), self.segmentHeight, CGRectGetWidth(self.view.frame), 0);
+        _menuController.dataSource = self.menuDataSource;
+        _menuController.delegate = self;
         [_menuController.view layoutIfNeeded];
-        [self.view.superview addSubview:_menuController.view];
+        [self addChildViewController:_menuController];
+        [self.view addSubview:_menuController.view];
     }
     return _menuController;
 }

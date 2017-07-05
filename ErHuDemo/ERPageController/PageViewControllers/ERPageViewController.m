@@ -30,6 +30,7 @@
  添加子视图控制器
  */
 - (void)initializeSubViews{
+    
     [self.visiblecontrollers removeAllObjects];
     self.countOfControllers = [self.dataSource numberOfControllersInPageViewController:self];
     for (int i = 0; i < self.countOfControllers; i++) {
@@ -42,7 +43,7 @@
 /**
  刷新子视图
  */
-- (void)reloadData{
+- (void)reloadPageData{
     [self initializeSubViews];
 }
 

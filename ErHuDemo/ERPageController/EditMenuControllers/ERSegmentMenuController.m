@@ -13,41 +13,66 @@
 static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewCell";
 
 @interface ERSegmentMenuController ()<UICollectionViewDelegate,UICollectionViewDataSource>
-/** 所有的标签列表 */
-@property (nonatomic, strong) NSArray *channelList;
+/** 选中的标签列表 */
+@property (nonatomic, strong) NSMutableArray<NSDictionary *> *selectedChannelList;
+/** 未选中的标签列表 */
+@property (nonatomic, strong) NSMutableArray<NSDictionary *> *unSelectChannelList;
 /** 布局视图 */
 @property (nonatomic, strong) UICollectionView *collectionView;
-
+/** 正在排序 */
+@property (nonatomic, assign) BOOL isSorting;
 @end
 
 @implementation ERSegmentMenuController
-
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super init]) {
-        self.view.frame = frame;
-        self.collectionView.frame = self.view.bounds;
-    }
-    return self;
-}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self reloadData];
+}
+
+- (void)reloadData{
+    self.selectedChannelList = [self.dataSource selectedChannelLisInSegmentMenuController:self];
+    self.unSelectChannelList = [self.dataSource unSelectChannelListInSegmentMenuController:self];
+    [self.collectionView reloadData];
+}
+
 #pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    if (self.isSorting) {
+        return 1;
+    }else{
+        return (self.selectedChannelList.count && self.unSelectChannelList.count) ? 2 : (self.selectedChannelList.count || self.unSelectChannelList.count);
+    }
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.channelList.count;
+    if (self.isSorting) {
+        return self.selectedChannelList.count;
+    }else if (section == 0){
+        return self.selectedChannelList.count;
+    }else{
+        return self.unSelectChannelList.count;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     EditMenuCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
     
-    
-    [cell.channelButton setTitle:self.channelList[indexPath.row] forState:UIControlStateNormal];
+    if (indexPath.section == 0 ) {
+        //选中的列表
+        [cell.channelButton setTitle:[self.selectedChannelList[indexPath.row] objectForKey:@"name"] forState:UIControlStateNormal];
+    }else{
+        //未选中的列表
+        [cell.channelButton setTitle:[self.unSelectChannelList[indexPath.row] objectForKey:@"name"] forState:UIControlStateNormal];
+    }
     
     // 在每个cell下面生成一个虚线的框框
     //        UIButton *placeholderBtn = [[UIButton alloc] initWithFrame:cell.frame];
@@ -60,23 +85,31 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
 
 #pragma mark LXReorderableCollectionViewDataSource
 
-- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath{
     NSLog(@"willMoveToIndexPath : %ld",toIndexPath.item);
+    NSDictionary *dic = self.selectedChannelList[fromIndexPath.item];
+    [self.selectedChannelList removeObjectAtIndex:fromIndexPath.row];
+    [self.selectedChannelList insertObject:dic atIndex:toIndexPath.row];
+    if (self.delegate) {
+        [self.delegate displayChannelListDidChange];
+    }
 }
 
-- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath{
     NSLog(@"didMoveToIndexPath: %ld",toIndexPath.item);
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section) return false;
     return YES;
 }
-- (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath
-{
+- (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath{
+    if (toIndexPath.section) return false;
     return YES;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath{
+    self.isSorting = true;
 }
 
 - (void)viewWillLayoutSubviews{
@@ -93,7 +126,7 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
         CGFloat margin = 20.0;
         CGFloat width  = ([UIScreen mainScreen].bounds.size.width - margin * 5) / 4.f;
         CGFloat height = width * 3.f / 7.f;
-        flowLayout.sectionInset = UIEdgeInsetsMake(5, margin, 10, margin);
+        flowLayout.sectionInset = UIEdgeInsetsMake(margin, margin, margin, margin);
         flowLayout.itemSize = CGSizeMake(width, height);
         flowLayout.minimumInteritemSpacing = margin;
         flowLayout.minimumLineSpacing = 20;
@@ -106,13 +139,6 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
-}
-
-- (NSArray *)channelList{
-    if (!_channelList) {
-        _channelList = @[@"One",@"Two",@"Four",@"Three",@"One",@"One",@"Two",@"Four",@"Three",@"One",@"Three"];
-    }
-    return _channelList;
 }
 
 - (void)didReceiveMemoryWarning {

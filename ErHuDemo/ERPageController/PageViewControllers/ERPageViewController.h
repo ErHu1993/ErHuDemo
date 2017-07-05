@@ -62,7 +62,7 @@
 /**
  刷新子视图
  */
-- (void)reloadData;
+- (void)reloadPageData;
 
 
 /**

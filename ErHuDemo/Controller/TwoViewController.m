@@ -11,11 +11,11 @@
 #import "ERSegmentController.h"
 #import "ERSegmentCollectionViewCell.h"
 
-@interface TwoViewController ()<ERPageViewControllerDataSource,ERSegmentControllerDelegte>
+@interface TwoViewController ()<ERPageViewControllerDataSource,ERSegmentControllerDelegte,ERSegmentMenuControllerDataSource>
 
-@property (nonatomic, strong) NSMutableArray <UIViewController *>*childVCArray;
+@property (nonatomic, strong) NSMutableArray <NSDictionary *> *displayArray;
 
-@property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) NSMutableArray <NSDictionary *> *unDisplayArray;
 
 @end
 
@@ -27,11 +27,30 @@
     
     self.automaticallyAdjustsScrollViewInsets = false;
     
-    self.titleArray = @[@"One",@"Two",@"Four",@"Three",@"One",@"One",@"Two",@"Four",@"Three",@"One",@"Three"];
     
-    for (NSString *className in self.titleArray) {
-        UIViewController *vc = [[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",className]) alloc] init];
-        [self.childVCArray addObject:vc];
+    NSArray *displayTitlesArry  = @[@"Two",@"Two",@"Two",@"Two",@"Four",@"Four",@"Four",@"Four",@"Three",@"Three",@"Three"];
+    
+    self.displayArray = [NSMutableArray arrayWithCapacity:displayTitlesArry.count];
+    
+    for (int i = 0; i < displayTitlesArry.count; i++) {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setValue:displayTitlesArry[i] forKey:@"name"];
+        [dic setValue:@(i) forKey:@"tag"];
+        [dic setValue:[[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",displayTitlesArry[i]]) alloc] init] forKey:@"viewController"];
+        [self.displayArray addObject:dic];
+    }
+    
+    NSArray *undisplayTitlesArry  = @[];
+//  @[@"One",@"One",@"One",@"One"];
+    
+    self.unDisplayArray = [NSMutableArray arrayWithCapacity:undisplayTitlesArry.count];
+    
+    for (int i = (int)displayTitlesArry.count; i < (int)displayTitlesArry.count + undisplayTitlesArry.count; i++) {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setValue:undisplayTitlesArry[i] forKey:@"name"];
+        [dic setValue:@(i) forKey:@"tag"];
+        [dic setValue:[[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",displayTitlesArry[i]]) alloc] init] forKey:@"viewController"];
+        [self.unDisplayArray addObject:dic];
     }
 
     ERSegmentController *pageVC = [[ERSegmentController alloc] init];
@@ -40,28 +59,41 @@
     pageVC.progressWidth = 15;
     pageVC.progressHeight = 1;
     pageVC.itemMinimumSpace = 10;
+    pageVC.editMenuIconIgV.image = [UIImage imageNamed:@"editButtonImage"];
     pageVC.normalTextFont = [UIFont systemFontOfSize:12];
     pageVC.selectedTextFont = [UIFont systemFontOfSize:16];
     pageVC.normalTextColor = [UIColor blackColor];
     pageVC.selectedTextColor = [UIColor redColor];
     pageVC.dataSource = self;
+    pageVC.menuDataSource = self;
     pageVC.delegate = self;
     [self.view addSubview:pageVC.view];
     [self addChildViewController:pageVC];
 }
 
+#pragma mark - ERSegmentMenuControllerDataSource
+
+- (NSMutableArray <NSDictionary *> *)selectedChannelLisInSegmentMenuController:(ERSegmentMenuController *)segmentMenuController{
+    
+    return self.displayArray;
+}
+
+- (NSMutableArray <NSDictionary *> *)unSelectChannelListInSegmentMenuController:(ERSegmentMenuController *)segmentMenuController{
+    return nil;
+}
+
 #pragma mark - ERPageViewControllerDataSource
 
 - (NSInteger)numberOfControllersInPageViewController:(ERPageViewController *)pageViewController{
-    return self.childVCArray.count;
+    return self.displayArray.count;
 }
 
 - (UIViewController *)pageViewController:(ERPageViewController *)pageViewController childControllerAtIndex:(NSInteger)index{
-    return self.childVCArray[index];
+    return [self.displayArray[index] valueForKey:@"viewController"];
 }
 
 - (NSString *)pageViewController:(ERPageViewController *)pageViewController titleForChildControllerAtIndex:(NSInteger)index{
-    return [NSString stringWithFormat:@"%@", self.titleArray[index]];
+    return [NSString stringWithFormat:@"%@", [self.displayArray[index] valueForKey:@"name"]];
 }
 
 #pragma mark - ERSegmentControllerDelegte
@@ -76,29 +108,21 @@
 }
 
 - (void)segmentController:(ERSegmentController *)segmentController didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    UIViewController *currentVC = self.childVCArray[indexPath.item];
+    UIViewController *currentVC = [self.displayArray[indexPath.item] valueForKey:@"viewController"];
     NSLog(@"currentVC: %@ , index : %ld",currentVC,indexPath.item);
 }
 
 - (void)segmentController:(ERSegmentController *)segmentController itemDoubleClickAtIndexPath:(NSIndexPath *)indexPath{
-    UIViewController *currentVC = self.childVCArray[indexPath.item];
+    UIViewController *currentVC = [self.displayArray[indexPath.item] valueForKey:@"viewController"];
     NSLog(@"双击了,可刷新 currentVC: %@ , index : %ld",currentVC,indexPath.item);
 }
 
 - (void)pageControllerDidScroll:(ERPageViewController *)pageController fromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex{
-    UIViewController *currentVC = self.childVCArray[toIndex];
+    UIViewController *currentVC = [self.displayArray[toIndex] valueForKey:@"viewController"];
     NSLog(@"滚动切换 完成 currentVC: %@ , fromIndex : %ld  toindex : %ld",currentVC,fromIndex,toIndex);
 }
 
 #pragma mark - getter/setter
-
-- (NSMutableArray <UIViewController *>*)childVCArray{
-    if (!_childVCArray) {
-        _childVCArray = [[NSMutableArray alloc] init];
-    }
-    return _childVCArray;
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
