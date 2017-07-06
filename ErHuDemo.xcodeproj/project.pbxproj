@@ -43,6 +43,7 @@
 		D886C5601F00AF4E00548C01 /* PhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C55E1F00AF4E00548C01 /* PhotoPickerCell.m */; };
 		D886C5611F00AF4E00548C01 /* PhotoPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D886C55F1F00AF4E00548C01 /* PhotoPickerCell.xib */; };
 		D886C5641F00E40300548C01 /* PHAsset+EHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */; };
+		D88F7F8D1F0DC57300D3E582 /* SectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D88F7F8C1F0DC57300D3E582 /* SectionHeader.m */; };
 		D8F755021F0B700C008459D1 /* ERPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FA1F0B700C008459D1 /* ERPageViewController.m */; };
 		D8F755031F0B700C008459D1 /* ERSegmentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FC1F0B700C008459D1 /* ERSegmentCollectionViewCell.m */; };
 		D8F755041F0B700C008459D1 /* ERSegmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F754FD1F0B700C008459D1 /* ERSegmentCollectionViewCell.xib */; };
@@ -52,6 +53,17 @@
 		D8F755111F0B76C8008459D1 /* EditMenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F7550F1F0B76C8008459D1 /* EditMenuCollectionViewCell.xib */; };
 		D8F755141F0B7A46008459D1 /* ERSegmentMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F755131F0B7A46008459D1 /* ERSegmentMenuController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		D881B00A1F0CE0A700B11C6C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		D86A4AFE1EE00F5A00B7BF22 /* PBXContainerItemProxy */ = {
@@ -142,6 +154,8 @@
 		D886C55F1F00AF4E00548C01 /* PhotoPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoPickerCell.xib; sourceTree = "<group>"; };
 		D886C5621F00E40300548C01 /* PHAsset+EHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+EHCategory.h"; sourceTree = "<group>"; };
 		D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+EHCategory.m"; sourceTree = "<group>"; };
+		D88F7F8B1F0DC57300D3E582 /* SectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeader.h; sourceTree = "<group>"; };
+		D88F7F8C1F0DC57300D3E582 /* SectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeader.m; sourceTree = "<group>"; };
 		D8F754F91F0B700C008459D1 /* ERPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERPageViewController.h; sourceTree = "<group>"; };
 		D8F754FA1F0B700C008459D1 /* ERPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERPageViewController.m; sourceTree = "<group>"; };
 		D8F754FB1F0B700C008459D1 /* ERSegmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentCollectionViewCell.h; sourceTree = "<group>"; };
@@ -406,6 +420,8 @@
 				D8F755131F0B7A46008459D1 /* ERSegmentMenuController.m */,
 				D8F7550A1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.h */,
 				D8F7550B1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.m */,
+				D88F7F8B1F0DC57300D3E582 /* SectionHeader.h */,
+				D88F7F8C1F0DC57300D3E582 /* SectionHeader.m */,
 				D8F7550D1F0B76C8008459D1 /* EditMenuCollectionViewCell.h */,
 				D8F7550E1F0B76C8008459D1 /* EditMenuCollectionViewCell.m */,
 				D8F7550F1F0B76C8008459D1 /* EditMenuCollectionViewCell.xib */,
@@ -442,6 +458,7 @@
 				A3534ED06E437ECAE46E008D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
+				D881B00A1F0CE0A700B11C6C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -643,6 +660,7 @@
 				D8060D661F0229300011BA25 /* PageOneViewController.m in Sources */,
 				D8F755141F0B7A46008459D1 /* ERSegmentMenuController.m in Sources */,
 				D83F94C31EE4EDEE00EB9ACB /* HandPaintViewController.m in Sources */,
+				D88F7F8D1F0DC57300D3E582 /* SectionHeader.m in Sources */,
 				D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */,
 				D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */,
 				D86EA1561EE161C800635EA9 /* Stroke.m in Sources */,

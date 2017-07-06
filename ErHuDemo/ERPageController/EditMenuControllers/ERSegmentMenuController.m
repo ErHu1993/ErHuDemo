@@ -9,6 +9,8 @@
 #import "ERSegmentMenuController.h"
 #import "LXReorderableCollectionViewFlowLayout.h"
 #import "EditMenuCollectionViewCell.h"
+#import "SectionHeader.h"
+
 
 static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewCell";
 
@@ -90,13 +92,11 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     
-    UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeader" forIndexPath:indexPath];
-    if (indexPath.section) {
-        self.unselectHeaderLabel.text = @"点击添加标签";
-        if (!self.unselectHeaderLabel.superview) [header addSubview:self.unselectHeaderLabel];
+    SectionHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeader" forIndexPath:indexPath];
+    if (!indexPath.section) {
+        header.titleLabel.text = @"长按排序";
     }else{
-        self.selectHeaderLabel.text = @"长按排序";
-        if (!self.selectHeaderLabel.superview) [header addSubview:self.selectHeaderLabel];
+        header.titleLabel.text = @"点击添加标签";
     }
     return header;
 }
@@ -110,7 +110,6 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
     return CGSizeMake(CGRectGetWidth(self.view.frame), 15 + 20);
 }
 
-
 #pragma mark LXReorderableCollectionViewDataSource
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath{
@@ -118,9 +117,7 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
     NSDictionary *dic = self.selectedChannelList[fromIndexPath.item];
     [self.selectedChannelList removeObjectAtIndex:fromIndexPath.row];
     [self.selectedChannelList insertObject:dic atIndex:toIndexPath.row];
-    if (self.delegate) {
-        [self.delegate displayChannelListDidChange];
-    }
+    [self.delegate displayChannelListDidChange];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath{
@@ -138,6 +135,16 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath{
     self.isSorting = true;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section) {
+        NSDictionary *dic = self.unSelectChannelList[indexPath.row];
+        [self.unSelectChannelList removeObjectAtIndex:indexPath.row];
+        [self.selectedChannelList addObject:dic];
+        [self.delegate displayChannelListDidChange];
+        [self reloadData];
+    }
 }
 
 - (void)viewWillLayoutSubviews{
@@ -164,7 +171,7 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         [_collectionView registerNib:[UINib nibWithNibName:@"EditMenuCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:CollectionViewCellIdentifier];
-        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeader"];
+        [_collectionView registerClass:[SectionHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeader"];
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
