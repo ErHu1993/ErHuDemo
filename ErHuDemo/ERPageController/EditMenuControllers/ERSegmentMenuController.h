@@ -47,6 +47,4 @@
 
 @property (nonatomic, weak) id<ERSegmentMenuControllerDelegate> delegate;
 
-- (void)reloadData;
-
 @end

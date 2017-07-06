@@ -44,6 +44,9 @@
 		D886C5611F00AF4E00548C01 /* PhotoPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D886C55F1F00AF4E00548C01 /* PhotoPickerCell.xib */; };
 		D886C5641F00E40300548C01 /* PHAsset+EHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */; };
 		D88F7F8D1F0DC57300D3E582 /* SectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D88F7F8C1F0DC57300D3E582 /* SectionHeader.m */; };
+		D88F7F931F0DC79700D3E582 /* WKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88F7F921F0DC79700D3E582 /* WKWebViewController.m */; };
+		D88F7F991F0DCB9F00D3E582 /* ERURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D88F7F981F0DCB9F00D3E582 /* ERURLProtocol.m */; };
+		D88F7F9C1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D88F7F9B1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m */; };
 		D8F755021F0B700C008459D1 /* ERPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FA1F0B700C008459D1 /* ERPageViewController.m */; };
 		D8F755031F0B700C008459D1 /* ERSegmentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FC1F0B700C008459D1 /* ERSegmentCollectionViewCell.m */; };
 		D8F755041F0B700C008459D1 /* ERSegmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F754FD1F0B700C008459D1 /* ERSegmentCollectionViewCell.xib */; };
@@ -156,6 +159,12 @@
 		D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+EHCategory.m"; sourceTree = "<group>"; };
 		D88F7F8B1F0DC57300D3E582 /* SectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeader.h; sourceTree = "<group>"; };
 		D88F7F8C1F0DC57300D3E582 /* SectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeader.m; sourceTree = "<group>"; };
+		D88F7F911F0DC79700D3E582 /* WKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewController.h; sourceTree = "<group>"; };
+		D88F7F921F0DC79700D3E582 /* WKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewController.m; sourceTree = "<group>"; };
+		D88F7F971F0DCB9F00D3E582 /* ERURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERURLProtocol.h; sourceTree = "<group>"; };
+		D88F7F981F0DCB9F00D3E582 /* ERURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERURLProtocol.m; sourceTree = "<group>"; };
+		D88F7F9A1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol+WebKitSupport.h"; sourceTree = "<group>"; };
+		D88F7F9B1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtocol+WebKitSupport.m"; sourceTree = "<group>"; };
 		D8F754F91F0B700C008459D1 /* ERPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERPageViewController.h; sourceTree = "<group>"; };
 		D8F754FA1F0B700C008459D1 /* ERPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERPageViewController.m; sourceTree = "<group>"; };
 		D8F754FB1F0B700C008459D1 /* ERSegmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentCollectionViewCell.h; sourceTree = "<group>"; };
@@ -252,6 +261,8 @@
 				D83F94C91EE4F49900EB9ACB /* VideoRecordingViewController.m */,
 				D830C5C21EF2647200C87E8A /* InputMenuViewController.h */,
 				D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */,
+				D88F7F911F0DC79700D3E582 /* WKWebViewController.h */,
+				D88F7F921F0DC79700D3E582 /* WKWebViewController.m */,
 			);
 			name = "TabBarViewControllers[0]";
 			sourceTree = "<group>";
@@ -316,6 +327,10 @@
 				D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */,
 				D886C5571F00A01C00548C01 /* PhotoLibraryService.h */,
 				D886C5581F00A01C00548C01 /* PhotoLibraryService.m */,
+				D88F7F9A1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.h */,
+				D88F7F9B1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m */,
+				D88F7F971F0DCB9F00D3E582 /* ERURLProtocol.h */,
+				D88F7F981F0DCB9F00D3E582 /* ERURLProtocol.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -639,11 +654,14 @@
 				D83F94C41EE4EDEE00EB9ACB /* ViewController.m in Sources */,
 				D886C5601F00AF4E00548C01 /* PhotoPickerCell.m in Sources */,
 				D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */,
+				D88F7F9C1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m in Sources */,
 				D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */,
 				D8079C721EFB697200683B3E /* MultimediaPanelViewController.m in Sources */,
 				D8F755031F0B700C008459D1 /* ERSegmentCollectionViewCell.m in Sources */,
 				D8F755101F0B76C8008459D1 /* EditMenuCollectionViewCell.m in Sources */,
 				D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */,
+				D88F7F991F0DCB9F00D3E582 /* ERURLProtocol.m in Sources */,
+				D88F7F931F0DC79700D3E582 /* WKWebViewController.m in Sources */,
 				D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */,
 				D83239A31EF3679F000A61E4 /* mediaSelectViewController.m in Sources */,
 				D8F7550C1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.m in Sources */,

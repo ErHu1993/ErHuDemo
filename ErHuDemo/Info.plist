@@ -20,6 +20,24 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>qq.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+            </dict>
+            <key>sina.com.cn</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+            </dict>
+        </dict>
+	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>📷</string>
 	<key>NSMicrophoneUsageDescription</key>

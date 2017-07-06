@@ -10,6 +10,7 @@
 #import "HandPaintViewController.h"
 #import "VideoRecordingViewController.h"
 #import "InputMenuViewController.h"
+#import "WKWebViewController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -96,6 +97,15 @@
         InputMenuViewController *inputVC = [[InputMenuViewController alloc] init];
         UINavigationController *inputNav = [[UINavigationController alloc] initWithRootViewController:inputVC];
         [self presentViewController:inputNav animated:YES completion:nil];
+    }else if ([self.dataArray[indexPath.row] isEqualToString:@"Web请求拦截(AJAX,表单)"]){
+        
+        NSString *URLString = @"http://m.baoxianduoduo.com/QybApp/Channel/QuoteFromChannel?c=977FVCD8&t=0&p=a&u=b2086c4b92124da98664926578adcc28&carNumber=%E7%9A%96A41266&carMasterName=%E5%AE%89%E5%BE%BD%E7%9A%96%E9%80%9A%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&carIdentifiedCode=LL3BBADD0CA003251&engineNumber=FC5LAC00369&m=0e2d24619566ece2d02fc06257fe1197";
+        
+        NSString *b = @"http://m.baoxianduoduo.com/QybApp/Channel/QuoteFromChannel?c=977FVCD8&t=0&p=a&u=5299832dd9ab45959b5de72f8a219a46&carNumber=%E7%9A%96AUU410&carMasterName=%E6%B1%AA%E7%AB%B9%E5%8D%8E&carMasterIDNum=340822198901285514&carIdentifiedCode=LBEGCBFCXFX062053&engineNumber=FB343592&m=a479576b9cd627bacce0672c718c581c";
+        NSString *baidu = @"https://www.baidu.com";
+        WKWebViewController *webVC = [[WKWebViewController alloc] initWthUrlString:b title:@"我设置的标题"];
+        UINavigationController *webNav = [[UINavigationController alloc] initWithRootViewController:webVC];
+        [self presentViewController:webNav animated:YES completion:nil];
     }
 }
 
@@ -113,7 +123,7 @@
 
 - (NSArray *)dataArray{
     if (!_dataArray) {
-        _dataArray = @[@"手绘",@"视频录制",@"菜单选项"];
+        _dataArray = @[@"手绘",@"视频录制",@"菜单选项",@"Web请求拦截(AJAX,表单)"];
     }
     return _dataArray;
 }
