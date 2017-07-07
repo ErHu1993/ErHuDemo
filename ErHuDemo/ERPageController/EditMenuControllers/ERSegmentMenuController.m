@@ -17,8 +17,7 @@ static NSString * const CollectionViewCellIdentifier = @"EditMenuCollectionViewC
 @interface ERSegmentMenuController ()<
 UICollectionViewDelegate,
 UICollectionViewDataSource,
-UICollectionViewDelegateFlowLayout,
-EditMenuCollectionViewCellDelegate
+UICollectionViewDelegateFlowLayout
 >
 /** 选中标签组头 */
 @property (nonatomic, strong) UILabel *selectHeaderLabel;
@@ -30,8 +29,6 @@ EditMenuCollectionViewCellDelegate
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *unSelectChannelList;
 /** 布局视图 */
 @property (nonatomic, strong) UICollectionView *collectionView;
-/** 正在排序 */
-@property (nonatomic, assign) BOOL isSorting;
 @end
 
 @implementation ERSegmentMenuController
@@ -54,18 +51,13 @@ EditMenuCollectionViewCellDelegate
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    if (self.isSorting) {
-        return 1;
-    }else{
-        return (self.selectedChannelList.count && self.unSelectChannelList.count) ? 2 : (self.selectedChannelList.count || self.unSelectChannelList.count);
-    }
+    
+    return (self.selectedChannelList.count && self.unSelectChannelList.count) ? 2 : (self.selectedChannelList.count || self.unSelectChannelList.count);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (self.isSorting) {
-        return self.selectedChannelList.count;
-    }else if (section == 0){
+    if (section == 0){
         return self.selectedChannelList.count;
     }else{
         return self.unSelectChannelList.count;
@@ -76,10 +68,6 @@ EditMenuCollectionViewCellDelegate
 {
     EditMenuCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
     
-    cell.indexPath = indexPath;
-    
-    if (!cell.delegate) cell.delegate = self;
-    
     if (indexPath.section == 0 ) {
         //选中的列表
         [cell.channelButton setTitle:[NSString stringWithFormat:@"%@ %@",[self.selectedChannelList[indexPath.row] objectForKey:@"name"],[self.selectedChannelList[indexPath.row] objectForKey:@"tag"]] forState:UIControlStateNormal];
@@ -88,14 +76,8 @@ EditMenuCollectionViewCellDelegate
          [cell.channelButton setTitle:[NSString stringWithFormat:@"%@ %@",[self.unSelectChannelList[indexPath.row] objectForKey:@"name"],[self.unSelectChannelList[indexPath.row] objectForKey:@"tag"]] forState:UIControlStateNormal];
     }
     
-    cell.canEdit = self.isSorting;
-    
-    // 在每个cell下面生成一个虚线的框框
-    //        UIButton *placeholderBtn = [[UIButton alloc] initWithFrame:cell.frame];
-    //        [placeholderBtn setBackgroundImage:[UIImage imageNamed:@"channel_sort_placeholder"] forState:UIControlStateNormal];
-    //        placeholderBtn.width  -= 1;		placeholderBtn.centerX = cell.centerX;
-    //        placeholderBtn.height -= 1;		placeholderBtn.centerY = cell.centerY;
-    //        [collectionView insertSubview:placeholderBtn atIndex:0];
+    NSLog(@"%@",[self.selectedChannelList[indexPath.row] objectForKey:@"tag"]);
+
     return cell;
 }
 
@@ -119,11 +101,14 @@ EditMenuCollectionViewCellDelegate
     return CGSizeMake(CGRectGetWidth(self.view.frame), 15 + 20);
 }
 
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section) {
+        
         NSDictionary *dic = self.unSelectChannelList[indexPath.row];
         
         [self.unSelectChannelList removeObjectAtIndex:indexPath.row];
+        
         if (!self.unSelectChannelList.count) {
             [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:1]];
         }else{
@@ -131,63 +116,78 @@ EditMenuCollectionViewCellDelegate
         }
         
         [self.selectedChannelList addObject:dic];
+        
         [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.selectedChannelList.count - 1 inSection:0]]];
         
-        [self.delegate displayChannelListDidChange];
+    }else{
+
+        if (self.selectedChannelList.count > 1) {
+            
+            NSDictionary *dic = self.selectedChannelList[indexPath.row];
+            
+            [self.selectedChannelList removeObjectAtIndex:indexPath.row];
+            
+            [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:indexPath.row inSection:0]]];
+            
+            [self.unSelectChannelList addObject:dic];
+            
+            if (self.unSelectChannelList.count == 1) {
+                [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:1]];
+            }else{
+                [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.unSelectChannelList.count - 1 inSection:1]]];
+            }
+        }
     }
-}
-
-#pragma mark - EditMenuCollectionViewCellDelegate
-
-/**
- 删除对应Iem
-
- @param indexPath indexPath
- */
-- (void)didSelectDeleteItem:(NSIndexPath *)indexPath{
-    [self.selectedChannelList removeObjectAtIndex:indexPath.row];
-    if (self.selectedChannelList.count < 2) {
-        self.isSorting = false;
-        [self.collectionView reloadData];
-    }
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    
     [self.delegate displayChannelListDidChange];
 }
 
 #pragma mark LXReorderableCollectionViewDataSource
 
-- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath{
-    NSLog(@"willMoveToIndexPath : %ld",toIndexPath.item);
+/**
+ 已经移动到toIndexPath
+
+ @param collectionView collectionView
+ @param fromIndexPath fromIndexPath
+ @param toIndexPath toIndexPath
+ */
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath{
     NSDictionary *dic = self.selectedChannelList[fromIndexPath.item];
     [self.selectedChannelList removeObjectAtIndex:fromIndexPath.row];
     [self.selectedChannelList insertObject:dic atIndex:toIndexPath.row];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    
     [self.delegate displayChannelListDidChange];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath{
-    NSLog(@"didMoveToIndexPath: %ld",toIndexPath.item);
-    [collectionView reloadItemsAtIndexPaths:@[toIndexPath]];
-}
+/**
+ 是否可以移动
 
+ @param collectionView collectionView
+ @param indexPath indexPath
+ @return bool
+ */
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (!self.isSorting && self.selectedChannelList.count > 1) {
-        self.isSorting = true;
-        [self.collectionView reloadData];
-        return false;
-    }
-    if (indexPath.section) return false;
+    if (indexPath.section || self.selectedChannelList.count == 1) return false;
     return YES;
 }
+
+
+/**
+ 是否可以移动到某toIndexPath
+
+ @param collectionView collectionView
+ @param fromIndexPath fromIndexPath
+ @param toIndexPath toIndexPath
+ @return bool
+ */
 - (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath{
-    if (!self.isSorting) return false;
     if (toIndexPath.section) return false;
     return YES;
-}
-
-
-
-- (void)viewWillLayoutSubviews{
-    self.collectionView.frame = self.view.bounds;
 }
 
 #pragma mark - getter/setter
@@ -234,6 +234,12 @@ EditMenuCollectionViewCellDelegate
         _unselectHeaderLabel.textColor = [UIColor blackColor];
     }
     return _unselectHeaderLabel;
+}
+
+#pragma mark - viewWillLayoutSubviews
+
+- (void)viewWillLayoutSubviews{
+    self.collectionView.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning {

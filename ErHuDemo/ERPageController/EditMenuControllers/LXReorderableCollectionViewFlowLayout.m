@@ -300,6 +300,10 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
         case UIGestureRecognizerStateBegan: {
             NSIndexPath *currentIndexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:self.collectionView]];
             
+            if (currentIndexPath == nil) {
+                return;
+            }
+            
             if ([self.dataSource respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:)] &&
                ![self.dataSource collectionView:self.collectionView canMoveItemAtIndexPath:currentIndexPath]) {
                 return;
@@ -331,6 +335,10 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
             
             self.currentViewCenter = self.currentView.center;
             
+            if ([self.delegate respondsToSelector:@selector(collectionView:layout:didBeginDraggingItemAtIndexPath:)]) {
+                  [self.delegate collectionView:self.collectionView layout:self didBeginDraggingItemAtIndexPath:self.selectedItemIndexPath];
+            }
+        
             __weak typeof(self) weakSelf = self;
             [UIView
              animateWithDuration:0.3
@@ -348,10 +356,6 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
                  __strong typeof(self) strongSelf = weakSelf;
                  if (strongSelf) {
                      [highlightedImageView removeFromSuperview];
-                     
-                     if ([strongSelf.delegate respondsToSelector:@selector(collectionView:layout:didBeginDraggingItemAtIndexPath:)]) {
-                         [strongSelf.delegate collectionView:strongSelf.collectionView layout:strongSelf didBeginDraggingItemAtIndexPath:strongSelf.selectedItemIndexPath];
-                     }
                  }
              }];
             

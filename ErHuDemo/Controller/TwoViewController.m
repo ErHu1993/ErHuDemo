@@ -47,7 +47,7 @@
     for (int i = 0; i < undisplayTitlesArry.count; i++) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:undisplayTitlesArry[i] forKey:@"name"];
-        [dic setValue:@(i + displayTitlesArry.count + 1) forKey:@"tag"];
+        [dic setValue:@(i + displayTitlesArry.count) forKey:@"tag"];
         [dic setValue:[[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",undisplayTitlesArry[i]]) alloc] init] forKey:@"viewController"];
         [self.unDisplayArray addObject:dic];
     }
@@ -68,6 +68,7 @@
     pageVC.delegate = self;
     [self.view addSubview:pageVC.view];
     [self addChildViewController:pageVC];
+    
 }
 
 #pragma mark - ERSegmentMenuControllerDataSource
