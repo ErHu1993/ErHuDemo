@@ -9,7 +9,7 @@
 
 ## TabBar[0] :
 ##### 1.手绘功能
-![](http://upload-images.jianshu.io/upload_images/2773241-d175888444283b95.gif?imageMogr2/auto-orient/strip);
+![](http://upload-images.jianshu.io/upload_images/2773241-d175888444283b95.gif?imageMogr2/auto-orient/strip)
 ##### 2.视频录制
 ![](http://upload-images.jianshu.io/upload_images/2773241-40df1494b31dcbec.gif?imageMogr2/auto-orient/strip)
 ##### 3.输入框弹出菜单,预览相册(简易)
