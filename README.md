@@ -15,7 +15,7 @@
 
 ## TabBar[1] :
 ##### 一个带编辑菜单的分页控制器(选择器):
-![gif](http://www.code4app.com/data/attachment/album/201707/07/152251ttr18lfstqskz21q.gif)
+![gif](http://www.code4app.com/data/attachment/forum/201707/07/153006zi63kbnk68ttw74r.gif)
 
 #### 使用方法:
 
