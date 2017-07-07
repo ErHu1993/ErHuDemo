@@ -155,12 +155,6 @@ UICollectionViewDelegateFlowLayout
     NSDictionary *dic = self.selectedChannelList[fromIndexPath.item];
     [self.selectedChannelList removeObjectAtIndex:fromIndexPath.row];
     [self.selectedChannelList insertObject:dic atIndex:toIndexPath.row];
-}
-
-- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-    
     [self.delegate displayChannelListDidChange];
 }
 
@@ -175,7 +169,6 @@ UICollectionViewDelegateFlowLayout
     if (indexPath.section || self.selectedChannelList.count == 1) return false;
     return YES;
 }
-
 
 /**
  是否可以移动到某toIndexPath
