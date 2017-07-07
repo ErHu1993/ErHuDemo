@@ -75,8 +75,6 @@ UICollectionViewDelegateFlowLayout
         //未选中的列表
          [cell.channelButton setTitle:[NSString stringWithFormat:@"%@ %@",[self.unSelectChannelList[indexPath.row] objectForKey:@"name"],[self.unSelectChannelList[indexPath.row] objectForKey:@"tag"]] forState:UIControlStateNormal];
     }
-    
-    NSLog(@"%@",[self.selectedChannelList[indexPath.row] objectForKey:@"tag"]);
 
     return cell;
 }

@@ -58,9 +58,14 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
     self.selectedTextColor = [UIColor redColor];
 }
 
+
+/**
+ 刷新数据
+ */
 - (void)reloadData{
     [self.segCollectionView reloadData];
     [self reloadPageData];
+    [self changeSegmentImmediately];
 }
 
 #pragma mark - 编辑菜单点击事件
@@ -146,6 +151,7 @@ static NSString *segmentCellIdentifier = @"ERSegmentCollectionViewCell";
         }
     }else{
         if ([nowTime timeIntervalSinceDate:self.lastTime] < 0.3) {
+            //判定为双击事件
             if ([self.delegate respondsToSelector:@selector(segmentController:itemDoubleClickAtIndexPath:)]) {
                 [self.delegate segmentController:self itemDoubleClickAtIndexPath:indexPath];
             }
