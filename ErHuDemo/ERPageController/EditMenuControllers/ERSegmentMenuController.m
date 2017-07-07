@@ -19,10 +19,7 @@ UICollectionViewDelegate,
 UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout
 >
-/** 选中标签组头 */
-@property (nonatomic, strong) UILabel *selectHeaderLabel;
-/** 未中标签组头 */
-@property (nonatomic, strong) UILabel *unselectHeaderLabel;
+
 /** 选中的标签列表 */
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *selectedChannelList;
 /** 未选中的标签列表 */
@@ -82,10 +79,16 @@ UICollectionViewDelegateFlowLayout
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     
     SectionHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeader" forIndexPath:indexPath];
-    if (!indexPath.section) {
-        header.titleLabel.text = @"长按排序";
+    
+    if ([self.dataSource respondsToSelector:@selector(segmentMenuController:sectionHeaderLabel:titleForHeaderInSection:)]) {
+        header.titleLabel.text = [self.dataSource segmentMenuController:self sectionHeaderLabel:header.titleLabel titleForHeaderInSection:indexPath.section];
+        return header;
     }else{
-        header.titleLabel.text = @"点击添加标签";
+        if (!indexPath.section) {
+            header.titleLabel.text = @"长按排序";
+        }else{
+            header.titleLabel.text = @"点击添加标签";
+        }
     }
     return header;
 }
@@ -205,26 +208,6 @@ UICollectionViewDelegateFlowLayout
         [self.view addSubview:_collectionView];
     }
     return _collectionView;
-}
-
-#pragma mark - getter/setter
-
-- (UILabel *)selectHeaderLabel{
-    if (!_selectHeaderLabel) {
-        _selectHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, CGRectGetWidth(self.view.frame), 15)];
-        _selectHeaderLabel.font = [UIFont systemFontOfSize:12];
-        _selectHeaderLabel.textColor = [UIColor blackColor];
-    }
-    return _selectHeaderLabel;
-}
-
-- (UILabel *)unselectHeaderLabel{
-    if (!_unselectHeaderLabel) {
-        _unselectHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, CGRectGetWidth(self.view.frame), 15)];
-        _unselectHeaderLabel.font = [UIFont systemFontOfSize:12];
-        _unselectHeaderLabel.textColor = [UIColor blackColor];
-    }
-    return _unselectHeaderLabel;
 }
 
 #pragma mark - viewWillLayoutSubviews

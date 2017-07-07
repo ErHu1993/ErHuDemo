@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class ERSegmentMenuController;
 
 @protocol ERSegmentMenuControllerDataSource <NSObject>
@@ -30,6 +31,17 @@
  @return 可以为nil ,若不为nil则必须为字典型数组(必须包含一个KEY为@"name"的字符串)
  */
 - (NSMutableArray<NSDictionary *> *)unSelectChannelListInSegmentMenuController:(ERSegmentMenuController *)segmentMenuController;
+
+
+/**
+ 每组标题
+
+ @param segmentMenuController segmentMenuController
+ @param sectionHeaderLabel 组头Label
+ @param section section
+ @return title
+ */
+- (NSString *)segmentMenuController:(ERSegmentMenuController *)segmentMenuController sectionHeaderLabel:(UILabel *)sectionHeaderLabel titleForHeaderInSection:(NSInteger)section;
 
 @end
 

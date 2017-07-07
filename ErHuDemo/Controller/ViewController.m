@@ -123,7 +123,7 @@
 
 - (NSArray *)dataArray{
     if (!_dataArray) {
-        _dataArray = @[@"手绘",@"视频录制",@"菜单选项",@"WKWebview监听Protocol请求拦截(AJAX,表单) ~还未完成"];
+        _dataArray = @[@"手绘",@"视频录制",@"菜单选项",@"(未完成)WKWebview监听Protocol请求拦截"];
     }
     return _dataArray;
 }

@@ -7,9 +7,7 @@
 //
 
 #import "TwoViewController.h"
-#import "ERPageViewController.h"
 #import "ERSegmentController.h"
-#import "ERSegmentCollectionViewCell.h"
 
 @interface TwoViewController ()<ERPageViewControllerDataSource,ERSegmentControllerDelegte,ERSegmentMenuControllerDataSource>
 
@@ -27,7 +25,12 @@
     
     self.automaticallyAdjustsScrollViewInsets = false;
     
+    [self prepareData];
     
+    [self addSegmentController];
+}
+
+- (void)prepareData{
     NSArray *displayTitlesArry  = @[@"Two",@"Two",@"Two",@"Two",@"Four",@"Four",@"Four",@"Four",@"Three",@"Three",@"Three"];
     
     self.displayArray = [NSMutableArray arrayWithCapacity:displayTitlesArry.count];
@@ -51,24 +54,25 @@
         [dic setValue:[[NSClassFromString([NSString stringWithFormat:@"Page%@ViewController",undisplayTitlesArry[i]]) alloc] init] forKey:@"viewController"];
         [self.unDisplayArray addObject:dic];
     }
+}
 
-    ERSegmentController *pageVC = [[ERSegmentController alloc] init];
-    pageVC.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
-    pageVC.segmentHeight = 25;
-    pageVC.progressWidth = 15;
-    pageVC.progressHeight = 1;
-    pageVC.itemMinimumSpace = 10;
-    pageVC.editMenuIconIgV.image = [UIImage imageNamed:@"editButtonImage"];
-    pageVC.normalTextFont = [UIFont systemFontOfSize:12];
-    pageVC.selectedTextFont = [UIFont systemFontOfSize:16];
-    pageVC.normalTextColor = [UIColor blackColor];
-    pageVC.selectedTextColor = [UIColor redColor];
-    pageVC.dataSource = self;
-    pageVC.menuDataSource = self;
-    pageVC.delegate = self;
-    [self.view addSubview:pageVC.view];
-    [self addChildViewController:pageVC];
-    
+- (void)addSegmentController{
+    ERSegmentController *pageManager = [[ERSegmentController alloc] init];
+    pageManager.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
+    pageManager.segmentHeight = 25;//导航条高度
+    pageManager.progressWidth = 15;//导航条底横线度宽度
+    pageManager.progressHeight = 1;//导航条底横线高
+    pageManager.itemMinimumSpace = 10;//导航条item直接的间距
+    pageManager.normalTextFont = [UIFont systemFontOfSize:12];//未选中字体大小
+    pageManager.selectedTextFont = [UIFont systemFontOfSize:16];//已选中字体大小
+    pageManager.normalTextColor = [UIColor blackColor];//未选中字体颜色
+    pageManager.selectedTextColor = [UIColor redColor];//已选中字体颜色
+    pageManager.dataSource = self;//页面管理数据源
+    pageManager.menuDataSource = self;//菜单管理数据源, 如果不设置改代理则没有菜单按钮
+    pageManager.editMenuIconIgV.image = [UIImage imageNamed:@"editButtonImage"];//编辑菜单icon
+    pageManager.delegate = self;//相关事件返回代理
+    [self.view addSubview:pageManager.view];
+    [self addChildViewController:pageManager];
 }
 
 #pragma mark - ERSegmentMenuControllerDataSource
@@ -121,8 +125,6 @@
     UIViewController *currentVC = [self.displayArray[toIndex] valueForKey:@"viewController"];
     NSLog(@"滚动切换 完成 currentVC: %@ , fromIndex : %ld  toindex : %ld",currentVC,fromIndex,toIndex);
 }
-
-#pragma mark - getter/setter
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
