@@ -158,6 +158,7 @@ typedef NS_ENUM(NSInteger, WebViewRequestStatus){
             weakSelf.title = title;
         }
     }];
+    
 }
 
 
@@ -174,7 +175,7 @@ typedef NS_ENUM(NSInteger, WebViewRequestStatus){
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
     NSLog(@"navigationType : %ld",navigationAction.navigationType);
     if (navigationAction.navigationType == WKNavigationTypeFormSubmitted || navigationAction.navigationType == WKNavigationTypeFormResubmitted) {
-        NSLog(@"表单提交");
+        NSLog(@"表单提交?");
     }
     return nil;
 }

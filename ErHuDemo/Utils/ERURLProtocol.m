@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSURLConnection *connection;
 
+@property (nonatomic, strong) NSMutableData *data;
+
 @end
 
 static NSString* const URLProtocolHandledKey = @"handelKey";
@@ -90,13 +92,25 @@ static NSString* const URLProtocolHandledKey = @"handelKey";
         NSLog(@"didReceiveResponse: header %@",[httpresponse allHeaderFields]);
     }
     [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    
+    self.data = [[NSMutableData alloc] init];
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    
+    [self.data appendData:data];
+    
     [self.client URLProtocol:self didLoadData:data];
 }
 
+
+
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
+    
+    NSString *jsonStr = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@",jsonStr);
+    
     [self.client URLProtocolDidFinishLoading:self];
 }
 
