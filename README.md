@@ -2,7 +2,7 @@
 # Hello
 ### 这里记录着我在开发中的一些功能模块合集 <br/><br/> 如有问题欢迎 Issues, 如果喜欢记得给个Star ~ ,谢谢你的鼓励 ~
 
-### [这里是我的简书,记录着等多的点滴 ](http://www.jianshu.com/u/4d7d75766c1a)
+### [这里是我的简书,记录着更多的点滴 ](http://www.jianshu.com/u/4d7d75766c1a)
 
 <br/>
 
