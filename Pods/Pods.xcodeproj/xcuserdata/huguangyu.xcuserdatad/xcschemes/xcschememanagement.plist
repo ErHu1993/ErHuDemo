@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ERHandPainting.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ERModuleDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +32,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1B1A1C22E084DED754FC30CC0E7AD832</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>21013ED9BDBEFA13BB62F8CBBFC798DB</key>
+		<key>436751055FC02293EA424D1D13401FDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +42,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>74C8CE2FFBDF5A37DAB46A415A98E678</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D52144DE9D7255DE912490FF5A806573</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE41423164B395A159AD673E1CBE40FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

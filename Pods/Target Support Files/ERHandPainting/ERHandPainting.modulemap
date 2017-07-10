@@ -1,0 +1,6 @@
+framework module ERHandPainting {
+  umbrella header "ERHandPainting-umbrella.h"
+
+  export *
+  module * { export * }
+}

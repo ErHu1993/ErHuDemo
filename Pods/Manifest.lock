@@ -1,18 +1,21 @@
 PODS:
+  - ERHandPainting (1.0.0)
   - ERModuleDemo (1.0.4)
   - Masonry (1.0.2)
   - SDAutoLayout (2.1.8)
 
 DEPENDENCIES:
+  - ERHandPainting (~> 1.0.0)
   - ERModuleDemo
   - Masonry (~> 1.0.2)
   - SDAutoLayout (~> 2.1.8)
 
 SPEC CHECKSUMS:
+  ERHandPainting: 273a2ba5cfe977dfadaec60a42d45e3d7fa9045c
   ERModuleDemo: f6f86969e94abac63141107673508a24bb1e3359
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   SDAutoLayout: 5a4b48d6b8a5172ae8d088d2879e40dd795e6251
 
-PODFILE CHECKSUM: 3066103be902f7f522486e15c3aabe35156733a4
+PODFILE CHECKSUM: 9e41d56044ed8b94bace85216d4be339598d7ffc
 
 COCOAPODS: 1.2.1

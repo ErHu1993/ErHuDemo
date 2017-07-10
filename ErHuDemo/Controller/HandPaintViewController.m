@@ -7,7 +7,7 @@
 //
 
 #import "HandPaintViewController.h"
-#import "HandPaintingImageView.h"
+#import <ERHandPainting/HandPaintingImageView.h>
 
 @interface HandPaintViewController ()<UIScrollViewDelegate>
 
@@ -168,7 +168,7 @@
 
 #pragma mark - getter/setter
 
-- (UIImageView *)paintingImageView {
+- (HandPaintingImageView *)paintingImageView {
     if (!_paintingImageView) {
         UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"WechatIMG" ofType:@"jpeg"]];
         CGSize imageSize = image.size;

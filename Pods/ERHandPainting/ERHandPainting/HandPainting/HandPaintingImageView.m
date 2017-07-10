@@ -216,7 +216,7 @@ __strong nob_defer_block_t nob_macro_concat(__nob_stack_defer_block_, __LINE__) 
     self.currScale = newWidth / width;
     
     [self skipAnimation:^{
-        self.drawLayer.contentsScale = self.abstractScale * ScreenScale;
+        self.drawLayer.contentsScale = self.abstractScale * [UIScreen mainScreen].scale;
         self.drawLayer.position = CGPointMake(CGRectGetMidX(self.imageView.layer.bounds), CGRectGetMidY(self.imageView.layer.bounds));
         self.drawLayer.bounds = CGRectMake(0, 0, newWidth, newHeight);
     }];

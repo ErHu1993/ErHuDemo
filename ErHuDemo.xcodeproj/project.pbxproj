@@ -36,8 +36,6 @@
 		D86A4AF71EE00F5A00B7BF22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86A4AF51EE00F5A00B7BF22 /* LaunchScreen.storyboard */; };
 		D86A4B021EE00F5A00B7BF22 /* ErHuDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4B011EE00F5A00B7BF22 /* ErHuDemoTests.m */; };
 		D86A4B0D1EE00F5A00B7BF22 /* ErHuDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4B0C1EE00F5A00B7BF22 /* ErHuDemoUITests.m */; };
-		D86EA1541EE161C800635EA9 /* HandPaintingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D86EA14F1EE161C800635EA9 /* HandPaintingImageView.m */; };
-		D86EA1561EE161C800635EA9 /* Stroke.m in Sources */ = {isa = PBXBuildFile; fileRef = D86EA1531EE161C800635EA9 /* Stroke.m */; };
 		D86EA1591EE161D100635EA9 /* WechatIMG.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D86EA1581EE161D100635EA9 /* WechatIMG.jpeg */; };
 		D886C5591F00A01C00548C01 /* PhotoLibraryService.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C5581F00A01C00548C01 /* PhotoLibraryService.m */; };
 		D886C5601F00AF4E00548C01 /* PhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D886C55E1F00AF4E00548C01 /* PhotoPickerCell.m */; };
@@ -145,10 +143,6 @@
 		D86A4B081EE00F5A00B7BF22 /* ErHuDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ErHuDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86A4B0C1EE00F5A00B7BF22 /* ErHuDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ErHuDemoUITests.m; sourceTree = "<group>"; };
 		D86A4B0E1EE00F5A00B7BF22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D86EA14E1EE161C800635EA9 /* HandPaintingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandPaintingImageView.h; sourceTree = "<group>"; };
-		D86EA14F1EE161C800635EA9 /* HandPaintingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandPaintingImageView.m; sourceTree = "<group>"; };
-		D86EA1521EE161C800635EA9 /* Stroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stroke.h; sourceTree = "<group>"; };
-		D86EA1531EE161C800635EA9 /* Stroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stroke.m; sourceTree = "<group>"; };
 		D86EA1581EE161D100635EA9 /* WechatIMG.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG.jpeg; sourceTree = "<group>"; };
 		D886C5571F00A01C00548C01 /* PhotoLibraryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLibraryService.h; sourceTree = "<group>"; };
 		D886C5581F00A01C00548C01 /* PhotoLibraryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLibraryService.m; sourceTree = "<group>"; };
@@ -365,7 +359,6 @@
 				D8060D551F02028B0011BA25 /* MainTabBarController.h */,
 				D8060D561F02028B0011BA25 /* MainTabBarController.m */,
 				D83F94BE1EE4EDEE00EB9ACB /* Controller */,
-				D86EA14D1EE161C800635EA9 /* HandPainting */,
 				D83F94CB1EE4F51200EB9ACB /* VideoRecord */,
 				D830C5BC1EF2599F00C87E8A /* InputBar */,
 				D8060D5B1F0207C90011BA25 /* ERPageController */,
@@ -407,17 +400,6 @@
 				D86A4B0E1EE00F5A00B7BF22 /* Info.plist */,
 			);
 			path = ErHuDemoUITests;
-			sourceTree = "<group>";
-		};
-		D86EA14D1EE161C800635EA9 /* HandPainting */ = {
-			isa = PBXGroup;
-			children = (
-				D86EA14E1EE161C800635EA9 /* HandPaintingImageView.h */,
-				D86EA14F1EE161C800635EA9 /* HandPaintingImageView.m */,
-				D86EA1521EE161C800635EA9 /* Stroke.h */,
-				D86EA1531EE161C800635EA9 /* Stroke.m */,
-			);
-			path = HandPainting;
 			sourceTree = "<group>";
 		};
 		D86EA1571EE161D100635EA9 /* Images */ = {
@@ -672,7 +654,6 @@
 				D886C5591F00A01C00548C01 /* PhotoLibraryService.m in Sources */,
 				D8060D5A1F02042A0011BA25 /* TwoViewController.m in Sources */,
 				D83F94CE1EE4F53100EB9ACB /* CircleProgressView.m in Sources */,
-				D86EA1541EE161C800635EA9 /* HandPaintingImageView.m in Sources */,
 				D83F94D11EE4F56D00EB9ACB /* VideoRecordManager.m in Sources */,
 				D8F755021F0B700C008459D1 /* ERPageViewController.m in Sources */,
 				D8060D661F0229300011BA25 /* PageOneViewController.m in Sources */,
@@ -681,7 +662,6 @@
 				D88F7F8D1F0DC57300D3E582 /* SectionHeader.m in Sources */,
 				D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */,
 				D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */,
-				D86EA1561EE161C800635EA9 /* Stroke.m in Sources */,
 				D8060D6C1F0229470011BA25 /* PageThreeViewController.m in Sources */,
 				D886C5641F00E40300548C01 /* PHAsset+EHCategory.m in Sources */,
 				D830C5C81EF264EE00C87E8A /* InputMenuViewController.m in Sources */,
