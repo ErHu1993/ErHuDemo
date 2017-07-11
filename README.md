@@ -18,6 +18,7 @@
 ##### 3.输入框弹出菜单,预览相册(简易)
 ![](http://upload-images.jianshu.io/upload_images/2773241-0438178a10ea5a79.gif?imageMogr2/auto-orient/strip)
 ##### 4.使用NSURLProtocol监听WKWebView请求拦截 ([让 WKWebView 支持 NSURLProtocol](https://blog.yeatse.com/2016/10/26/support-nsurlprotocol-in-wkwebview/))
+##### 5.UISearchController的使用,(编辑状态上移覆盖导航栏位置)
 
 ## TabBar[1] :
 ##### 一个带编辑菜单的分页控制器(选择器):
