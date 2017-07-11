@@ -33,6 +33,7 @@ UISearchBarDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = false;
+    self.definesPresentationContext = YES; 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self setupSubviews];
