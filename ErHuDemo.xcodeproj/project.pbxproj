@@ -45,6 +45,9 @@
 		D88F7F931F0DC79700D3E582 /* WKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88F7F921F0DC79700D3E582 /* WKWebViewController.m */; };
 		D88F7F991F0DCB9F00D3E582 /* ERURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D88F7F981F0DCB9F00D3E582 /* ERURLProtocol.m */; };
 		D88F7F9C1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D88F7F9B1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m */; };
+		D8E722FC1F147C1E00585EFF /* SearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E722FB1F147C1E00585EFF /* SearchBarViewController.m */; };
+		D8E722FF1F149B6100585EFF /* UIColor+ERCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E722FE1F149B6100585EFF /* UIColor+ERCategory.m */; };
+		D8E723021F149BD800585EFF /* UIImage+ERCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E723011F149BD800585EFF /* UIImage+ERCategory.m */; };
 		D8F755021F0B700C008459D1 /* ERPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FA1F0B700C008459D1 /* ERPageViewController.m */; };
 		D8F755031F0B700C008459D1 /* ERSegmentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F754FC1F0B700C008459D1 /* ERSegmentCollectionViewCell.m */; };
 		D8F755041F0B700C008459D1 /* ERSegmentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8F754FD1F0B700C008459D1 /* ERSegmentCollectionViewCell.xib */; };
@@ -159,6 +162,12 @@
 		D88F7F981F0DCB9F00D3E582 /* ERURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERURLProtocol.m; sourceTree = "<group>"; };
 		D88F7F9A1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol+WebKitSupport.h"; sourceTree = "<group>"; };
 		D88F7F9B1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtocol+WebKitSupport.m"; sourceTree = "<group>"; };
+		D8E722FA1F147C1E00585EFF /* SearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewController.h; sourceTree = "<group>"; };
+		D8E722FB1F147C1E00585EFF /* SearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewController.m; sourceTree = "<group>"; };
+		D8E722FD1F149B6100585EFF /* UIColor+ERCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ERCategory.h"; sourceTree = "<group>"; };
+		D8E722FE1F149B6100585EFF /* UIColor+ERCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ERCategory.m"; sourceTree = "<group>"; };
+		D8E723001F149BD800585EFF /* UIImage+ERCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ERCategory.h"; sourceTree = "<group>"; };
+		D8E723011F149BD800585EFF /* UIImage+ERCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ERCategory.m"; sourceTree = "<group>"; };
 		D8F754F91F0B700C008459D1 /* ERPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERPageViewController.h; sourceTree = "<group>"; };
 		D8F754FA1F0B700C008459D1 /* ERPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERPageViewController.m; sourceTree = "<group>"; };
 		D8F754FB1F0B700C008459D1 /* ERSegmentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERSegmentCollectionViewCell.h; sourceTree = "<group>"; };
@@ -257,6 +266,8 @@
 				D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */,
 				D88F7F911F0DC79700D3E582 /* WKWebViewController.h */,
 				D88F7F921F0DC79700D3E582 /* WKWebViewController.m */,
+				D8E722FA1F147C1E00585EFF /* SearchBarViewController.h */,
+				D8E722FB1F147C1E00585EFF /* SearchBarViewController.m */,
 			);
 			name = "TabBarViewControllers[0]";
 			sourceTree = "<group>";
@@ -319,6 +330,10 @@
 				D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */,
 				D886C5621F00E40300548C01 /* PHAsset+EHCategory.h */,
 				D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */,
+				D8E722FD1F149B6100585EFF /* UIColor+ERCategory.h */,
+				D8E722FE1F149B6100585EFF /* UIColor+ERCategory.m */,
+				D8E723001F149BD800585EFF /* UIImage+ERCategory.h */,
+				D8E723011F149BD800585EFF /* UIImage+ERCategory.m */,
 				D886C5571F00A01C00548C01 /* PhotoLibraryService.h */,
 				D886C5581F00A01C00548C01 /* PhotoLibraryService.m */,
 				D88F7F9A1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.h */,
@@ -635,12 +650,14 @@
 				D8F755051F0B700C008459D1 /* ERSegmentController.m in Sources */,
 				D83F94C41EE4EDEE00EB9ACB /* ViewController.m in Sources */,
 				D886C5601F00AF4E00548C01 /* PhotoPickerCell.m in Sources */,
+				D8E723021F149BD800585EFF /* UIImage+ERCategory.m in Sources */,
 				D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */,
 				D88F7F9C1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m in Sources */,
 				D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */,
 				D8079C721EFB697200683B3E /* MultimediaPanelViewController.m in Sources */,
 				D8F755031F0B700C008459D1 /* ERSegmentCollectionViewCell.m in Sources */,
 				D8F755101F0B76C8008459D1 /* EditMenuCollectionViewCell.m in Sources */,
+				D8E722FC1F147C1E00585EFF /* SearchBarViewController.m in Sources */,
 				D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */,
 				D88F7F991F0DCB9F00D3E582 /* ERURLProtocol.m in Sources */,
 				D88F7F931F0DC79700D3E582 /* WKWebViewController.m in Sources */,
@@ -659,6 +676,7 @@
 				D8060D661F0229300011BA25 /* PageOneViewController.m in Sources */,
 				D8F755141F0B7A46008459D1 /* ERSegmentMenuController.m in Sources */,
 				D83F94C31EE4EDEE00EB9ACB /* HandPaintViewController.m in Sources */,
+				D8E722FF1F149B6100585EFF /* UIColor+ERCategory.m in Sources */,
 				D88F7F8D1F0DC57300D3E582 /* SectionHeader.m in Sources */,
 				D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */,
 				D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */,
