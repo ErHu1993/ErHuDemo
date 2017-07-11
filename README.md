@@ -1,6 +1,6 @@
 
 # Hello
-### 这里记录着我在开发中的一些功能模块合集 <br/><br/> 如有问题欢迎 Issues, 如果喜欢记得给个Star ~ ,谢谢你的鼓励 ~
+### 这里记录着我在开发中的一些功能模块合集 <br/><br/> 如有问题欢迎 Issue, 如果喜欢记得给个Star ~ ,谢谢你的鼓励 ~
 
 ### [这里是我的简书,记录着更多的点滴 ](http://www.jianshu.com/u/4d7d75766c1a)
 
@@ -19,6 +19,7 @@
 ![](http://upload-images.jianshu.io/upload_images/2773241-0438178a10ea5a79.gif?imageMogr2/auto-orient/strip)
 ##### 4.使用NSURLProtocol监听WKWebView请求拦截 ([让 WKWebView 支持 NSURLProtocol](https://blog.yeatse.com/2016/10/26/support-nsurlprotocol-in-wkwebview/))
 ##### 5.UISearchController的使用,(编辑状态上移覆盖导航栏位置)
+[简书 - 使用UISearchController所遇到的坑](http://www.jianshu.com/p/ed0e92628dd7)
 
 ## TabBar[1] :
 ##### 一个带编辑菜单的分页控制器(选择器):
