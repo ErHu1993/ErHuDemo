@@ -36,6 +36,8 @@ typedef NS_ENUM(NSInteger, WebViewRequestStatus){
 
 @property (nonatomic, assign) WebViewRequestStatus status;
 
+@property (nonatomic, strong) UITextView *textview;
+
 @end
 
 @implementation WKWebViewController
@@ -77,6 +79,7 @@ typedef NS_ENUM(NSInteger, WebViewRequestStatus){
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:false animated:animated];
+    
 }
 
 
@@ -92,6 +95,10 @@ typedef NS_ENUM(NSInteger, WebViewRequestStatus){
     [backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    
+    [self textview];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textviewChange:) name:@"textviewchange" object:nil];
 }
 
 - (void)backAction{
@@ -113,6 +120,22 @@ typedef NS_ENUM(NSInteger, WebViewRequestStatus){
         [self.view addSubview:_webView];
     }
     return _webView;
+}
+
+- (void)textviewChange:(NSNotification *)notifcation{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.textview.text = [NSString stringWithFormat:@"%@ \n %@",self.textview.text,notifcation.object];
+    });
+}
+
+- (UITextView *)textview{
+    if (!_textview) {
+        _textview = [[UITextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.view.frame) - 150, ScreenWidth, 150)];
+        _textview.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:_textview];
+        [_textview setEditable:false];
+    }
+    return _textview;
 }
 
 - (UIProgressView *)progressView{

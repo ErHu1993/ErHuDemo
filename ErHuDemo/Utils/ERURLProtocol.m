@@ -66,17 +66,48 @@ static NSString* const URLProtocolHandledKey = @"handelKey";
     //打标签，防止无限循环
     [NSURLProtocol setProperty:@YES forKey:URLProtocolHandledKey inRequest:mutableReqeust];
     
+    
     NSLog(@"startLoading : %@",mutableReqeust.URL.absoluteString);
     
-    NSLog(@"请求方式: %@ %@",[mutableReqeust.URL scheme],mutableReqeust.HTTPMethod);
+    NSLog(@"baseURL : %@",mutableReqeust.URL.baseURL);
     
-    if ([mutableReqeust.HTTPMethod isEqualToString:@"POST"]) {
-        NSLog(@"body : %@",mutableReqeust.HTTPBody);
-    }
+    NSLog(@"Host: %@", [mutableReqeust.URL host]);
+    
+    NSLog(@"Port: %@", [mutableReqeust.URL port]);
+    
+    NSLog(@"Path: %@", [mutableReqeust.URL path]);
+    
+    NSLog(@"Relative path: %@", [mutableReqeust.URL relativePath]);
+    
+    NSLog(@"Path components as array: %@", [mutableReqeust.URL pathComponents]);
+    
+    NSLog(@"Parameter string: %@", [mutableReqeust.URL parameterString]);
+    
+    NSLog(@"Query: %@", [mutableReqeust.URL query]);
+    
+    NSLog(@"Fragment: %@", [mutableReqeust.URL fragment]);
+    
+    NSLog(@"User: %@", [mutableReqeust.URL user]);
+    
+    NSLog(@"Password: %@", [mutableReqeust.URL password]);
     
     NSLog(@"header : %@",mutableReqeust.allHTTPHeaderFields);
     
+    NSLog(@"请求方式: %@ %@",[mutableReqeust.URL scheme],mutableReqeust.HTTPMethod);
+    
+    [self outputString:[NSString stringWithFormat:@"startLoading : %@ \n Host : %@ \n Path : %@ \n Path components as array : %@ \n Qurey : %@ \n 请求方式 : %@ %@ \n",mutableReqeust.URL.absoluteString,[mutableReqeust.URL host],[mutableReqeust.URL path],[mutableReqeust.URL pathComponents],[mutableReqeust.URL query],[mutableReqeust.URL scheme],mutableReqeust.HTTPMethod]];
+    
+    if ([mutableReqeust.HTTPMethod isEqualToString:@"POST"]) {
+        NSLog(@"body : %@ \n",mutableReqeust.HTTPBody);
+        [self outputString:[NSString stringWithFormat:@"body : %@ \n \n \n",mutableReqeust.HTTPBody]];
+    }
+    
     self.connection = [NSURLConnection connectionWithRequest:mutableReqeust delegate:self];
+    
+}
+
+- (void)outputString:(NSString *)string{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"textviewchange" object:string];
 }
 
 - (void)stopLoading
@@ -91,6 +122,9 @@ static NSString* const URLProtocolHandledKey = @"handelKey";
     if([httpresponse respondsToSelector:@selector(allHeaderFields)]){
         NSLog(@"didReceiveResponse: header %@",[httpresponse allHeaderFields]);
     }
+    
+    NSLog(@"suggestedFilename : %@",httpresponse.suggestedFilename);
+    
     [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
     
     self.data = [[NSMutableData alloc] init];
@@ -109,7 +143,7 @@ static NSString* const URLProtocolHandledKey = @"handelKey";
     
     NSString *jsonStr = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@",jsonStr);
+//    NSLog(@"%@",jsonStr);
     
     [self.client URLProtocolDidFinishLoading:self];
 }

@@ -98,10 +98,7 @@
         InputMenuViewController *inputVC = [[InputMenuViewController alloc] init];
         UINavigationController *inputNav = [[UINavigationController alloc] initWithRootViewController:inputVC];
         [self presentViewController:inputNav animated:YES completion:nil];
-    }else if ([self.dataArray[indexPath.row] isEqualToString:@"(未完成)WKWebview监听Protocol请求拦截"]){
-        
-//        NSString *URLString = @"http://m.baoxianduoduo.com/QybApp/Channel/QuoteFromChannel?c=977FVCD8&t=0&p=a&u=b2086c4b92124da98664926578adcc28&carNumber=%E7%9A%96A41266&carMasterName=%E5%AE%89%E5%BE%BD%E7%9A%96%E9%80%9A%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&carIdentifiedCode=LL3BBADD0CA003251&engineNumber=FC5LAC00369&m=0e2d24619566ece2d02fc06257fe1197";
-
+    }else if ([self.dataArray[indexPath.row] isEqualToString:@"WKWebview监听Protocol请求拦截"]){
         NSString *baidu = @"https://www.baidu.com";
         WKWebViewController *webVC = [[WKWebViewController alloc] initWthUrlString:baidu title:@"我设置的标题"];
         UINavigationController *webNav = [[UINavigationController alloc] initWithRootViewController:webVC];
@@ -127,7 +124,7 @@
 
 - (NSArray *)dataArray{
     if (!_dataArray) {
-        _dataArray = @[@"手绘",@"视频录制",@"菜单选项",@"(未完成)WKWebview监听Protocol请求拦截",@"UISearchBarController"];
+        _dataArray = @[@"手绘",@"视频录制",@"菜单选项",@"WKWebview监听Protocol请求拦截",@"UISearchBarController"];
     }
     return _dataArray;
 }
