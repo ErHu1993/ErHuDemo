@@ -14,7 +14,6 @@
 		D8060D691F02293A0011BA25 /* PageTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D681F02293A0011BA25 /* PageTwoViewController.m */; };
 		D8060D6C1F0229470011BA25 /* PageThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D6B1F0229470011BA25 /* PageThreeViewController.m */; };
 		D8060D6F1F0229550011BA25 /* PageFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8060D6E1F0229550011BA25 /* PageFourViewController.m */; };
-		D8079C721EFB697200683B3E /* MultimediaPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8079C711EFB697200683B3E /* MultimediaPanelViewController.m */; };
 		D830C5C01EF25A3300C87E8A /* InputBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */; };
 		D830C5C11EF25A3300C87E8A /* InputBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */; };
 		D830C5C81EF264EE00C87E8A /* InputMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D830C5C71EF264EE00C87E8A /* InputMenuViewController.m */; };
@@ -102,8 +101,6 @@
 		D8060D6B1F0229470011BA25 /* PageThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageThreeViewController.m; sourceTree = "<group>"; };
 		D8060D6D1F0229550011BA25 /* PageFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFourViewController.h; sourceTree = "<group>"; };
 		D8060D6E1F0229550011BA25 /* PageFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageFourViewController.m; sourceTree = "<group>"; };
-		D8079C701EFB697200683B3E /* MultimediaPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultimediaPanelViewController.h; sourceTree = "<group>"; };
-		D8079C711EFB697200683B3E /* MultimediaPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultimediaPanelViewController.m; sourceTree = "<group>"; };
 		D830C5BD1EF25A3300C87E8A /* InputBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBarViewController.h; sourceTree = "<group>"; };
 		D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputBarViewController.m; sourceTree = "<group>"; };
 		D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputBarViewController.xib; sourceTree = "<group>"; };
@@ -275,8 +272,6 @@
 		D830C5BC1EF2599F00C87E8A /* InputBar */ = {
 			isa = PBXGroup;
 			children = (
-				D8079C701EFB697200683B3E /* MultimediaPanelViewController.h */,
-				D8079C711EFB697200683B3E /* MultimediaPanelViewController.m */,
 				D830C5BD1EF25A3300C87E8A /* InputBarViewController.h */,
 				D830C5BE1EF25A3300C87E8A /* InputBarViewController.m */,
 				D830C5BF1EF25A3300C87E8A /* InputBarViewController.xib */,
@@ -654,7 +649,6 @@
 				D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */,
 				D88F7F9C1F0DCF7000D3E582 /* NSURLProtocol+WebKitSupport.m in Sources */,
 				D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */,
-				D8079C721EFB697200683B3E /* MultimediaPanelViewController.m in Sources */,
 				D8F755031F0B700C008459D1 /* ERSegmentCollectionViewCell.m in Sources */,
 				D8F755101F0B76C8008459D1 /* EditMenuCollectionViewCell.m in Sources */,
 				D8E722FC1F147C1E00585EFF /* SearchBarViewController.m in Sources */,

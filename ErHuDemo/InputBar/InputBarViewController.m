@@ -73,6 +73,11 @@
         NSDictionary *userInfo = notification.userInfo;
         CGRect endFrame   = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
         NSTimeInterval duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        if (endFrame.origin.y == ScreenHeight) {
+            NSLog(@"回收键盘");
+        }else{
+            NSLog(@"弹出键盘");
+        }
         CGFloat changeHeight =  endFrame.origin.y == ScreenHeight ? 0 : - endFrame.size.height;
         
         [self.view mas_updateConstraints:^(MASConstraintMaker *make) {
