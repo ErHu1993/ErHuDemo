@@ -35,7 +35,7 @@ static NSString *rotationAnimationKey = @"TabBarButtonTransformRotationAnimation
     self.delegate = self;
     [self setupControllers];
     
-    self.selectedIndex = 1;
+//    self.selectedIndex = 1;
 }
 
 - (void)setupControllers

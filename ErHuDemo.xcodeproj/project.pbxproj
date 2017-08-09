@@ -28,6 +28,7 @@
 		D83F94EF1EE4FDB200EB9ACB /* ShortVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94EC1EE4FDB200EB9ACB /* ShortVideoRecorder.m */; };
 		D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94EE1EE4FDB200EB9ACB /* ShortVideoSession.m */; };
 		D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */; };
+		D84ED8181F3ADDDA00DE4737 /* ImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D84ED8171F3ADDDA00DE4737 /* ImageTableViewCell.m */; };
 		D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4AE81EE00F5A00B7BF22 /* main.m */; };
 		D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4AEB1EE00F5A00B7BF22 /* AppDelegate.m */; };
 		D86A4AF21EE00F5A00B7BF22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86A4AF01EE00F5A00B7BF22 /* Main.storyboard */; };
@@ -129,6 +130,8 @@
 		D83F94EE1EE4FDB200EB9ACB /* ShortVideoSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortVideoSession.m; sourceTree = "<group>"; };
 		D83F94F91EE5070800EB9ACB /* UIView+EHCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EHCategory.h"; sourceTree = "<group>"; };
 		D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EHCategory.m"; sourceTree = "<group>"; };
+		D84ED8161F3ADDDA00DE4737 /* ImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTableViewCell.h; sourceTree = "<group>"; };
+		D84ED8171F3ADDDA00DE4737 /* ImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTableViewCell.m; sourceTree = "<group>"; };
 		D86A4AE41EE00F5A00B7BF22 /* ErHuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ErHuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86A4AE81EE00F5A00B7BF22 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D86A4AEA1EE00F5A00B7BF22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -339,6 +342,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		D84ED8151F3ADDC800DE4737 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D84ED8161F3ADDDA00DE4737 /* ImageTableViewCell.h */,
+				D84ED8171F3ADDDA00DE4737 /* ImageTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D86A4ADB1EE00F5900B7BF22 = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +381,7 @@
 				D8060D551F02028B0011BA25 /* MainTabBarController.h */,
 				D8060D561F02028B0011BA25 /* MainTabBarController.m */,
 				D83F94BE1EE4EDEE00EB9ACB /* Controller */,
+				D84ED8151F3ADDC800DE4737 /* View */,
 				D83F94CB1EE4F51200EB9ACB /* VideoRecord */,
 				D830C5BC1EF2599F00C87E8A /* InputBar */,
 				D8060D5B1F0207C90011BA25 /* ERPageController */,
@@ -657,6 +670,7 @@
 				D88F7F931F0DC79700D3E582 /* WKWebViewController.m in Sources */,
 				D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */,
 				D83239A31EF3679F000A61E4 /* mediaSelectViewController.m in Sources */,
+				D84ED8181F3ADDDA00DE4737 /* ImageTableViewCell.m in Sources */,
 				D8F7550C1F0B7171008459D1 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				D8060D571F02028B0011BA25 /* MainTabBarController.m in Sources */,
 				D8060D6F1F0229550011BA25 /* PageFourViewController.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "SearchBarViewController.h"
+#import "ImageTableViewCell.h"
 
 @interface SearchBarViewController ()<
 UITableViewDelegate,
@@ -25,6 +26,10 @@ UISearchBarDelegate
 /** 搜索框背景颜色 */
 @property (nonatomic, strong) UIImage *searchWhiteImage;
 
+@property (nonatomic, strong) ImageTableViewCell *currentCell;
+
+@property (nonatomic, assign) CGFloat radios;
+
 @end
 
 @implementation SearchBarViewController
@@ -40,6 +45,18 @@ UISearchBarDelegate
     
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    NSArray *cells =  [self.tableView visibleCells];
+    
+    self.currentCell = cells[cells.count - 1];
+    
+    [self.currentCell.contentView addSubview:self.currentCell.coverImageView];
+    
+    [self.currentCell setRadius:0];
+}
+
 - (void)setupSubviews{
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
     [backBtn setTitle:@"dismiss" forState:UIControlStateNormal];
@@ -52,16 +69,43 @@ UISearchBarDelegate
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 10;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 100;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld",random() % 100];
+    ImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImageTableViewCell"];
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 20;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat progress = scrollView.contentOffset.y / (scrollView.contentSize.height - scrollView.height);
+    
+    if (progress > 1) {
+        progress = 1;
+    }
+    
+    if (progress < 0) {
+        progress = 0;
+    }
+    
+    self.radios = progress * ScreenHeight;
+    
+    [self.currentCell setRadius:self.radios];
+}
 
 #pragma mark - UISearchBarDelegate
 
@@ -100,10 +144,9 @@ UISearchBarDelegate
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorColor = [UIColor colorWithHexString:@"f8f8f8"];
-        _tableView.rowHeight = 40;
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.tableHeaderView = self.tableHeadView;
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+        [_tableView registerClass:[ImageTableViewCell class] forCellReuseIdentifier:@"ImageTableViewCell"];
         [self.view addSubview:_tableView];
     }
     return _tableView;
