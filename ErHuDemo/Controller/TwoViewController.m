@@ -22,9 +22,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
-    self.automaticallyAdjustsScrollViewInsets = false;
-    
+
     [self prepareData];
     
     [self addSegmentController];
@@ -58,8 +56,14 @@
 
 - (void)addSegmentController{
     ERSegmentController *pageManager = [[ERSegmentController alloc] init];
-    pageManager.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
-    pageManager.segmentHeight = 25;//导航条高度
+    if (@available(iOS 11.0, *)) {
+        pageManager.contentScrollerView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        pageManager.view.frame = CGRectMake(0, 64 + 24, ScreenWidth, ScreenHeight - 64 - 24 - 49);
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = false;
+        pageManager.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
+    }
+    pageManager.segmentHeight = 35;//导航条高度
     pageManager.progressWidth = 15;//导航条底横线度宽度
     pageManager.progressHeight = 1;//导航条底横线高
     pageManager.itemMinimumSpace = 10;//导航条item直接的间距
