@@ -29,6 +29,7 @@
 		D83F94F01EE4FDB200EB9ACB /* ShortVideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94EE1EE4FDB200EB9ACB /* ShortVideoSession.m */; };
 		D83F94FB1EE5070800EB9ACB /* UIView+EHCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */; };
 		D84ED8181F3ADDDA00DE4737 /* ImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D84ED8171F3ADDDA00DE4737 /* ImageTableViewCell.m */; };
+		D869D2881F7B4DB20005FC3D /* NSString+ERCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D869D2871F7B4DB20005FC3D /* NSString+ERCategory.m */; };
 		D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4AE81EE00F5A00B7BF22 /* main.m */; };
 		D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D86A4AEB1EE00F5A00B7BF22 /* AppDelegate.m */; };
 		D86A4AF21EE00F5A00B7BF22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D86A4AF01EE00F5A00B7BF22 /* Main.storyboard */; };
@@ -132,6 +133,8 @@
 		D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EHCategory.m"; sourceTree = "<group>"; };
 		D84ED8161F3ADDDA00DE4737 /* ImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTableViewCell.h; sourceTree = "<group>"; };
 		D84ED8171F3ADDDA00DE4737 /* ImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTableViewCell.m; sourceTree = "<group>"; };
+		D869D2861F7B4DB20005FC3D /* NSString+ERCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ERCategory.h"; sourceTree = "<group>"; };
+		D869D2871F7B4DB20005FC3D /* NSString+ERCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ERCategory.m"; sourceTree = "<group>"; };
 		D86A4AE41EE00F5A00B7BF22 /* ErHuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ErHuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86A4AE81EE00F5A00B7BF22 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D86A4AEA1EE00F5A00B7BF22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -326,6 +329,8 @@
 			children = (
 				D83F94F91EE5070800EB9ACB /* UIView+EHCategory.h */,
 				D83F94FA1EE5070800EB9ACB /* UIView+EHCategory.m */,
+				D869D2861F7B4DB20005FC3D /* NSString+ERCategory.h */,
+				D869D2871F7B4DB20005FC3D /* NSString+ERCategory.m */,
 				D886C5621F00E40300548C01 /* PHAsset+EHCategory.h */,
 				D886C5631F00E40300548C01 /* PHAsset+EHCategory.m */,
 				D8E722FD1F149B6100585EFF /* UIColor+ERCategory.h */,
@@ -687,6 +692,7 @@
 				D8E722FF1F149B6100585EFF /* UIColor+ERCategory.m in Sources */,
 				D88F7F8D1F0DC57300D3E582 /* SectionHeader.m in Sources */,
 				D86A4AEC1EE00F5A00B7BF22 /* AppDelegate.m in Sources */,
+				D869D2881F7B4DB20005FC3D /* NSString+ERCategory.m in Sources */,
 				D86A4AE91EE00F5A00B7BF22 /* main.m in Sources */,
 				D8060D6C1F0229470011BA25 /* PageThreeViewController.m in Sources */,
 				D886C5641F00E40300548C01 /* PHAsset+EHCategory.m in Sources */,
