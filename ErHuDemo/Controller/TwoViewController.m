@@ -10,7 +10,7 @@
 #import "ERSegmentController.h"
 #import "NSString+ERCategory.h"
 
-@interface TwoViewController ()<ERPageViewControllerDataSource,ERSegmentControllerDelegte,ERSegmentMenuControllerDataSource>
+@interface TwoViewController ()<ERPageViewControllerDataSource,ERSegmentControllerDelegte, ERSegmentMenuControllerDataSource>
 
 @property (nonatomic, strong) NSMutableArray <NSDictionary *> *displayArray;
 
