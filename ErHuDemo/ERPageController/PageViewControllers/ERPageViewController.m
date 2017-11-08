@@ -20,7 +20,11 @@
     
     [super viewDidLoad];
 
-    self.automaticallyAdjustsScrollViewInsets = false;
+    if (@available(iOS 11.0, *)) {
+        self.contentScrollerView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.segmentHeight = 30;
@@ -29,7 +33,7 @@
 /**
  添加子视图控制器
  */
-- (void)initializeSubViews{
+- (void)initializeSubViews {
     
     [self.visiblecontrollers removeAllObjects];
     self.countOfControllers = [self.dataSource numberOfControllersInPageViewController:self];

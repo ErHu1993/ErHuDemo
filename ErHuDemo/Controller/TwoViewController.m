@@ -59,7 +59,7 @@
     ERSegmentController *pageManager = [[ERSegmentController alloc] init];
     if (@available(iOS 11.0, *)) {
         pageManager.contentScrollerView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        if ([[NSString iphoneType] isEqualToString:@"iPhone X"]) {
+        if (ScreenHeight == 812) {
             pageManager.view.frame = CGRectMake(0, 64 + 24, ScreenWidth, ScreenHeight - 64 - 24 - 49);
         }else{
             pageManager.view.frame = CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49);
