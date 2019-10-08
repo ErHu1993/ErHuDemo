@@ -139,7 +139,14 @@ static NSString *rotationAnimationKey = @"TabBarButtonTransformRotationAnimation
     
     UIControl *tabBarButton = [currentViewController.tabBarItem valueForKey:@"view"];
     if (tabBarButton) {
-        UIImageView *tabBarSwappableImageView = [tabBarButton valueForKey:@"info"];
+        UIImageView *tabBarSwappableImageView = nil;
+        @try {
+            tabBarSwappableImageView = [tabBarButton valueForKey:@"info"];
+        } @catch (NSException *exception) {
+            tabBarSwappableImageView = [tabBarButton valueForKey:@"imageView"];
+        } @finally {
+            
+        }
         if (tabBarSwappableImageView) {
             return tabBarSwappableImageView;
         }
